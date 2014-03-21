@@ -1,10 +1,16 @@
-child-care-map
+child-care-map/NYCmap
 ==============
 Project to map licensed day care centers for children 0-5 years in New York City.
 
-Data retrieved from Bureau of Child Care at https://a816-healthpsi.nyc.gov/ChildCare/ChildCareList.do
+Data from Bureau of Child Care at https://a816-healthpsi.nyc.gov/ChildCare/ChildCareList.do
 
 Plan is to map the daycare centers, provide basic information (phone number, capacity, age range, etc) and summarize health inspection results.
+
+Possible approaches to get data:
+
+1. scrape data off website, quick and dirty. might not be sustainable
+2. push the release of the data on the NYC Open Data site by bumping a request placed a year ago here: https://nycopendata.socrata.com/nominate/2570
+3. contact the Department of Health and Mental Hygiene and ask for the data to be released via NYC Open Data: waiting for reply from Commissioner Mary Travis Bassett, M.D., MPH
 
 ==- NOTICE -==
 
