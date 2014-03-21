@@ -1,0 +1,17 @@
+{
+    "status": "Ideation",
+    "thumbnailUrl": "https://www.dropbox.com/s/8p1kdm77tt8ulek/app-map-icon.png",
+     "bornAt": "BetaNYC Maillist",
+    "geography": "NYC",
+    "politicalEntity":"NYC Department of Health and Mental Hygiene",
+    "type":"Web App",
+    "needs": [
+        {"need": "Developer"},
+        {"need": "Data Scientist"},
+        {"need": "Scraper"},
+        {"need": "Mapper"}
+    ],
+    "categories": [
+        {"category": "Community"},
+    ]
+}
