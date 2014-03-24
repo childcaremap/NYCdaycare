@@ -22,4 +22,4 @@ Approaches for Scraping:
 
 Cleaning Data:
 
-Licenses are issued for 0-2 years or 2-5 years, therefore many child care centers are listed twice. Python cleaning script "removeDuplicates.py" removes all addresses that are listed twice, saves new .csv file with "clean_" prefix. Some child care centers use different addresses nearby, they are still represented twice. Some encoding issues in service names such as &#39; not converting to single quotes etc still present, need to add this to cleaning stage. 
+Licenses are issued for 0-2 years or 2-5 years, therefore many child care centers are listed twice. Python cleaning script "removeDuplicates.py" removes all addresses that are listed twice, saves new .csv file with "clean_" prefix. Some child care centers use different addresses nearby, they are still represented twice. Some encoding issues in service names such as "&#39;" not converting to single quotes etc still present, need to add this to cleaning stage. 
