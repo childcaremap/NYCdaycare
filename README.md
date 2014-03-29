@@ -4,8 +4,6 @@ Project to map licensed day care centers for children 0-5 years in New York City
 
 Data from Bureau of Child Care at https://a816-healthpsi.nyc.gov/ChildCare/ChildCareList.do
 
-Last updated CSV with scraped data (March 21, 2014): http://www.developeraccount.com/betanyc/daycarenyc.csv
-
 Plan is to map the daycare centers, provide basic information (phone number, capacity, age range, etc) and summarize health inspection results.
 
 Possible approaches to get data:
@@ -21,5 +19,7 @@ Approaches for Scraping:
 3. python scrapy should work, schmiani is working on this approach
 
 Cleaning Data:
+
+No need to run removeDuplicates.py anymore, because the scrape script now saves to a DB and upon saving a check for duplication is made.
 
 Licenses are issued for 0-2 years or 2-5 years, therefore many child care centers are listed twice. Python cleaning script "removeDuplicates.py" removes all addresses that are listed twice, saves new .csv file with "clean_" prefix. Some child care centers use different addresses nearby, they are still represented twice. Some encoding issues in service names such as single and double quotes not converting properly still present. 
