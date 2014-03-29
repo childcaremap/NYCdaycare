@@ -13,4 +13,4 @@
 	1. Visit the APIs console at https://code.google.com/apis/console and log in with your Google Account.
 	2. Click the Services link from the left-hand menu in the APIs Console, then activate the Geocoding API service.
 	3. Once the service has been activated, your API key is available from the API Access page, in the Simple API Access section. Geocoding API applications use the Key for server apps.
-5. In your browser open daycare.php -> keep it open until you see "ready". It will reload every 5 seconds (or whatever you put in your config) until it has retrieved all the pages.
+5. In your browser open daycare.php -> keep it open until you see "Finished". It will reload every 5 seconds (or whatever you put in your config) until it has retrieved all the pages.
