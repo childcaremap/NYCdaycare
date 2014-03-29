@@ -2,7 +2,9 @@
 include('config.inc.php');
 include('functions.inc.php');
 
-// $db = connectDB($config['host'], $config['dbname'], $config['user'], $config['pass']);
+if (!$db = connectDB($config['host'], $config['dbname'], $config['user'], $config['pass'])) {
+    die('Database connection error.');
+}
 
 // get page offset number
 $page = isset($_GET['page']) ? $_GET['page'] : 0;
@@ -41,19 +43,34 @@ if ($gresult) {
     }
 }
 
-
-// open file daycarenyc.csv to append(!) scraped data
+// if there are results, loop them
 if (!empty($namesArray)) {
-    $fp = fopen('daycarenyc.csv', 'a') or die('cannot open file daycarenyc.csv');
     $n = 0;
     foreach ($namesArray as $name) {
-        $fields = array();
-        $fields = array( trim($name), trim($addressArray[$n]), trim($zipArray[$n]), trim($telArray[$n]), trim($statusArray[$n]) );
-        fputcsv($fp, $fields);
-        var_dump($fields); // output the array which will be written to the csv
+        // check if name + address combination already exists in DB
+        $stmt = $db->prepare('SELECT id FROM centers WHERE name = :name AND address = :address');
+        $stmt->execute(array(':name' => $name, ':address' => trim($addressArray[$n])));
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            // if name + address combination exists, do an update for only phone and status field
+            $stmt = $db->prepare("UPDATE centers SET phone = :phone, status = :status");
+            $stmt->execute( array(':phone' => trim($telArray[$n]),
+                                ':status' => trim($statusArray[$n]))
+                            );
+            echo 'Update: '.$name."<br>\n";
+        } else {
+            // if name + address combination does not exist, insert data
+            $stmt = $db->prepare("INSERT INTO centers (name, address, zipcode, phone, status, lastupdate) VALUES (:name, :address, :zipcode, :phone, :status, NOW())");
+            $stmt->execute( array(':name' => trim($name),
+                                ':address' => trim($addressArray[$n]),
+                                ':zipcode' => trim($zipArray[$n]),
+                                ':phone' => trim($telArray[$n]),
+                                ':status' => trim($statusArray[$n]))
+                            );
+            echo 'Insert: '.$name."<br>\n";
+        }
         $n++;
     }
-    fclose($fp);
 }
 
 // if results are found, increase page offset

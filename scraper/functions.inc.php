@@ -5,14 +5,14 @@ function connectDB($host, $dbname, $user, $pass)
 	  return new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
 	}
 	catch(PDOException $e) {
-	    return $e->getMessage();
+	    return false; // $e->getMessage();
 	}
 }
 
 function getData($url, $postString, $userAgent, $referer)
 {
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_COOKIEJAR, "cookie.txt");
+	curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -21,7 +21,7 @@ function getData($url, $postString, $userAgent, $referer)
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 15); // times out after 15s
 	curl_setopt($ch, CURLOPT_REFERER, $referer);
-	curl_setopt($ch, CURLOPT_COOKIEFILE, "cookie.txt");
+	curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookie.txt');
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
 
 	$gresult = curl_exec ($ch); // execute the curl command

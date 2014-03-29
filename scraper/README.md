@@ -1,9 +1,7 @@
 ==- NOTICE -==
 
-The scrape script was made very quickly, so there are a few things to notice:
-1. The data will be written to daycarenyc.csv by appending to the file. So after the script cycle is done and you would want to start a new cycle, you must first empty daycarenyc.csv
-2. Browser based only. Cannot be run from commandline or with cron.
-3. Please respect the 5 seconds interval so as not to hammer the https://a816-healthpsi.nyc.gov site, and don't run this every day
+1. Browser based only. Cannot be run from commandline or with cron.
+2. Please respect the 5 seconds interval so as not to hammer the https://a816-healthpsi.nyc.gov site, and don't run this every day
 
 ==- USAGE -==
 
