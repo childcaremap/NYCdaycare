@@ -1,4 +1,9 @@
 <?php
+/* TODO:
+    - google map geocoder
+    - no reload, just 1 long call
+*/
+
 include('config.inc.php');
 include('functions.inc.php');
 
@@ -60,13 +65,34 @@ if (!empty($namesArray)) {
             echo 'Update: '.$name."<br>\n";
         } else {
             // if name + address combination does not exist, insert data
-            $stmt = $db->prepare("INSERT INTO centers (name, address, zipcode, phone, status, lastupdate) VALUES (:name, :address, :zipcode, :phone, :status, NOW())");
+
+            // check to see if geocoding is needed
+            if ($config['geocode']) {
+                $geoAddress = urlencode( trim($addressArray[$n]).', '.trim($zipArray[$n]).', New York' );
+                $geoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address='.$geoAddress.'&sensor=false&key='.$config['googleKey'];
+                $geoResult = getData($geoUrl, '', $userAgent, '');
+                if ($geoResult != '') {
+                    $geoResult = json_decode($geoResult);
+                    if ($geoResult->status == 'OK') {
+                        $latitude = $geoResult->results[0]->geometry->location->lat;
+                        $longitude = $geoResult->results[0]->geometry->location->lng;
+                    }
+                }
+            } else {
+                $latitude = $longitude = '';
+            }
+
+            $stmt = $db->prepare("INSERT INTO centers (name, address, zipcode, phone, status, latitude, longitude, lastupdate) VALUES (:name, :address, :zipcode, :phone, :status, :latitude, :longitude, NOW())");
             $stmt->execute( array(':name' => trim($name),
                                 ':address' => trim($addressArray[$n]),
                                 ':zipcode' => trim($zipArray[$n]),
                                 ':phone' => trim($telArray[$n]),
-                                ':status' => trim($statusArray[$n]))
+                                ':status' => trim($statusArray[$n]),
+                                ':latitude' => $latitude,
+                                ':longitude' => $longitude
+                                )
                             );
+            // print_r($db->errorInfo());
             echo 'Insert: '.$name."<br>\n";
         }
         $n++;

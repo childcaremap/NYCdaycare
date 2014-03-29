@@ -22,7 +22,9 @@ function getData($url, $postString, $userAgent, $referer)
 	curl_setopt($ch, CURLOPT_TIMEOUT, 15); // times out after 15s
 	curl_setopt($ch, CURLOPT_REFERER, $referer);
 	curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookie.txt');
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+	if ($postString != '') {
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+	}
 
 	$gresult = curl_exec ($ch); // execute the curl command
 
