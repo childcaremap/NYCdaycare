@@ -1,5 +1,16 @@
 <?php
-function getData($url, $postString, $userAgent, $referer) {
+function connectDB($host, $dbname, $user, $pass)
+{
+	try {
+	  return new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+	}
+	catch(PDOException $e) {
+	    return $e->getMessage();
+	}
+}
+
+function getData($url, $postString, $userAgent, $referer)
+{
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_COOKIEJAR, "cookie.txt");
 	curl_setopt($ch, CURLOPT_URL, $url);
