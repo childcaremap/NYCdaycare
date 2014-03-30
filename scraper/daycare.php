@@ -36,12 +36,13 @@ if ($gresult) {
             $numberOfCenters = $matches[1][0];
         }
         
-        if (preg_match_all('/<TR>\s*<TD CLASS="cell_leftborder" VALIGN="top"><A HREF=\'#\' onclick=\'redirectHistory\(".*"\); return false;\' rel="external">(.*)&nbsp;<\/a><\/TD>\s*<TD CLASS="cell_border" VALIGN="top">(.*)&nbsp;<\/TD>\s*<TD CLASS="cell_border" VALIGN="top">(\d+)&nbsp;<\/TD>\s*<TD CLASS="cell_border" VALIGN="top">(.*)&nbsp;<\/TD>\s*<TD CLASS="cell_border" VALIGN="top">(.*)&nbsp;<\/TD>\s*<TD CLASS="cell_border" VALIGN="top"><A HREF=\'#\' onclick=\'redirectHistory\(".*"\); return false;\' rel="external">More info<\/A><\/TD>\s*<\/TR>/', $gresult, $matches)) {
-            $namesArray = $matches[1];
-            $addressArray = $matches[2];
-            $zipArray = $matches[3];
-            $telArray = $matches[4];
-            $statusArray = $matches[5];
+        if (preg_match_all('/<TR>\s*<TD CLASS="cell_leftborder" VALIGN="top"><A HREF=\'#\' onclick=\'redirectHistory\("(.*)"\); return false;\' rel="external">(.*)&nbsp;<\/a><\/TD>\s*<TD CLASS="cell_border" VALIGN="top">(.*)&nbsp;<\/TD>\s*<TD CLASS="cell_border" VALIGN="top">(\d+)&nbsp;<\/TD>\s*<TD CLASS="cell_border" VALIGN="top">(.*)&nbsp;<\/TD>\s*<TD CLASS="cell_border" VALIGN="top">(.*)&nbsp;<\/TD>\s*<TD CLASS="cell_border" VALIGN="top"><A HREF=\'#\' onclick=\'redirectHistory\(".*"\); return false;\' rel="external">More info<\/A><\/TD>\s*<\/TR>/', $gresult, $matches)) {
+            $centerIdArray = $matches[1];
+            $namesArray = $matches[2];
+            $addressArray = $matches[3];
+            $zipArray = $matches[4];
+            $telArray = $matches[5];
+            $statusArray = $matches[6];
             $found = true;
         }
 
@@ -58,14 +59,14 @@ if (!empty($namesArray)) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($row) {
             // if name + address combination exists, do an update for only phone and status field
-            $stmt = $db->prepare("UPDATE centers SET phone = :phone, status = :status");
+            $stmt = $db->prepare("UPDATE centers SET phone = :phone, status = :status WHERE id = :id");
             $stmt->execute( array(':phone' => trim($telArray[$n]),
-                                ':status' => trim($statusArray[$n]))
+                                ':status' => trim($statusArray[$n]),
+                                ':id' => $row['id']
+                                )
                             );
             echo 'Update: '.$name."<br>\n";
         } else {
-            // if name + address combination does not exist, insert data
-
             // check to see if geocoding is needed
             if ($config['geocode']) {
                 $geoAddress = urlencode( trim($addressArray[$n]).', '.trim($zipArray[$n]).', New York' );
@@ -82,14 +83,32 @@ if (!empty($namesArray)) {
                 $latitude = $longitude = '';
             }
 
-            $stmt = $db->prepare("INSERT INTO centers (name, address, zipcode, phone, status, latitude, longitude, lastupdate) VALUES (:name, :address, :zipcode, :phone, :status, :latitude, :longitude, NOW())");
+            // get individual center data
+            $postString = 'linkPK='.$centerIdArray[$n];
+            $url = 'https://a816-healthpsi.nyc.gov/ChildCare/WDetail.do';
+
+            $gresult = getData($url, $postString, $userAgent, $referer);
+            $borough = $permitNo = '';
+            if ($gresult) {
+                if (preg_match_all('/<tr><td class="cell_border_leftbottom" valign="top">Borough<\/td>\s*<td class="cell_border" valign="top">(.*)&nbsp;<\/td>/', $gresult, $matches)) {
+                    $borough = $matches[1][0];
+                }
+                if (preg_match_all('/<tr><td class="cell_border_leftbottom" valign="top">Permit Number<\/td>\s*<TD class="cell_border" valign="top">(\d+)&nbsp;<\/TD>/', $gresult, $matches)) {
+                    $permitNo = $matches[1][0];
+                }
+            }
+
+            // if name + address combination does not exist, insert data
+            $stmt = $db->prepare("INSERT INTO centers (name, address, borough, zipcode, phone, status, latitude, longitude, permitno, lastupdate) VALUES (:name, :address, :borough, :zipcode, :phone, :status, :latitude, :longitude, :permitno, NOW())");
             $stmt->execute( array(':name' => trim($name),
                                 ':address' => trim($addressArray[$n]),
+                                ':borough' => trim($borough),
                                 ':zipcode' => trim($zipArray[$n]),
                                 ':phone' => trim($telArray[$n]),
                                 ':status' => trim($statusArray[$n]),
                                 ':latitude' => $latitude,
-                                ':longitude' => $longitude
+                                ':longitude' => $longitude,
+                                ':permitno' => $permitNo
                                 )
                             );
             // print_r($db->errorInfo());

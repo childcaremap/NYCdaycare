@@ -6,7 +6,7 @@ $config = array();
 SCRIPT REFRESH DELAY IN SECONDS
 ---------------------------*/
 
-$config['delay'] = 100;
+$config['delay'] = 5;
 
 /*---------------------------
 DB SETTINGS

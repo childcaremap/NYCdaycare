@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 29, 2014 at 03:41 PM
+-- Generation Time: Mar 30, 2014 at 10:20 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.27
 
@@ -30,11 +30,13 @@ CREATE TABLE IF NOT EXISTS `centers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `borough` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `zipcode` int(5) NOT NULL,
   `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `status` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `latitude` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `longitude` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `permitno` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `lastupdate` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `zipcode` (`zipcode`)
