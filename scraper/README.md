@@ -1,3 +1,7 @@
+==- WHAT IS IT? -==
+
+Scraper for data on https://a816-healthpsi.nyc.gov/ChildCare/ChildCareList.do. Currently it retrieves center name + address from the list view and borough and permit no. from individual view.
+
 ==- NOTICE -==
 
 1. Browser based only. Cannot be run from commandline or with cron.
