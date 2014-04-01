@@ -15,8 +15,9 @@ Possible approaches to get data:
 Approaches for Scraping:
 
 1. php based scrape script in "scraper" folder working for first layer data + some info from second layer (Service Name	Address	Zip Code	Phone	Permit Status, Borough, Permit No.) Note: do NOT run script without consulting with omnisite or schmiani! Data retrieved on March 30 2014 is saved on github as an mysql dump.
-2. python beautifulsoup cannot access data because it is loaded with javascript
+2. python beautifulsoup cannot access data on it's own because it is loaded with javascript
 3. python scrapy should work, schmiani is working on this approach
+4. ruby based script with mechanize is working, possibility to expand this code or translate it to python with mechanize
 
 Cleaning Data:
 
