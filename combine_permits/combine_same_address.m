@@ -14,15 +14,21 @@
  icap = find(ismember(raw(1,:),'maximumCapacity'));
  imed = find(ismember(raw(1,:),'certifiedToAdministerMedication'));
  itype = find(ismember(raw(1,:),'siteType'));
+ ilon = find(ismember(raw(1,:),'Lon'));
+ ilat = find(ismember(raw(1,:),'Lat'));
  
  %make zip codes into strings
  raw(2:end,izip) = cellfun(@num2str,raw(2:end,izip),'UniformOutput',false);
+ %make lat and lon into strings, easier to handle cell arrays of strings
+ raw(2:end,ilon) = cellfun(@num2str,raw(2:end,ilon),'UniformOutput',false);
+ raw(2:end,ilat) = cellfun(@num2str,raw(2:end,ilat),'UniformOutput',false);
  
  combdata = raw(1,:);
  k = 2;
  for i = 2: length(raw)
-     if isempty(find(ismember(combdata(:,iaddress),cell2mat(raw(i,iaddress)))&ismember(combdata(:,izip),cell2mat(raw(i,izip)))))
-        %add entry if address is not the same as last entry
+     if isempty(find(ismember(combdata(:,ilat),cell2mat(raw(i,ilat)))&ismember(combdata(:,ilon),cell2mat(raw(i,ilon)))))
+        %isempty(find(ismember(combdata(:,iaddress),cell2mat(raw(i,iaddress)))&ismember(combdata(:,izip),cell2mat(raw(i,izip)))))
+        %add entry if lat long is not the same as any other entry
         combdata(k,:) = raw(i,:);
         %adjust format of expiration date
         expdate = cell2mat(raw(i,iexp));
@@ -34,8 +40,11 @@
         combdata(k,ipermit) = {num2str(cell2mat(combdata(k,ipermit)))};
         k = k+1;
      else
+        %locate other entry with same lat, lon
+        i_comb = find(ismember(combdata(:,ilat),cell2mat(raw(i,ilat)))&ismember(combdata(:,ilon),cell2mat(raw(i,ilon))));
         %locate other entry with same address
-        i_comb = find(ismember(combdata(:,iaddress),cell2mat(raw(i,iaddress)))&ismember(combdata(:,izip),cell2mat(raw(i,izip))));
+        %problem is with closeby addresses but same lat lon
+        %i_comb = find(ismember(combdata(:,iaddress),cell2mat(raw(i,iaddress)))&ismember(combdata(:,izip),cell2mat(raw(i,izip))));
         %combine age ranges of two permits
         combagerange = [raw(i,iagerange),combdata(i_comb,iagerange)];
         minage = min([str2num(combagerange{1}(1)),str2num(combagerange{2}(1))]);
@@ -68,13 +77,17 @@
             %combine phone number if not the same
             combdata(i_comb,iphone) = {[cell2mat(combdata(i_comb,iphone)),' / ',cell2mat(raw(i,iphone))]};
         end
+        if ~strcmp(combdata(i_comb,iaddress),raw(i,iaddress))
+            %combine address if not the same (despite same geolocation)
+            combdata(i_comb,iaddress) = {[cell2mat(combdata(i_comb,iaddress)),' / ',cell2mat(raw(i,iaddress))]};
+        end
         if ~strcmp(combdata(i_comb,itype),raw(i,itype))
             %combine permit types if not the same
             combdata(i_comb,itype) = {[cell2mat(combdata(i_comb,itype)),' / ',cell2mat(raw(i,itype))]};
         end
         if ~strcmp(combdata(i_comb,imed),raw(i,imed))
             %combine medication permit if not the same
-            combdata(i_comb,imed) = {[cell2mat(combdata(i_comb,imed)),' / ',cell2mat(raw(i,imed)),' (depends on which permit)']};
+            combdata(i_comb,imed) = {[cell2mat(combdata(i_comb,imed)),' / ',cell2mat(raw(i,imed))]};
         end
      end
  end
