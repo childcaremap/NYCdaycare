@@ -15,12 +15,13 @@ Possible approaches to get data:
 Approaches for Scraping:
 
 1. php based scrape script in "scraper" folder working for first layer data + some info from second layer (Service Name	Address	Zip Code	Phone	Permit Status, Borough, Permit No.) Note: do NOT run script without consulting with omnisite or schmiani! Data retrieved on March 30 2014 is saved on github as an mysql dump.
-2. python beautifulsoup cannot access data on it's own because it is loaded with javascript
-3. python scrapy should work, schmiani is working on this approach
-4. ruby based script with mechanize is working, possibility to expand this code or translate it to python with mechanize
+2. python scrapy, problems with form requests
+3. ruby based script with mechanize is working, possibility to expand this code or translate it to python with mechanize
 
-Cleaning Data:
+Combining permits:
 
-No need to run removeDuplicates.py anymore, because the scrape script now saves to a DB and upon saving a check for duplication is made.
+Licenses are issued for 0-2 years or 2-5 years, therefore many child care centers are listed twice. Because they have the same geolocation, only one of the entries will be visible in a map. Matlab script in combine_permits folder combines any permit at the same location into one entry, but preserves any different entries with slashes. This is done just for mapping, the original file is kept separately.
 
-Licenses are issued for 0-2 years or 2-5 years, therefore many child care centers are listed twice. Python cleaning script "removeDuplicates.py" removes all addresses that are listed twice, saves new .csv file with "clean_" prefix. Some child care centers use different addresses nearby, they are still represented twice. Some encoding issues in service names such as single and double quotes not converting properly still present. 
+Mapping:
+
+Right now, cartoDB is used for the mapping. It's difficult to update the information, but using their API could possibly make it easier.
