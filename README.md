@@ -1,4 +1,4 @@
-child-care-map/NYCmap
+childcaremap/NYCdaycare
 =====================
 Project to map licensed day care centers for children 0-5 years in New York City.
 
