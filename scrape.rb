@@ -11,12 +11,20 @@ output.print("\n")
 
 offset = 0
 
+#following lines only necessary for Windows machines
+cert_store = OpenSSL::X509::Store.new
+cert_store.add_file 'cacert.pem'
+agent1.cert_store = cert_store
+agent2.cert_store = cert_store
+
 while offset < 2300 do
 	puts "Offset: " + offset.to_s
 
 	page = agent1.post 'https://a816-healthpsi.nyc.gov/ChildCare/SearchAction2.do?pager.offset=' + offset.to_s, 'getNewResult' => true
 
 	agent1.cookie_jar.save_as 'cookies', :session => true, :format => :yaml
+
+	sleep(5)
 
 	links = page.search('.//td[@class="cell_leftborder"]/a')
 
@@ -34,6 +42,8 @@ while offset < 2300 do
 		puts idString
 
 		page2 = agent2.post 'https://a816-healthpsi.nyc.gov/ChildCare/WDetail.do', idString ,({'Content-Type' => 'application/x-www-form-urlencoded'})
+		
+		sleep(5)
 
 		#rows = page2.search('.//table[4]/tr/td[@class="cell_border"]')
 		rows = page2.search('.//table[4]/tr/td[@class="cell_border"]|.//table[4]/tr/td[@class="cell_border_rightbottomtop_noback"]')
