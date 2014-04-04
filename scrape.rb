@@ -5,8 +5,8 @@ require 'csv'
 agent1 = Mechanize.new
 agent2 = Mechanize.new
 
-output = File.new("output2.csv","w")
-output.print("centerName,permitHolder,address,borough,phone,zipCode,permitNumber,permitExpirationDate,permitStatus,ageRange,maximumCapacity,certifiedToAdministerMedication,siteType")
+output = File.new("output.csv","w")
+output.print("Center Name,Permit Holder,Address,Borough,Zip Code,Phone,Permit Number,Permit Expiration Date,Permit Status,Age Range,Maximum Capacity,Certified to Administer Medication,Site Type")
 output.print("\n")
 
 offset = 0
@@ -17,14 +17,21 @@ cert_store.add_file 'cacert.pem'
 agent1.cert_store = cert_store
 agent2.cert_store = cert_store
 
-while offset < 2300 do
+page = agent1.post 'https://a816-healthpsi.nyc.gov/ChildCare/SearchAction2.do?pager.offset=' + offset.to_s, 'getNewResult' => true
+
+pages = page.search('.//a[@class="pager"]')
+offsetstring = pages[pages.length-1][@name="href"]
+maxpage = offsetstring[offsetstring.index('=')+1,offsetstring.length-1]
+maxpage.to_i
+
+while offset <= maxpage.to_i do
 	puts "Offset: " + offset.to_s
 
 	page = agent1.post 'https://a816-healthpsi.nyc.gov/ChildCare/SearchAction2.do?pager.offset=' + offset.to_s, 'getNewResult' => true
 
 	agent1.cookie_jar.save_as 'cookies', :session => true, :format => :yaml
 
-	sleep(5)
+	#sleep(5)
 
 	links = page.search('.//td[@class="cell_leftborder"]/a')
 
@@ -43,10 +50,12 @@ while offset < 2300 do
 
 		page2 = agent2.post 'https://a816-healthpsi.nyc.gov/ChildCare/WDetail.do', idString ,({'Content-Type' => 'application/x-www-form-urlencoded'})
 		
-		sleep(5)
+		#sleep(5)
 
 		#rows = page2.search('.//table[4]/tr/td[@class="cell_border"]')
-		rows = page2.search('.//table[4]/tr/td[@class="cell_border"]|.//table[4]/tr/td[@class="cell_border_rightbottomtop_noback"]')
+		#rows = page2.search('.//table[4]/tr/td[@class="cell_border_rightbottomtop_noback"]')
+		#for some reason, info is not in table number 4 anymore, but in table number 1. platform issue or did they change the webpage?
+		rows = page2.search('.//table[1]/tr/td[@class="cell_border"]|.//table[1]/tr/td[@class="cell_border_rightbottomtop_noback"]')
 
 		rows.each do |row|
 			puts
