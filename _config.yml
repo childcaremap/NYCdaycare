@@ -1,11 +1,11 @@
-# name: NYC DayCare Map
+# name: NYC Day Care
 pygments: true
 baseurl: /NYCdaycare
 
 markdown: redcarpet
 pygments: true
 
-title_tag_text: NYC DayCare
-h1_tag_text: NYC DayCare
+title_tag_text: NYC Day Care
+h1_tag_text: NYC Day Care
 
 # exclude: ["Procfile", "Gruntfile.js", "README.md", "package.json", "CNAME", "node_modules"]
