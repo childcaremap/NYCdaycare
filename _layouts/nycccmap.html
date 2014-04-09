@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{ site.title_tag_text }}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- syntax highlighting CSS -->
+
+ 
+{% include head.html %}
+
+    </head>
+    <body>
+
+    <div class="container">
+    <h1><a href="./">{{ site.h1_tag_text }}</a></h1>
+    {{ content }}
+    </div>
+    <!-- /container -->
+    
+    {% include scripts.html %} 
+
+    </body>
+</html>
