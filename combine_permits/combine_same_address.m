@@ -1,50 +1,52 @@
  clear
- [num,txt,raw]=xlsread('29mar2014_geocoded.csv');
+ [num,txt,raw]=xlsread('04apr2014.csv');
  
  %find columns
- iname = find(ismember(raw(1,:),'centerName'));
- iholder = find(ismember(raw(1,:),'permitHolder'));
- iaddress = find(ismember(raw(1,:),'address'));
- izip= find(ismember(raw(1,:),'zipCode'));
- iphone = find(ismember(raw(1,:),'phone'));
- ipermit = find(ismember(raw(1,:),'permitNumber'));
- iexp = find(ismember(raw(1,:),'permitExpirationDate'));
- istatus = find(ismember(raw(1,:),'permitStatus'));
- iagerange= find(ismember(raw(1,:),'ageRange'));
- icap = find(ismember(raw(1,:),'maximumCapacity'));
- imed = find(ismember(raw(1,:),'certifiedToAdministerMedication'));
- itype = find(ismember(raw(1,:),'siteType'));
- ilon = find(ismember(raw(1,:),'Lon'));
- ilat = find(ismember(raw(1,:),'Lat'));
+ iname = find(ismember(raw(1,:),'Center Name'));
+ iholder = find(ismember(raw(1,:),'Permit Holder'));
+ iaddress = find(ismember(raw(1,:),'Address'));
+ izip= find(ismember(raw(1,:),'Zip Code'));
+ iphone = find(ismember(raw(1,:),'Phone'));
+ ipermit = find(ismember(raw(1,:),'Permit Number'));
+ iexp = find(ismember(raw(1,:),'Permit Expiration Date'));
+ istatus = find(ismember(raw(1,:),'Permit Status'));
+ iagerange= find(ismember(raw(1,:),'Age Range'));
+ icap = find(ismember(raw(1,:),'Maximum Capacity'));
+ imed = find(ismember(raw(1,:),'Certified To Administer Medication'));
+ itype = find(ismember(raw(1,:),'Site Type'));
+ %ilon = find(ismember(raw(1,:),'Lon'));
+ %ilat = find(ismember(raw(1,:),'Lat'));
  
  %make zip codes into strings
  raw(2:end,izip) = cellfun(@num2str,raw(2:end,izip),'UniformOutput',false);
- %make lat and lon into strings, easier to handle cell arrays of strings
- raw(2:end,ilon) = cellfun(@num2str,raw(2:end,ilon),'UniformOutput',false);
- raw(2:end,ilat) = cellfun(@num2str,raw(2:end,ilat),'UniformOutput',false);
+%  %make lat and lon into strings, easier to handle cell arrays of strings
+%  raw(2:end,ilon) = cellfun(@num2str,raw(2:end,ilon),'UniformOutput',false);
+%  raw(2:end,ilat) = cellfun(@num2str,raw(2:end,ilat),'UniformOutput',false);
  
  combdata = raw(1,:);
  k = 2;
  for i = 2: length(raw)
-     if isempty(find(ismember(combdata(:,ilat),cell2mat(raw(i,ilat)))&ismember(combdata(:,ilon),cell2mat(raw(i,ilon)))))
-        %isempty(find(ismember(combdata(:,iaddress),cell2mat(raw(i,iaddress)))&ismember(combdata(:,izip),cell2mat(raw(i,izip)))))
+     if isempty(find(ismember(combdata(:,iaddress),cell2mat(raw(i,iaddress)))&ismember(combdata(:,izip),cell2mat(raw(i,izip)))))
+        %isempty(find(ismember(combdata(:,ilat),cell2mat(raw(i,ilat)))&ismember(combdata(:,ilon),cell2mat(raw(i,ilon)))))
         %add entry if lat long is not the same as any other entry
+        %add entry if address not the same as any other entry
         combdata(k,:) = raw(i,:);
-        %adjust format of expiration date
-        expdate = cell2mat(raw(i,iexp));
-        expdatenum = num2str(expdate/10^11);
-        year = expdatenum(1:4);
-        month = expdatenum(5:6);
-        combdata(k,iexp) = {[year,'-',month]};
+%         %adjust format of expiration date
+%         expdate = cell2mat(raw(i,iexp));
+%         expdatenum = num2str(expdate/10^11);
+%         year = expdatenum(1:4);
+%         month = expdatenum(5:6);
+%         combdata(k,iexp) = {[year,'-',month]};
         %make permit number a string
-        combdata(k,ipermit) = {num2str(cell2mat(combdata(k,ipermit)))};
+        %combdata(k,ipermit) = {num2str(cell2mat(combdata(k,ipermit)))};
         k = k+1;
      else
+        i_comb = find(ismember(combdata(:,iaddress),cell2mat(raw(i,iaddress)))&ismember(combdata(:,izip),cell2mat(raw(i,izip))));
         %locate other entry with same lat, lon
-        i_comb = find(ismember(combdata(:,ilat),cell2mat(raw(i,ilat)))&ismember(combdata(:,ilon),cell2mat(raw(i,ilon))));
+        %i_comb = find(ismember(combdata(:,ilat),cell2mat(raw(i,ilat)))&ismember(combdata(:,ilon),cell2mat(raw(i,ilon))));
         %locate other entry with same address
         %problem is with closeby addresses but same lat lon
-        %i_comb = find(ismember(combdata(:,iaddress),cell2mat(raw(i,iaddress)))&ismember(combdata(:,izip),cell2mat(raw(i,izip))));
+
         %combine age ranges of two permits
         combagerange = [raw(i,iagerange),combdata(i_comb,iagerange)];
         minage = min([str2num(combagerange{1}(1)),str2num(combagerange{2}(1))]);
@@ -54,13 +56,13 @@
         combstr(11) = num2str(maxage);
         combdata(i_comb,iagerange) = {combstr};
         combdata(i_comb,icap) = {cell2mat(combdata(i_comb,icap))+cell2mat(raw(i,icap))};
-        %adjust format of expiration date
-        expdate = cell2mat(raw(i,iexp));
-        expdatenum = num2str(expdate/10^11);
-        year = expdatenum(1:4);
-        month = expdatenum(5:6);
+%         %adjust format of expiration date
+%         expdate = cell2mat(raw(i,iexp));
+%         expdatenum = num2str(expdate/10^11);
+%         year = expdatenum(1:4);
+%         month = expdatenum(5:6);
         %combine expiration dates of both premits
-        combdata(i_comb,iexp) = {[cell2mat(combdata(i_comb,iexp)),' / ',year,'-',month]};
+        combdata(i_comb,iexp) = {[cell2mat(combdata(i_comb,iexp)),' / ',cell2mat(raw(i,iexp))]};
         %combine permit statuses of both permits
         combdata(i_comb,istatus) = {[cell2mat(combdata(i_comb,istatus)),' / ',cell2mat(raw(i,istatus))]};
         %combine permit number of both permits
@@ -92,4 +94,4 @@
      end
  end
  
- xlswrite('29mar2014_geocoded_combined.xls',combdata);
+ xlswrite('04apr2014_combined.xls',combdata);
