@@ -8,6 +8,6 @@ pygments: true
 title_tag_text: NYC Day Care
 h1_tag_text: NYC Day Care
 
-exclude: ["README.md", "CNAME"]
+exclude: ["Procfile", "README.md", "CNAME"]
 
-# exclude: ["Procfile", "Gruntfile.js", "README.md", "package.json", "CNAME", "node_modules"]
+# exclude: ["Gruntfile.js", "package.json", "node_modules"]
