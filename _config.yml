@@ -5,8 +5,8 @@ baseurl: /NYCdaycare
 markdown: redcarpet
 pygments: true
 
-title_tag_text: NYC Day Care
-h1_tag_text: NYC Day Care
+title_tag_text: Daycare Map NYC
+h1_tag_text: Daycare Map NYC
 
 exclude: ["README.md", "CNAME"]
 
