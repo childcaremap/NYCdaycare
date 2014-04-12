@@ -25,3 +25,7 @@ Licenses are issued for 0-2 years or 2-5 years, therefore many child care center
 Mapping:
 
 Right now, cartoDB is used for the mapping. It's difficult to update the information, but using their API could possibly make it easier.
+
+License:
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
