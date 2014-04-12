@@ -1,3 +1,4 @@
+=======
 childcaremap/NYCdaycare
 =====================
 Project to map licensed day care centers for children 0-5 years in New York City.
@@ -26,6 +27,14 @@ Mapping:
 
 Right now, cartoDB is used for the mapping. It's difficult to update the information, but using their API could possibly make it easier.
 
+To view map http://childcaremap.github.io/NYCdaycare/
+
+Jekyll with a modified single page responsive theme Solo. Docs are 
+here https://github.com/chibicode/solo. Thanks to Shu Uesugi (<a href="http://twitter.com/chibicode">Twitter</a>/<a 
+href="http://github.com/chibicode">GitHub</a>/<a 
+href="https://plus.google.com/110325199858284431541?rel=author">G+</a>).
+
+=======
 License:
 
 This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
