@@ -34,3 +34,7 @@ here https://github.com/chibicode/solo. Thanks to Shu Uesugi (<a href="http://tw
 href="http://github.com/chibicode">GitHub</a>/<a 
 href="https://plus.google.com/110325199858284431541?rel=author">G+</a>).
 
+=======
+License:
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
