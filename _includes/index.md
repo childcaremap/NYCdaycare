@@ -14,10 +14,9 @@ This map was made with great help from the <a href="http://betanyc.us/" target="
 
 <h2>Google Fusion Table Map</h2>
 
-<!--iframe width="100%" height="520" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col14+from+1_WLUFMZkCPz2jZJiZHUS7moFCAxUE0cIHLpKI_gX&amp;viz=MAP&amp;h=false&amp;lat=40.691959794876894&amp;lng=-74.00954473876948&amp;t=1&amp;z=10&amp;l=col14&amp;y=5&amp;tmplt=7&amp;hml=TWO_COL_LAT_LNG"></iframe-->
+<div id="map-canvas"></div>
 
- <div id="map-canvas"></div>
- <input id="googft-legend-open" style="display:none" type="button" value="Legend"></input>
+<input id="googft-legend-open" style="display:none" type="button" value="Legend"></input>
   <div id="googft-legend">
     <p id="googft-legend-title">Maximum Capacity</p>
     <div>
@@ -39,14 +38,16 @@ This map was made with great help from the <a href="http://betanyc.us/" target="
     <div class="googft-legend-source">
       <a href="data?docid=1_WLUFMZkCPz2jZJiZHUS7moFCAxUE0cIHLpKI_gX" target="_blank">Source</a>
     </div>
-    <input id="googft-legend-close" style="display:none" type="button" value="Hide"></input>
-   </div>
+	</div>
+	<input id="googft-legend-close" style="display:none" type="button" value="Hide"></input>
 
-   <div style="margin-top: 10px;">
-      <label class="layer-wizard-search-label">
+<div style="margin-top: 10px;">
+	<label class="layer-wizard-search-label">
         Search by Zip Code
         <input type="text" id="search-string_0">
         <input type="button" onclick="changeMap_0()" value="Search">
-      </label> 
-    </div>
+	</label> 
+</div>
 
+
+<!--iframe width="100%" height="520" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col14+from+1_WLUFMZkCPz2jZJiZHUS7moFCAxUE0cIHLpKI_gX&amp;viz=MAP&amp;h=false&amp;lat=40.691959794876894&amp;lng=-74.00954473876948&amp;t=1&amp;z=10&amp;l=col14&amp;y=5&amp;tmplt=7&amp;hml=TWO_COL_LAT_LNG"></iframe-->
