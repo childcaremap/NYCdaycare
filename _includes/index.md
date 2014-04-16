@@ -43,7 +43,7 @@ This map was made with great help from the <a href="http://betanyc.us/" target="
 
 <div style="margin-top: 10px;">
 	<label class="layer-wizard-search-label">
-        Search by Zip Code
+        Show by Zip Code
         <input type="text" id="search-string_0">
         <input type="button" onclick="changeMap_0()" value="Search">
 	</label> 

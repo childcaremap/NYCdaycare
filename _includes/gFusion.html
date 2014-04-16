@@ -22,6 +22,8 @@
     var layer_0;
     function initialize() {
 
+    var newyorkcity = new google.maps.LatLng(40.69356082184759, -73.97408593559292);
+
 //checks for user agents and sets viewport
 	google.maps.visualRefresh = true;
     var isMobile = (navigator.userAgent.toLowerCase().indexOf('android') > -1) ||
@@ -33,7 +35,7 @@
 //insert
 	  
       map = new google.maps.Map(document.getElementById('map-canvas'), {
-        center: new google.maps.LatLng(40.69356082184759, -73.97408593559292),
+        center: newyorkcity,
         zoom: 10,
         panControl: false,
     	scaleControl: false
