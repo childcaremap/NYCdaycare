@@ -13,6 +13,7 @@
 	.googft-paddle-icon{height:24px;left:-8px;margin-right:-8px;position:relative;vertical-align:middle;width:24px;}
 	.googft-legend-source{margin-bottom:0;margin-top:8px;}
 	.googft-legend-source a{color:#666;font-size:11px;}
+	.googft-info-window, .gm-style, .gm-style-iw {text-transform:capitalize;font-variant:normal;}
 </style>
 
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -21,7 +22,7 @@
     var layer_0;
     function initialize() {
 
-//insert
+//checks for user agents and sets viewport
 	google.maps.visualRefresh = true;
     var isMobile = (navigator.userAgent.toLowerCase().indexOf('android') > -1) ||
       (navigator.userAgent.match(/(iPod|iPhone|iPad|BlackBerry|Windows Phone|iemobile)/));
@@ -30,11 +31,15 @@
       viewport.setAttribute('content', 'initial-scale=1.0, user-scalable=no');
     }
 //insert
-
+	  
       map = new google.maps.Map(document.getElementById('map-canvas'), {
-        center: new google.maps.LatLng(40.84121370026844, -73.84680975341826),
-        zoom: 9
+        center: new google.maps.LatLng(40.69356082184759, -73.97408593559292),
+        zoom: 10,
+        panControl: false,
+    	scaleControl: false
       });
+      
+
       var style = [
         {
           featureType: 'all',
@@ -42,10 +47,31 @@
           stylers: [
             { saturation: -45 }
           ]
-        }
+        },
+        {
+          featureType: 'administrative.country',
+          elementType: 'all',
+          stylers: [
+            { visibility: 'off' }
+          ]
+        },
+        {
+          featureType: 'administrative.province',
+          elementType: 'all',
+          stylers: [
+            { visibility: 'off' }
+          ]
+        },
+        {
+          featureType: 'administrative.locality',
+          elementType: 'all',
+          stylers: [
+            { visibility: 'off' }
+          ]
+      	}
       ];
 
-//insert      
+//positions legend      
       map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend-open'));
       map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend'));
 //insert
@@ -80,7 +106,7 @@
         }
       });
 
-//insert
+//adjusts legend mobile attributes
       if (isMobile) {
       var legend = document.getElementById('googft-legend');
       var legendOpenButton = document.getElementById('googft-legend-open');

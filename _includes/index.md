@@ -36,7 +36,7 @@ This map was made with great help from the <a href="http://betanyc.us/" target="
       <img class="googft-dot-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAiklEQVR42mNgQIAoIF4NxGegdCCSHAMzEC81M4v6n56++n9V1RkwbWgY+B8oPhOmKM3WNu3/zJn/MbCFRSxIYSxI0YHi4gNYFRUW7gUp2gtS9LC9/SFWRc3Nt0GKbhNtUizIbmyKjIxCQIpCYI6fD/JdVtZGsO8yMtbBfDeNAQ2AwmkjNJzWIYcTAMk+i9OhipcQAAAAAElFTkSuQmCC"/>
     </div>
     <div class="googft-legend-source">
-      <a href="data?docid=1_WLUFMZkCPz2jZJiZHUS7moFCAxUE0cIHLpKI_gX" target="_blank">Source</a>
+      <a href="https://www.google.com/fusiontables/data?docid=1_WLUFMZkCPz2jZJiZHUS7moFCAxUE0cIHLpKI_gX#rows:id=1" target="_blank">Data source</a>
     </div>
 	</div>
 	<input id="googft-legend-close" style="display:none" type="button" value="Hide"></input>
