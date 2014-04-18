@@ -24,7 +24,10 @@ with open(filename + '.csv', 'rb') as input_file:
 	for row in info:
 	    if (row[iaddress], row[izip]) not in address:
 	        address.append((row[iaddress], row[izip]))
-	        newrows.append(row)
+	        # Ruby scraper exports the csv with comma at the and causing an empty column at the end that needs to be removed
+	        newrows.append(row[:-1])
+	        ind = len(newrows)-1
+	        newrows[ind].append(int(row[icap]))
 	    else:
 	    	i_comb = address.index((row[iaddress], row[izip]))
 	    	combname = row[iname] + ' / ' + newrows[i_comb][iname]
@@ -47,9 +50,11 @@ with open(filename + '.csv', 'rb') as input_file:
 	    	newrows[i_comb][imed] = combmed
 	    	combtype = row[itype] + ' / ' + newrows[i_comb][itype]
 	    	newrows[i_comb][itype] = combtype
+	    	newrows[i_comb][-1] = newrows[i_comb][-1] + int(row[icap])
 
-nname = filename + "_combinedaddress.csv" # The filename of the cleaned file
-
+nname = filename + "_combinedaddress.csv" # The filename of the output file
+header.append('Total Maximum Capacity')
 with open(nname, "wb") as output_file:
 	writer = csv.writer(output_file)
+	writer.writerow(header)
 	writer.writerows(newrows)
