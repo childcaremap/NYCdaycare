@@ -1,7 +1,7 @@
 {
     "status": "Alpha",
     "thumbnailUrl": "https://raw.githubusercontent.com/childcaremap/NYCdaycare/master/app-map-icon.png",
-     "bornAt": "BetaNYC Maillist",
+    "bornAt": "BetaNYC Maillist",
     "geography": "NYC",
     "politicalEntity":"NYC Department of Health and Mental Hygiene",
     "type":"Web App",
