@@ -3,3 +3,6 @@ _site/
 Gemfile.lock
 _posts/
 Procfile
+_sass/
+_plugins/
+.sass-cache/
