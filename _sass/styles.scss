@@ -1,19 +1,16 @@
 /* Some Sass */
 /* line 5, ../_sass/styles.scss */
-/* line 3, ../_sass/styles.scss */
 html {
   font: 16px/1.5 Inconsolata, sans-serif;
 }
 
 @media (min-width: 30rem) {
   /* line 10, ../_sass/styles.scss */
-  /* line 9, ../_sass/styles.scss */
   html {
     font-size: 20px;
   }
 }
 /* line 15, ../_sass/styles.scss */
-/* line 14, ../_sass/styles.scss */
 body {
   margin: 2rem 0 5rem;
   color: #333;
@@ -21,12 +18,10 @@ body {
 
 @media (min-width: 30rem) {
   /* line 21, ../_sass/styles.scss */
-  /* line 21, ../_sass/styles.scss */
   body {
     margin-top: 1rem;
   }
 }
-/* line 26, ../_sass/styles.scss */
 /* line 26, ../_sass/styles.scss */
 a {
   color: #0074d9;
@@ -35,13 +30,11 @@ a {
 }
 
 /* line 31, ../_sass/styles.scss */
-/* line 33, ../_sass/styles.scss */
 a:hover, a:focus {
   text-decoration: none;
 }
 
 /* line 35, ../_sass/styles.scss */
-/* line 38, ../_sass/styles.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: Montserrat, sans-serif;
   margin: 0 0 0.5rem -0.1rem;
@@ -51,7 +44,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* line 42, ../_sass/styles.scss */
-/* line 47, ../_sass/styles.scss */
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -59,20 +51,17 @@ h1 {
 
 @media (min-width: 30rem) {
   /* line 48, ../_sass/styles.scss */
-  /* line 54, ../_sass/styles.scss */
   h1 {
     font-size: 2.5rem;
     margin-bottom: .5rem;
   }
 }
 /* line 54, ../_sass/styles.scss */
-/* line 60, ../_sass/styles.scss */
 h1 a {
   color: inherit;
 }
 
 /* line 58, ../_sass/styles.scss */
-/* line 65, ../_sass/styles.scss */
 h2 {
   margin-top: 2rem;
   font-size: 1.25rem;
@@ -81,7 +70,6 @@ h2 {
 
 @media (min-width: 30rem) {
   /* line 65, ../_sass/styles.scss */
-  /* line 73, ../_sass/styles.scss */
   h2 {
     margin-top: 2.5rem;
     font-size: 1.5rem;
@@ -89,7 +77,6 @@ h2 {
   }
 }
 /* line 72, ../_sass/styles.scss */
-/* line 80, ../_sass/styles.scss */
 h3, h4, h5, h6 {
   margin-top: 1.5rem;
   font-size: 1rem;
@@ -97,26 +84,22 @@ h3, h4, h5, h6 {
 }
 
 /* line 78, ../_sass/styles.scss */
-/* line 87, ../_sass/styles.scss */
 p, ul, ol, dl, table, pre, blockquote {
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
 /* line 83, ../_sass/styles.scss */
-/* line 93, ../_sass/styles.scss */
 ul, ol {
   padding-left: 1.5rem;
 }
 
 /* line 87, ../_sass/styles.scss */
-/* line 98, ../_sass/styles.scss */
 dd {
   margin-left: 1.5rem;
 }
 
 /* line 91, ../_sass/styles.scss */
-/* line 103, ../_sass/styles.scss */
 blockquote {
   margin-left: 0;
   margin-right: 0;
@@ -126,13 +109,11 @@ blockquote {
 }
 
 /* line 99, ../_sass/styles.scss */
-/* line 112, ../_sass/styles.scss */
 blockquote p:last-child {
   margin-bottom: 0;
 }
 
 /* line 103, ../_sass/styles.scss */
-/* line 117, ../_sass/styles.scss */
 hr {
   border: none;
   margin: 1.5rem 0;
@@ -152,7 +133,6 @@ hr {
 }
 */
 /* line 122, ../_sass/styles.scss */
-/* line 136, ../_sass/styles.scss */
 table {
   width: 100%;
   border: 1px solid #ccc;
@@ -160,33 +140,28 @@ table {
 }
 
 /* line 128, ../_sass/styles.scss */
-/* line 143, ../_sass/styles.scss */
 td, th {
   padding: .25rem .5rem;
   border: 1px solid #ccc;
 }
 
 /* line 133, ../_sass/styles.scss */
-/* line 149, ../_sass/styles.scss */
 pre, code {
   font-family: inherit;
   background-color: #eee;
 }
 
 /* line 138, ../_sass/styles.scss */
-/* line 155, ../_sass/styles.scss */
 pre {
   padding: .5rem 1rem;
 }
 
 /* line 142, ../_sass/styles.scss */
-/* line 160, ../_sass/styles.scss */
 code {
   padding: .1rem .25rem;
 }
 
 /* line 146, ../_sass/styles.scss */
-/* line 165, ../_sass/styles.scss */
 .container {
   max-width: 50rem;
   margin: 0 auto;
