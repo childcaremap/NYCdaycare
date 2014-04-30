@@ -20,6 +20,7 @@
 <li id="zipContainer" data-table="nyc_day_care_2013violations_alldescriptions_1" data-column="zip" data-value="zip"><input id="zipSearch" type="text" placeholder="Search by Zip Code" data-table="nyc_day_care_2013violations_alldescriptions_1" data-column="zip" data-value="zip"/></li>
 </ul>
 <button onclick="avgrund.deactivate();">Close</button>
+</div>
 </aside>
 
 <p>
