@@ -24,7 +24,7 @@ function createSelector(layer) {
     sql.getBounds(query).done(function(e) {
       bounds = e;
     });
-    cartodb.createLayer(map, 'http://russellchun.cartodb.com/api/v1/viz/nyc_day_care_2013violations_alldescriptions_1/viz.json', {
+    cartodb.createLayer(map, 'http://schmiani.cartodb.com/api/v1/viz/nyc_day_care_2013violations_alldescriptions_1/viz.json', {
       query: query,
       interactivity: 'cartodb_id, geometry, cityid, id, center_name_proper, center_name, permit_holder, address, borough, zip, full_address_proper, full_address, phone, permit_number, permit_expiration, permit_status, age_range, max_capacity, certified_to_administer_medication, site_type, last_inspection_date, critical, general, public_health_hazard,grand_total, uncorrected_violations, regulation_summary, violation_category,inspection_date,violation_status',
       infowindow: false,
@@ -46,4 +46,72 @@ function createSelector(layer) {
     });
   });
 }
+</script>
+
+<script type="text/javascript">
+(function(){
+
+  var container = document.documentElement,
+    popup = document.querySelector( '.avgrund-popup' ),
+    cover = document.querySelector( '.avgrund-cover' ),
+    currentState = null;
+
+  addClass( container, 'avgrund-ready' );
+
+  // Deactivate on ESC
+  function onDocumentKeyUp( event ) {
+    if( event.keyCode === 27 ) {
+      deactivate();
+    }
+  }
+
+  // Deactivate on click outside
+  function onDocumentClick( event ) {
+    if( event.target === cover ) {
+      deactivate();
+    }
+  }
+
+  function activate( state ) {
+    document.addEventListener( 'keyup', onDocumentKeyUp, false );
+    document.addEventListener( 'click', onDocumentClick, false );
+
+    removeClass( popup, currentState );
+    addClass( popup, 'no-transition' );
+    addClass( popup, state );
+
+    setTimeout( function() {
+      removeClass( popup, 'no-transition' );
+      addClass( container, 'avgrund-active' );
+    }, 0 );
+
+    currentState = state;
+  }
+
+  function deactivate() {
+    document.removeEventListener( 'keyup', onDocumentKeyUp, false );
+    document.removeEventListener( 'click', onDocumentClick, false );
+
+    removeClass( container, 'avgrund-active' );
+  }
+
+  function disableBlur() {
+    addClass( document.documentElement, 'no-blur' );
+  }
+
+  function addClass( element, name ) {
+    element.className = element.className.replace( /\s+$/gi, '' ) + ' ' + name;
+  }
+
+  function removeClass( element, name ) {
+    element.className = element.className.replace( name, '' );
+  }
+
+  window.avgrund = {
+    activate: activate,
+    deactivate: deactivate,
+    disableBlur: disableBlur
+  }
+
+})();
 </script>
