@@ -2,4 +2,8 @@
 Dev page
 =====================
 
-To be used and abused. Have fun!
+To be used and abused. 
+
+Uses the default layout
+
+Have fun!

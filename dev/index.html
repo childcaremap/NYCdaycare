@@ -1,9 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-<title>Dev!</title>
-<head>
-</head>
-<body>
-This is a new dev page
-</body>
-</html>
+---
+layout: default
+---
+
+{% capture index %}{% include dev.md %}{% endcapture %}
+{{ index | markdownify }}
