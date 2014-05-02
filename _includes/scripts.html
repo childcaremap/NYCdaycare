@@ -1,0 +1,117 @@
+<script type="text/javascript">
+function createSelector(layer) {
+  var sql = new cartodb.SQL({
+    user: 'russellchun'
+  });
+  var $options = $('#layer_selector li');
+  $options.click(function(e) {
+    var $li = $(e.target);
+    var filter = $li.attr('data-value');
+    var table = $li.attr('data-table');
+    var column = $li.attr('data-column');
+    if (filter == 'zip') {
+      return;
+    }
+    map.removeLayer(currentLayer);
+    currentLayer = 0;
+    $detail_window.fadeOut();
+    $options.removeClass('selected');
+    $li.addClass('selected');
+    var query = "select * from " + table;
+    if (!isEmpty(filter) && !isEmpty(column) && filter != 'all') {
+      query += " where " + column + " = " + "'" + filter + "'";
+    }
+    sql.getBounds(query).done(function(e) {
+      bounds = e;
+    });
+    cartodb.createLayer(map, 'http://schmiani.cartodb.com/api/v1/viz/nyc_day_care_2013violations_alldescriptions_1/viz.json', {
+      query: query,
+      interactivity: 'cartodb_id, geometry, cityid, id, center_name_proper, center_name, permit_holder, address, borough, zip, full_address_proper, full_address, phone, permit_number, permit_expiration, permit_status, age_range, max_capacity, certified_to_administer_medication, site_type, last_inspection_date, critical, general, public_health_hazard,grand_total, uncorrected_violations, regulation_summary, violation_category,inspection_date,violation_status',
+      infowindow: false,
+    }).on('done', function(layer) {
+      currentLayer = layer;
+      map.addLayer(currentLayer);
+      map.fitBounds(bounds);
+      layer.on('featureOver', function(e, pos, latlng, data) {
+        $('.leaflet-container').css('cursor', 'pointer');
+        if (data.cartodb_id != point.cartodb_id) {}
+      });
+      layer.on('featureOut', function(e, pos, latlng, data) {
+        $('.leaflet-container').css('cursor', 'default')
+      });
+      layer.on('featureClick', function(e, pos, latlng, data) {
+        $('.leaflet-container').css('cursor', 'default')
+        fillDetailWindow(data);
+      });
+    });
+  });
+}
+</script>
+
+<script type="text/javascript">
+(function(){
+
+  var container = document.documentElement,
+    popup = document.querySelector( '.avgrund-popup' ),
+    cover = document.querySelector( '.avgrund-cover' ),
+    currentState = null;
+
+  addClass( container, 'avgrund-ready' );
+
+  // Deactivate on ESC
+  function onDocumentKeyUp( event ) {
+    if( event.keyCode === 27 ) {
+      deactivate();
+    }
+  }
+
+  // Deactivate on click outside
+  function onDocumentClick( event ) {
+    if( event.target === cover ) {
+      deactivate();
+    }
+  }
+
+  function activate( state ) {
+    document.addEventListener( 'keyup', onDocumentKeyUp, false );
+    document.addEventListener( 'click', onDocumentClick, false );
+
+    removeClass( popup, currentState );
+    addClass( popup, 'no-transition' );
+    addClass( popup, state );
+
+    setTimeout( function() {
+      removeClass( popup, 'no-transition' );
+      addClass( container, 'avgrund-active' );
+    }, 0 );
+
+    currentState = state;
+  }
+
+  function deactivate() {
+    document.removeEventListener( 'keyup', onDocumentKeyUp, false );
+    document.removeEventListener( 'click', onDocumentClick, false );
+
+    removeClass( container, 'avgrund-active' );
+  }
+
+  function disableBlur() {
+    addClass( document.documentElement, 'no-blur' );
+  }
+
+  function addClass( element, name ) {
+    element.className = element.className.replace( /\s+$/gi, '' ) + ' ' + name;
+  }
+
+  function removeClass( element, name ) {
+    element.className = element.className.replace( name, '' );
+  }
+
+  window.avgrund = {
+    activate: activate,
+    deactivate: deactivate,
+    disableBlur: disableBlur
+  }
+
+})();
+</script>
