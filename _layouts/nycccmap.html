@@ -16,8 +16,28 @@
     <body>
 
     <div class="container">
-    <h1><a href="./">{{ site.h1_tag_text }}</a></h1>
+        <div class="header">
+            <!--a class="extra" href="{{ site.baseurl }}/dev">Dev</a-->
+            <h1><a href="{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
+        </div>
+
     {{ content }}
+
+        <div class="footer">
+              <!--div class="contact">
+                <p>
+                  Your Name<br />
+                  What You Are<br />
+                  your@email.com
+                </p>
+              </div>
+              <div class="contact">
+                <p>
+                  <a href="http://github.com/yourusername/">github.com/yourusername</a><br />
+                  <a href="http://twitter.com/yourusername/">twitter.com/yourusername</a><br />
+                </p>
+              </div-->
+        </div>
     </div>
     <!-- /container -->
     
