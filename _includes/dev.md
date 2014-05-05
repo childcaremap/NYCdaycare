@@ -1,5 +1,5 @@
-<h2>Your Map</h2>
+<h2>Sample Maps</h2>
 
 <hr>
 
-Sample map content
+<a href="layer-selector-example.html">Layer selector example | CartoDB.js</a>

@@ -1,4 +1,5 @@
 /* line 3, ../_sass/app.scss */
+/* line 2, ../_sass/app.scss */
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +11,7 @@ body {
 	overflow: hiddle;
 }*/
 /* line 14, ../_sass/app.scss */
+/* line 13, ../_sass/app.scss */
 html {
   background-color: #FFF;
   /*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQIW2NkYGD4D8SMQAwGcAY2AbBKDBUAVuYCBQPd34sAAAAASUVORK5CYII=);
@@ -21,12 +23,14 @@ h2 {
 	font-size: 24px;
 }*/
 /* line 25, ../_sass/app.scss */
+/* line 24, ../_sass/app.scss */
 p {
   margin: 10px 0 10px 0;
   font-size: 16px;
   line-height: 1.32;
 }
 
+/* line 31, ../_sass/app.scss */
 /* line 31, ../_sass/app.scss */
 a {
   color: #7aa76d;
@@ -39,11 +43,13 @@ a {
 }
 
 /* line 41, ../_sass/app.scss */
+/* line 42, ../_sass/app.scss */
 a:hover {
   color: #91cd85;
 }
 
 /* line 45, ../_sass/app.scss */
+/* line 47, ../_sass/app.scss */
 small {
   display: block;
   margin-top: 15px;
@@ -55,6 +61,7 @@ small {
 }
 
 /* line 56, ../_sass/app.scss */
+/* line 58, ../_sass/app.scss */
 button {
   border: 0px;
   padding: 8px 10px;
@@ -73,26 +80,31 @@ button {
 }
 
 /* line 74, ../_sass/app.scss */
+/* line 76, ../_sass/app.scss */
 button:hover {
   background: #91cd85;
 }
 
 /* line 77, ../_sass/app.scss */
+/* line 81, ../_sass/app.scss */
 button:active {
   background: #60895a;
 }
 
 /* line 80, ../_sass/app.scss */
+/* line 86, ../_sass/app.scss */
 button + button {
   margin-left: 5px;
 }
 
 /* line 84, ../_sass/app.scss */
+/* line 91, ../_sass/app.scss */
 .sharing {
   margin-top: 50px;
 }
 
 /* line 88, ../_sass/app.scss */
+/* line 96, ../_sass/app.scss */
 .avgrund-active body {
   -webkit-transform: scale(0.9);
   -moz-transform: scale(0.9);
@@ -102,6 +114,7 @@ button + button {
 }
 
 /* line 96, ../_sass/app.scss */
+/* line 105, ../_sass/app.scss */
 .avgrund-cover {
   position: absolute;
   width: 100%;
@@ -116,12 +129,14 @@ button + button {
 }
 
 /* line 108, ../_sass/app.scss */
+/* line 119, ../_sass/app.scss */
 .avgrund-active .avgrund-cover {
   visibility: visible;
   opacity: 1;
 }
 
 /* line 113, ../_sass/app.scss */
+/* line 125, ../_sass/app.scss */
 .avgrund-contents {
   position: relative;
   /*padding: 20px;*/
@@ -131,6 +146,7 @@ button + button {
 }
 
 /* line 120, ../_sass/app.scss */
+/* line 134, ../_sass/app.scss */
 .avgrund-active .avgrund-contents {
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
@@ -140,6 +156,7 @@ button + button {
 }
 
 /* line 127, ../_sass/app.scss */
+/* line 143, ../_sass/app.scss */
 .no-blur.avgrund-active .avgrund-contents {
   -webkit-filter: none;
   -moz-filter: none;
@@ -149,6 +166,7 @@ button + button {
 }
 
 /* line 135, ../_sass/app.scss */
+/* line 152, ../_sass/app.scss */
 .avgrund-popup {
   position: absolute;
   width: 340px;
@@ -171,6 +189,7 @@ button + button {
 }
 
 /* line 157, ../_sass/app.scss */
+/* line 174, ../_sass/app.scss */
 .avgrund-active .avgrund-popup {
   visibility: visible;
   opacity: 1;
@@ -182,6 +201,7 @@ button + button {
 }
 
 /* line 167, ../_sass/app.scss */
+/* line 185, ../_sass/app.scss */
 .avgrund-popup.stack {
   -webkit-transform: scale(1.5);
   -moz-transform: scale(1.5);
@@ -191,6 +211,7 @@ button + button {
 }
 
 /* line 174, ../_sass/app.scss */
+/* line 194, ../_sass/app.scss */
 .avgrund-active .avgrund-popup.stack {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
@@ -200,6 +221,7 @@ button + button {
 }
 
 /* line 186, ../_sass/app.scss */
+/* line 206, ../_sass/app.scss */
 .avgrund-ready body,
 .avgrund-ready .avgrund-contents,
 .avgrund-ready .avgrund-popup,
@@ -217,6 +239,7 @@ button + button {
 }
 
 /* line 199, ../_sass/app.scss */
+/* line 220, ../_sass/app.scss */
 .avgrund-ready .avgrund-popup.no-transition {
   -webkit-transition: none;
   -moz-transition: none;
