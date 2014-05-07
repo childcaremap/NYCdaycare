@@ -160,19 +160,20 @@ hr {
   top: -1px;
 }
 
-/*
+/* line 144, ../_sass/styles.scss */
 .container img, .container iframe {
   max-width: 100%;
 }
 
+/* line 148, ../_sass/styles.scss */
 .container img {
   margin: 0 auto;
   display: block;
 }
-*/
+
 /* line 122, ../_sass/styles.scss */
 /* line 136, ../_sass/styles.scss */
-/* line 156, ../_sass/styles.scss */
+/* line 155, ../_sass/styles.scss */
 table {
   width: 100%;
   border: 1px solid #ccc;
@@ -181,7 +182,7 @@ table {
 
 /* line 128, ../_sass/styles.scss */
 /* line 143, ../_sass/styles.scss */
-/* line 164, ../_sass/styles.scss */
+/* line 163, ../_sass/styles.scss */
 td, th {
   padding: .25rem .5rem;
   border: 1px solid #ccc;
@@ -189,7 +190,7 @@ td, th {
 
 /* line 133, ../_sass/styles.scss */
 /* line 149, ../_sass/styles.scss */
-/* line 171, ../_sass/styles.scss */
+/* line 170, ../_sass/styles.scss */
 pre, code {
   font-family: inherit;
   background-color: #eee;
@@ -197,21 +198,21 @@ pre, code {
 
 /* line 138, ../_sass/styles.scss */
 /* line 155, ../_sass/styles.scss */
-/* line 178, ../_sass/styles.scss */
+/* line 177, ../_sass/styles.scss */
 pre {
   padding: .5rem 1rem;
 }
 
 /* line 142, ../_sass/styles.scss */
 /* line 160, ../_sass/styles.scss */
-/* line 184, ../_sass/styles.scss */
+/* line 183, ../_sass/styles.scss */
 code {
   padding: .1rem .25rem;
 }
 
 /* line 146, ../_sass/styles.scss */
 /* line 165, ../_sass/styles.scss */
-/* line 190, ../_sass/styles.scss */
+/* line 189, ../_sass/styles.scss */
 .container {
   max-width: 50rem;
   margin: 0 auto;

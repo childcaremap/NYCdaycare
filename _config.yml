@@ -10,4 +10,6 @@ h1_tag_text: Daycare Map NYC
 
 exclude: ["Procfile", "README.md", "CNAME"]
 
+auto: true
+
 # exclude: ["Gruntfile.js", "package.json", "node_modules"]
