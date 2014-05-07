@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Map of group child care services that have been issued permits by the New York City Department of Health. Information such as center name, site type, permit number provided in infowindows.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>{{ site.title_tag_text }}</title>
+
+        <!-- syntax highlighting CSS -->
+
+        {% include nyccdb.html %}
+
+    </head>
+    <body>
+
+    <div class="container" style="display:inline">
+    <!-- /container -->
+
+        <div class="header">
+            <!--a class="extra" href="{{ site.baseurl }}/dev">Dev</a-->
+            <h1><a href="{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
+        </div>
+    {{ content }}
+
+
+<div id="map"></div>
+
+<div id="age_selector" class="cartodb-infobox">
+  <ul>
+    <li data="all" class="selected">All Categories</li>
+        <li data="0 YEARS - 2 YEARS">0 - 2 YEARS</sup></li>
+        <li data="2 YEARS - 5 YEARS">2 - 5 YEARS</sup></li>
+  </ul>
+</div>
+
+<div id="type_selector" class="cartodb-infobox">
+  <ul>
+        <li data="all" class="selected">All Categories</li>
+        <li data="Private">Private</sup></li>
+        <li data="ACS Head Start">ACS Head Start</sup></li>
+        <li data="ACS Contracted Preschools">ACS Contracted Preschools</sup></li>
+        <li data="Corporate">Corporate</sup></li>
+      </ul>
+</div>
+    {% include scripts.html %} 
+
+        <div class="footer">
+              
+        </div>
+    </div>
+
+    </body>
+</html>
