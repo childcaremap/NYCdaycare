@@ -160,17 +160,14 @@ hr {
   top: -1px;
 }
 
-/* line 144, ../_sass/styles.scss */
-.container img, .container iframe {
+/*.container img, .container iframe {
   max-width: 100%;
 }
 
-/* line 148, ../_sass/styles.scss */
 .container img {
   margin: 0 auto;
   display: block;
-}
-
+}*/
 /* line 122, ../_sass/styles.scss */
 /* line 136, ../_sass/styles.scss */
 /* line 155, ../_sass/styles.scss */
