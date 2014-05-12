@@ -1,11 +1,10 @@
 import csv
 import mechanize
 from lxml import html
+from lxml import etree
+#from StringIO import StringIO
 
-agent1 = mechanize.Browser()
-agent2 = mechanize.Browser()
-
-offset = 10
+offset = 0
 request = mechanize.Request("https://a816-healthpsi.nyc.gov/ChildCare/SearchAction2.do?pager.offset=" + str(offset))
 response = mechanize.urlopen(request)
 
@@ -24,15 +23,15 @@ pages = tree.xpath('.//a[@class="pager"]')
 offsetstring = pages[len(pages)-1].get('href')
 maxpage = offsetstring[offsetstring.index('=')+1:len(offsetstring)]
 
-while offset <= 10: #<= int(maxpage):
+while offset <= 0: #<= int(maxpage):
 	print "Offset: " + str(offset)
 	request = mechanize.Request("https://a816-healthpsi.nyc.gov/ChildCare/SearchAction2.do?pager.offset=" + str(offset))
 	cj.add_cookie_header(request)
 	response = mechanize.urlopen(request)
 	page = response.read()
 
-	with open("output.txt","wb") as output_file:
-		output_file.write(page)
+	#with open("output.txt","wb") as output_file:
+	#	output_file.write(page)
 
 	tree = html.fromstring(page)
 	links = tree.xpath('.//td[@class="cell_leftborder"]/a')
@@ -51,10 +50,17 @@ while offset <= 10: #<= int(maxpage):
 		#with open("output2.txt","wb") as output_file:
 		#	output_file.write(page2)
 
+		#parser = etree.HTMLParser()
+		#tree = etree.parse(StringIO(page2), parser)
+		#print etree.tostring(tree.getroot(), pretty_print=True)
 		tree = html.fromstring(page2)
 		rows = tree.xpath('.//td[@class="cell_border_rightbottomtop_noback"]|.//td[@class="cell_border"]')
-		for row in rows:
-			print row.text
+		for i, row in enumerate(rows):
+			if i == 8:
+			    print row.xpath('./a')[0].text
+			    #print etree.tostring(row)
+			else:
+				print row.text
 
 	offset = offset + 10
 
