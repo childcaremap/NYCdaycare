@@ -1,3 +1,5 @@
+import time
+time.clock()
 import csv
 import mechanize
 from lxml import html, etree
@@ -27,7 +29,7 @@ header = ["Site ID","Center Name","Permit Holder","Address","Borough","Zip Code"
 writer = csv.writer(output_file)
 writer.writerow(header)
 
-while offset <= 0: #<= int(maxpage):
+while offset <= int(maxpage):
     print "Offset: " + str(offset)
     request = mechanize.Request("https://a816-healthpsi.nyc.gov/ChildCare/SearchAction2.do?pager.offset=" + str(offset))
     cj.add_cookie_header(request)
@@ -69,9 +71,12 @@ while offset <= 0: #<= int(maxpage):
             else:
                 #print line.text
                 row.append(line.text.encode("ascii","ignore"))
-        print row
+        #print row
         writer.writerow(row)
 
     offset = offset + 10
 
 output_file.close()
+time_elapsed = time.clock()
+print [str(time_elapsed)+" seconds"]
+print [str(time_elapsed/60)+" minutes"]
