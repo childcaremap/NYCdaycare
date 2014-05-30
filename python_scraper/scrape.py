@@ -22,6 +22,11 @@ pages = tree.xpath('.//a[@class="pager"]')
 offsetstring = pages[len(pages)-1].get('href')
 maxpage = offsetstring[offsetstring.index('=')+1:len(offsetstring)]
 
+output_file = open("output.csv","wb")
+header = ["Site ID","Center Name","Permit Holder","Address","Borough","Zip Code","Phone","Permit Number","Permit Expiration Date","Permit Status","Age Range","Maximum Capacity","Certified to Administer Medication","Site Type"]
+writer = csv.writer(output_file)
+writer.writerow(header)
+
 while offset <= 0: #<= int(maxpage):
     print "Offset: " + str(offset)
     request = mechanize.Request("https://a816-healthpsi.nyc.gov/ChildCare/SearchAction2.do?pager.offset=" + str(offset))
@@ -49,23 +54,33 @@ while offset <= 0: #<= int(maxpage):
 	#with open("output2.txt","wb") as output_file:
 	#	output_file.write(page2)
 
-	#parser = etree.HTMLParser()
-	#tree = etree.parse(StringIO(page2), parser)
-	#print etree.tostring(tree.getroot(), pretty_print=True)
-	tree = html.fromstring(page2)
-	rows = tree.xpath('.//td[@class="cell_border_rightbottomtop_noback"]|.//td[@class="cell_border"]')
-	for i, row in enumerate(rows):
-	    if i == 8:
-                print row.xpath('./a')[0].text
-		#print etree.tostring(row)
-	    else:
-		print row.text
+		#parser = etree.HTMLParser()
+		#tree = etree.parse(StringIO(page2), parser)
+		#print etree.tostring(tree.getroot(), pretty_print=True)
+		tree = html.fromstring(page2)
+		lines = tree.xpath('.//td[@class="cell_border_rightbottomtop_noback"]|.//td[@class="cell_border"]')
+		row = []
+		row.append(str(siteid))
+		for i, line in enumerate(lines):
+			if i == 8:
+			    #print line.xpath('./a')[0].text
+			    #print etree.tostring(line)
+			    row.append(line.xpath('./a')[0].text.encode("ascii","ignore"))
+			else:
+				#print line.text
+				row.append(line.text.encode("ascii","ignore"))
 
-    offset = offset + 10
 
-#header = ["Center Name","Permit Holder","Address","Borough","Zip Code","Phone","Permit Number","Permit Expiration Date","Permit Status","Age Range","Maximum Capacity","Certified to Administer Medication","Site Type"]
-#with open("output.csv","wb") as output_file:
-#	writer = csv.writer(output_file)
-#	writer.writerow(header)
+		print row
+
+		writer.writerow(row)
+		
+	
+	offset = offset + 10
+
+output_file.close()
+
+
+
 
 	
