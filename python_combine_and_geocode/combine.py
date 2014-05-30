@@ -1,5 +1,8 @@
+import time
+time.clock()
 import sys
 import csv
+from pygeocoder import Geocoder
 
 def combine_same(filename):
     with open(filename, 'rb') as input_file:
@@ -9,6 +12,7 @@ def combine_same(filename):
         iname = header.index('Center Name')
         iholder = header.index('Permit Holder')
         iaddress = header.index('Address')
+        iborough = header.index('Borough')
         izip= header.index('Zip Code')
         iphone = header.index('Phone')
         ipermit = header.index('Permit Number')
@@ -60,6 +64,47 @@ def combine_same(filename):
         writer = csv.writer(output_file)
         writer.writerow(header)
         writer.writerows(newrows)
+
+    k = 0
+    newrows2 = []  # Initialize clean rows
+    # retrieve geolocation from Google API
+    for i, row in enumerate(newrows):
+    	print i
+        if row[iborough] == 'MANHATTAN':
+            address =  row[iaddress] +', NEW YORK, NY ' + row[izip]
+        else:
+            address = row[iaddress] +', ' + row[iborough] + ', NY ' + row[izip]
+        try:
+            result = Geocoder.geocode(address)
+            time.sleep(.5)
+            if len(result) == 1:
+                row.append(result.coordinates[0])
+                row.append(result.coordinates[1])
+                newrows2.append(row)
+            else:
+                print 'more than one geolocation found for ' + address
+                row[ilat] = result[0].coordinates[0]
+                row[ilon] = result[0].coordinates[1]
+                newrows2.append(row)
+        except:
+            k = k + 1
+            row.append('')
+            row.append('')
+            newrows2.append(row)
+
+    print str(k) + ' entries not geocoded'
+    nname = filename[:-4] + "_combinedaddress_geocoded.csv" # The filename of the output file
+    header.append('Lat')
+    header.append('Lon')
+    with open(nname, "wb") as output_file:
+        writer = csv.writer(output_file)
+        writer.writerow(header)
+        writer.writerows(newrows2)
+
+    time_elapsed = time.clock()
+    print [str(time_elapsed)+" seconds"]
+    print [str(time_elapsed/60)+" minutes"]
+
 
 def main():
     fname = sys.argv[1]
