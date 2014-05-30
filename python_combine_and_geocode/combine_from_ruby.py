@@ -26,6 +26,8 @@ def combine_same(filename):
 		for row in info:
 		    if (row[iaddress], row[izip]) not in address:
 		        address.append((row[iaddress], row[izip]))
+		        # Ruby scraper exports the csv with comma at the and causing an empty column at the end that needs to be removed
+		        newrows.append(row[:-1])
 		        ind = len(newrows)-1
 		        newrows[ind].append(int(row[icap]))
 		    else:
