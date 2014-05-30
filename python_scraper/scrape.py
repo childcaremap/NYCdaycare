@@ -42,45 +42,36 @@ while offset <= 0: #<= int(maxpage):
 
     for link in links:
         onclickcommand =  link.get('onclick')
-	siteid = onclickcommand.split('redirectHistory(')[1]
-	siteid.index('"); return false')
-	siteid = siteid[1:siteid.index('"); return false')]
-	print siteid
+        siteid = onclickcommand.split('redirectHistory(')[1]
+        siteid.index('"); return false')
+        siteid = siteid[1:siteid.index('"); return false')]
+        print siteid
 
-	request2 = mechanize.Request("https://a816-healthpsi.nyc.gov/ChildCare/WDetail.do","linkPK="+str(siteid))
-	cj.add_cookie_header(request2)
-	response2 = mechanize.urlopen(request2)
-	page2 = response2.read()
-	#with open("output2.txt","wb") as output_file:
-	#	output_file.write(page2)
+        request2 = mechanize.Request("https://a816-healthpsi.nyc.gov/ChildCare/WDetail.do","linkPK="+str(siteid))
+        cj.add_cookie_header(request2)
+        response2 = mechanize.urlopen(request2)
+        page2 = response2.read()
+        #with open("output2.txt","wb") as output_file:
+        #	output_file.write(page2)
 
-		#parser = etree.HTMLParser()
-		#tree = etree.parse(StringIO(page2), parser)
-		#print etree.tostring(tree.getroot(), pretty_print=True)
-		tree = html.fromstring(page2)
-		lines = tree.xpath('.//td[@class="cell_border_rightbottomtop_noback"]|.//td[@class="cell_border"]')
-		row = []
-		row.append(str(siteid))
-		for i, line in enumerate(lines):
-			if i == 8:
-			    #print line.xpath('./a')[0].text
-			    #print etree.tostring(line)
-			    row.append(line.xpath('./a')[0].text.encode("ascii","ignore"))
-			else:
-				#print line.text
-				row.append(line.text.encode("ascii","ignore"))
+        #parser = etree.HTMLParser()
+        #tree = etree.parse(StringIO(page2), parser)
+        #print etree.tostring(tree.getroot(), pretty_print=True)
+        tree = html.fromstring(page2)
+        lines = tree.xpath('.//td[@class="cell_border_rightbottomtop_noback"]|.//td[@class="cell_border"]')
+        row = []
+        row.append(str(siteid))
+        for i, line in enumerate(lines):
+            if i == 8:
+                #print line.xpath('./a')[0].text
+                #print etree.tostring(line)
+                row.append(line.xpath('./a')[0].text.encode("ascii","ignore"))
+            else:
+                #print line.text
+                row.append(line.text.encode("ascii","ignore"))
+        print row
+        writer.writerow(row)
 
-
-		print row
-
-		writer.writerow(row)
-		
-	
-	offset = offset + 10
+    offset = offset + 10
 
 output_file.close()
-
-
-
-
-	
