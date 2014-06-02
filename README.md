@@ -10,7 +10,7 @@ Data from NYC Department of Health and Mental Hygiene:
 
 The plan is to map the daycare centers, provide basic information (phone number, capacity, age range, etc) and summarize health inspection results.
 
-Attempts to get data released though NYC Portal failed, therefore we are scraping the data.
+Attempts to get data released though NYC Open Data Portal failed, therefore we are scraping the data.
 
 We are using python package mechanize, the code is in folder "python_scraper"
 
