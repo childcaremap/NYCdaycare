@@ -44,8 +44,6 @@ def combine_geocode(filename):
     print str(k) + ' entries not geocoded'
 
     nname = filename # The filename of the output file stays the same
-    header.append('Lat')
-    header.append('Lon')
     with open(nname, "wb") as output_file:
         writer = csv.writer(output_file)
         writer.writerow(header)
