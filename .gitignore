@@ -6,3 +6,5 @@ Procfile
 _sass/
 _plugins/
 .sass-cache/
+secret.*
+
