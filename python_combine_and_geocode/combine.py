@@ -83,8 +83,8 @@ def combine_same(filename):
                 newrows2.append(row)
             else:
                 print 'more than one geolocation found for ' + address
-                row[ilat] = result[0].coordinates[0]
-                row[ilon] = result[0].coordinates[1]
+                row.append(result[0].coordinates[0])
+                row.append(result[0].coordinates[1])
                 newrows2.append(row)
         except:
             k = k + 1
