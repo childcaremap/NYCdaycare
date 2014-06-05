@@ -1,52 +1,3 @@
-<script type="text/javascript">
-function createSelector(layer) {
-  var sql = new cartodb.SQL({
-    user: 'russellchun'
-  });
-  var $options = $('#layer_selector li');
-  $options.click(function(e) {
-    var $li = $(e.target);
-    var filter = $li.attr('data-value');
-    var table = $li.attr('data-table');
-    var column = $li.attr('data-column');
-    if (filter == 'zip') {
-      return;
-    }
-    map.removeLayer(currentLayer);
-    currentLayer = 0;
-    $detail_window.fadeOut();
-    $options.removeClass('selected');
-    $li.addClass('selected');
-    var query = "select * from " + table;
-    if (!isEmpty(filter) && !isEmpty(column) && filter != 'all') {
-      query += " where " + column + " = " + "'" + filter + "'";
-    }
-    sql.getBounds(query).done(function(e) {
-      bounds = e;
-    });
-    cartodb.createLayer(map, 'http://schmiani.cartodb.com/api/v1/viz/nyc_day_care_2013violations_alldescriptions_1/viz.json', {
-      query: query,
-      interactivity: 'cartodb_id, geometry, cityid, id, center_name_proper, center_name, permit_holder, address, borough, zip, full_address_proper, full_address, phone, permit_number, permit_expiration, permit_status, age_range, max_capacity, certified_to_administer_medication, site_type, last_inspection_date, critical, general, public_health_hazard,grand_total, uncorrected_violations, regulation_summary, violation_category,inspection_date,violation_status',
-      infowindow: false,
-    }).on('done', function(layer) {
-      currentLayer = layer;
-      map.addLayer(currentLayer);
-      map.fitBounds(bounds);
-      layer.on('featureOver', function(e, pos, latlng, data) {
-        $('.leaflet-container').css('cursor', 'pointer');
-        if (data.cartodb_id != point.cartodb_id) {}
-      });
-      layer.on('featureOut', function(e, pos, latlng, data) {
-        $('.leaflet-container').css('cursor', 'default')
-      });
-      layer.on('featureClick', function(e, pos, latlng, data) {
-        $('.leaflet-container').css('cursor', 'default')
-        fillDetailWindow(data);
-      });
-    });
-  });
-}
-</script>
 
 <script type="text/javascript">
 (function(){
@@ -115,3 +66,78 @@ function createSelector(layer) {
 
 })();
 </script>
+
+ <!-- include google maps library *before* load cartodb.js -->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <!-- include cartodb.js library -->
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+
+    <script>
+      // create layer selector
+      function createSelector(layer) {
+        var sql = new cartodb.SQL({ user: 'schmiani' });
+
+        var $options_age = $('#age_selector li');
+        $options_age.click(function(e) {
+          // get the data of the selected layer
+          var $li = $(e.target);
+          var agerange = $li.attr('data');
+
+          // deselect all and select the clicked one
+          $options_age.removeClass('selected');
+          $li.addClass('selected');
+
+          // create query based on data from the layer
+          var query = "select * from table_04apr2014";
+
+          if(agerange !== 'all') {
+            query = "select * from table_04apr2014 where age_range like "+ "'%"+agerange+"%'";
+          }
+
+
+          // change the query in the layer to update the map
+          layer.setQuery(query);
+        });
+        var $options_type = $('#type_selector li');
+        $options_type.click(function(e) {
+          // get the data of the selected layer
+          var $li = $(e.target);
+          var sytetype = $li.attr('data');
+
+          // deselect all and select the clicked one
+          $options_type.removeClass('selected');
+          $li.addClass('selected');
+
+          // create query based on data from the layer
+          var query = "select * from table_04apr2014";
+
+          if(sytetype !== 'all') {
+            query = "select * from table_04apr2014 where site_type like "+ "'%"+sytetype+"%'";
+          }
+
+
+          // change the query in the layer to update the map
+          layer.setQuery(query);
+        });
+      }
+
+      function main() {
+        cartodb.createVis('map', 'http://schmiani.cartodb.com/api/v2/viz/77a6017a-b918-11e3-8a7a-0e73339ffa50/viz.json', {
+          tiles_loader: true,
+          center_lat: 40.61538583964019,
+          center_lon: -74.06192779541016,
+          zoom: 10
+ 
+        })
+        .done(function(vis, layers) {
+          // layer 0 is the base layer, layer 1 is cartodb layer
+          createSelector(layers[1]);
+        })
+        .error(function(err) {
+          console.log(err);
+        });
+      }
+
+      window.onload = main;
+    </script>
+
