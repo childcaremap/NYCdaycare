@@ -144,7 +144,7 @@
         
         //set three variables intially at all
         var agerange = $('#age_selector li').attr('data');
-        var sytetype = $('#type_selector li').attr('data');
+        var sitetype = $('#type_selector li').attr('data');
         var medicinetype = $('#medicine_selector li').attr('data');
         
 
@@ -166,33 +166,33 @@
           
           //different cases
         if(agerange == 'all') {
-            query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sytetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+            query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
 	   }
           //
         if(medicinetype == 'all') {
-          	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sytetype+"%'";
+          	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
 
           }
           //
-        if(sytetype == 'all') {
+        if(sitetype == 'all') {
           	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
 
          }
           
-        if(agerange == 'all' && sytetype == 'all') {
+        if(agerange == 'all' && sitetype == 'all') {
             query = "SELECT * FROM table_04apr2014 WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
 		   }
           //
         if(agerange == 'all' && medicinetype == 'all') {
-          	query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sytetype+"%'";
+          	query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'";
 	    }
           //
-        if(medicinetype == 'all' && sytetype == 'all') {
+        if(medicinetype == 'all' && sitetype == 'all') {
           	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'";
 	       }
          	 
          //if all three filters are set to all, then show all with no query
-         if(medicinetype == 'all' && sytetype == 'all' && agerange == 'all') {
+         if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
           	query = "select * from table_04apr2014";
          }
 
@@ -208,7 +208,7 @@
         $options_type.click(function(e) {
           // get the data of the selected layer
           var $li = $(e.target);
-          sytetype = $li.attr('data');
+          sitetype = $li.attr('data');
 
 
  
@@ -221,33 +221,33 @@
 
          //different cases
         if(agerange == 'all') {
-            query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sytetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+            query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
 	   }
           //
         if(medicinetype == 'all') {
-          	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sytetype+"%'";
+          	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
 
           }
           //
-        if(sytetype == 'all') {
+        if(sitetype == 'all') {
           	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
 
          }
           
-        if(agerange == 'all' && sytetype == 'all') {
+        if(agerange == 'all' && sitetype == 'all') {
             query = "SELECT * FROM table_04apr2014 WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
 		   }
           //
         if(agerange == 'all' && medicinetype == 'all') {
-          	query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sytetype+"%'";
+          	query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'";
 	    }
           //
-        if(medicinetype == 'all' && sytetype == 'all') {
+        if(medicinetype == 'all' && sitetype == 'all') {
           	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'";
 	       }
          	 
          //if all three filters are set to all, then show all with no query
-         if(medicinetype == 'all' && sytetype == 'all' && agerange == 'all') {
+         if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
           	query = "select * from table_04apr2014";
          }
 
@@ -275,33 +275,33 @@
           
           //different cases
         if(agerange == 'all') {
-            query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sytetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+            query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
 	   }
           //
         if(medicinetype == 'all') {
-          	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sytetype+"%'";
+          	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
 
           }
           //
-        if(sytetype == 'all') {
+        if(sitetype == 'all') {
           	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
 
          }
           
-        if(agerange == 'all' && sytetype == 'all') {
+        if(agerange == 'all' && sitetype == 'all') {
             query = "SELECT * FROM table_04apr2014 WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
 		   }
           //
         if(agerange == 'all' && medicinetype == 'all') {
-          	query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sytetype+"%'";
+          	query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'";
 	    }
           //
-        if(medicinetype == 'all' && sytetype == 'all') {
+        if(medicinetype == 'all' && sitetype == 'all') {
           	query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'";
 	       }
          	 
          //if all three filters are set to all, then show all with no query
-         if(medicinetype == 'all' && sytetype == 'all' && agerange == 'all') {
+         if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
           	query = "select * from table_04apr2014";
          }
 
