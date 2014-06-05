@@ -6,4 +6,6 @@ Procfile
 _sass/
 _plugins/
 .sass-cache/
+<<<<<<< HEAD
 npm-debug.log
+secret.*
