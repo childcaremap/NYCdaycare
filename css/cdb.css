@@ -3,7 +3,7 @@
 html, body, #map {
   height: 100%;
   padding: 0;
-  margin: 0;
+  margin: .5rem;
 }
 
 /* line 8, ../_sass/cdb.scss */
@@ -12,31 +12,49 @@ html, body, #map {
   top: 20px;
   right: 20px;
   padding: 0;
+  width: 230px;
 }
 
-/* line 15, ../_sass/cdb.scss */
+/* line 16, ../_sass/cdb.scss */
 #type_selector {
   position: absolute;
-  top: 200px;
+  top: 170px;
   right: 20px;
   padding: 0;
+  width: 230px;
 }
 
-/* line 22, ../_sass/cdb.scss */
+/* line 23, ../_sass/cdb.scss */
+#medicine_selector {
+  position: absolute;
+  top: 410px;
+  right: 20px;
+  padding: 0;
+  width: 230px;
+}
+
+/* line 31, ../_sass/cdb.scss */
 #age_selector ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-/* line 27, ../_sass/cdb.scss */
+/* line 36, ../_sass/cdb.scss */
 #type_selector ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-/* line 32, ../_sass/cdb.scss */
+/* line 40, ../_sass/cdb.scss */
+#medicine_selector ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+/* line 45, ../_sass/cdb.scss */
 #age_selector li {
   border-bottom: 1px solid #999;
   padding: 15px 30px;
@@ -46,7 +64,17 @@ html, body, #map {
   cursor: auto;
 }
 
-/* line 41, ../_sass/cdb.scss */
+/* line 53, ../_sass/cdb.scss */
+#medicine_selector li {
+  border-bottom: 1px solid #999;
+  padding: 15px 30px;
+  font-family: "Helvetica", Arial;
+  font-size: 13px;
+  color: #444;
+  cursor: auto;
+}
+
+/* line 61, ../_sass/cdb.scss */
 #type_selector li {
   border-bottom: 1px solid #999;
   padding: 15px 30px;
@@ -56,24 +84,35 @@ html, body, #map {
   cursor: auto;
 }
 
-/* line 50, ../_sass/cdb.scss */
+/* line 70, ../_sass/cdb.scss */
 #age_selector li:hover {
   background-color: #F0F0F0;
   cursor: pointer;
 }
 
-/* line 54, ../_sass/cdb.scss */
+/* line 74, ../_sass/cdb.scss */
+#medicine_selector li:hover {
+  background-color: #F0F0F0;
+  cursor: pointer;
+}
+
+/* line 78, ../_sass/cdb.scss */
 #type_selector li:hover {
   background-color: #F0F0F0;
   cursor: pointer;
 }
 
-/* line 59, ../_sass/cdb.scss */
+/* line 83, ../_sass/cdb.scss */
 #age_selector li.selected {
   background-color: #EEE;
 }
 
-/* line 63, ../_sass/cdb.scss */
+/* line 87, ../_sass/cdb.scss */
 #type_selector li.selected {
+  background-color: #EEE;
+}
+
+/* line 90, ../_sass/cdb.scss */
+#medicine_selector li.selected {
   background-color: #EEE;
 }

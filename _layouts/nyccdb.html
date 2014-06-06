@@ -10,46 +10,36 @@
 
         <!-- syntax highlighting CSS -->
 
-        {% include nyccdb.html %}
+        {% include head.html %}
 
     </head>
     <body>
 
-    <div class="container" style="display:inline">
-    <!-- /container -->
+    <div class="container" style="display:inline;"> <!---->
 
         <div class="header">
             <!--a class="extra" href="{{ site.baseurl }}/dev">Dev</a-->
-            <h1><a href="{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
+            <h1><a href="{{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
+            <p>Map of daycare centers with permit issued by NYC DoHMH.</p>
         </div>
+        <p>
+        <hr>
+        </p>
+
     {{ content }}
 
-
-<div id="map"></div>
-
-<div id="age_selector" class="cartodb-infobox">
-  <ul>
-    <li data="all" class="selected">All Categories</li>
-        <li data="0 YEARS - 2 YEARS">0 - 2 YEARS</sup></li>
-        <li data="2 YEARS - 5 YEARS">2 - 5 YEARS</sup></li>
-  </ul>
-</div>
-
-<div id="type_selector" class="cartodb-infobox">
-  <ul>
-        <li data="all" class="selected">All Categories</li>
-        <li data="Private">Private</sup></li>
-        <li data="ACS Head Start">ACS Head Start</sup></li>
-        <li data="ACS Contracted Preschools">ACS Contracted Preschools</sup></li>
-        <li data="Corporate">Corporate</sup></li>
-      </ul>
-</div>
-    {% include scripts.html %} 
-
         <div class="footer">
-              
+            <hr>
+
+<p>
+This map was made with great help from the <a href="http://betanyc.us/" target="new window">BetaNYC</a> community. This is work in progress, check out the current status on our <a href="https://github.com/child-care-map/NYCmap" target="new window">github repo</a>.
+</p>
         </div>
+
+    <!-- /container -->
     </div>
+
+    {% include scripts.html %} 
 
     </body>
 </html>
