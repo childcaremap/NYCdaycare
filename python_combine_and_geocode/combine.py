@@ -91,6 +91,7 @@ def combine_same(filename):
             row.append('')
             row.append('')
             newrows2.append(row)
+            continue
 
     print str(k) + ' entries not geocoded'
     nname = filename[:-4] + "_combinedaddress_geocoded.csv" # The filename of the output file
