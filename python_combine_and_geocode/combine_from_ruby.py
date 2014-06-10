@@ -1,9 +1,7 @@
-#filename = '04apr2014'
 import sys
 import csv
 
 def combine_same(filename):
-	print 'test'
 	with open(filename, 'rb') as input_file:
 		info = csv.reader(input_file)
 		header = info.next()
