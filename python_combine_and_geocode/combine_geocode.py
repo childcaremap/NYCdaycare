@@ -19,6 +19,7 @@ def combine_geocode(filename):
                 address =  row[iaddress] +', NEW YORK, NY ' + row[izip]
             else:
                 address = row[iaddress] +', ' + row[iborough] + ', NY ' + row[izip]
+                print i
             try:
                 result = Geocoder.geocode(address)
                 time.sleep(.5)
@@ -36,6 +37,7 @@ def combine_geocode(filename):
                 row.append('')
                 row.append('')
                 newrows.append(row)
+                continue
             
     print str(k) + ' entries not geocoded'
 
