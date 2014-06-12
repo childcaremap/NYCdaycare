@@ -34,8 +34,8 @@ def combine_geocode(filename):
                     newrows.append(row)
             except:
                 k = k + 1
-                row.append('')
-                row.append('')
+                row.append(None)
+                row.append(None)
                 newrows.append(row)
                 continue
             
@@ -48,10 +48,12 @@ def combine_geocode(filename):
         writer = csv.writer(output_file)
         writer.writerow(header)
         writer.writerows(newrows)
+    return nname
 
 def main():
     fname = sys.argv[1]
-    combine_geocode(fname)
-
+    nname = combine_geocode(fname)
+    return nname
+    
 if __name__ == '__main__':
     main()

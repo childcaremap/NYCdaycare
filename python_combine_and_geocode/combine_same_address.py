@@ -57,10 +57,11 @@ def combine_same(filename):
 		writer = csv.writer(output_file)
 		writer.writerow(header)
 		writer.writerows(newrows)
+	return nname
 
 def main():
 	fname = sys.argv[1]
-	combine_same(fname)
-
+	nname = combine_same(fname)
+	return nname
 if __name__ == '__main__':
 	main()
