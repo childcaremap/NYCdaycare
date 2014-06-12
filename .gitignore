@@ -8,3 +8,5 @@ _plugins/
 .sass-cache/
 npm-debug.log
 secret.*
+*.pyc
+
