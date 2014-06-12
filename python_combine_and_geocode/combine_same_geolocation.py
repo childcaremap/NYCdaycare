@@ -60,10 +60,12 @@ def combine_samegeo(filename):
         writer = csv.writer(output_file)
         writer.writerow(header)
         writer.writerows(newrows)
+    return nname
 
 def main():
     fname = sys.argv[1]
-    combine_samegeo(fname)
-
+    nname = combine_samegeo(fname)
+    return nname
+    
 if __name__ == '__main__':
     main()
