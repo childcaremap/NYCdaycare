@@ -56,9 +56,8 @@ while offset <= int(maxpage):
 
     for link in links:
         onclickcommand =  link.get('onclick')
-        siteid = onclickcommand.split('redirectHistory(')[1]
-        siteid.index('"); return false')
-        siteid = siteid[1:siteid.index('"); return false')]
+        match = re.search(r'"(DC\d+)"',onclickcommand)
+        siteid = match.group(1)
         print siteid
 
         request2 = mechanize.Request("https://a816-healthpsi.nyc.gov/ChildCare/WDetail.do","linkPK="+str(siteid))
@@ -77,25 +76,20 @@ while offset <= int(maxpage):
         row.append(str(siteid))
         for i, line in enumerate(lines):
             if i == 8:
-                #print line.xpath('./a')[0].text
-                #print etree.tostring(line)
                 row.append(line.xpath('./a')[0].text.encode("ascii","ignore"))
             else:
-                #print line.text
                 row.append(line.text.encode("ascii","ignore"))
-        #print row
         writer_basic.writerow(row)
         #page is broken html, need beautifulsoup parser to get at health inspections
         root = html.soupparser.fromstring(page2)
         #output_btree = open("output_btree.html","wb")
         #output_btree.write(etree.tostring(root, pretty_print=True).strip())
-        #print(etree.tostring(root, pretty_print=True).strip())
-        
+        #output_btree.close()        
         tables = root.xpath('.//table[@style="width:100%"]')
-        try:
+        if len(root.xpath('.//table/tr/td[@class="alt_border"]')) != 0:
             inspection_info = root.xpath('.//table/tr/td[@class="alt_border"]')[0].text
-            match = re.search('DATE:',inspection_info)
-            date = inspection_info[match.end()+1:-2].encode("ascii","ignore")
+            match = re.search(r'DATE:\s(\d+/\d+/\d+)',inspection_info)
+            date = match.group(1).encode("ascii","ignore")
 
             row_summ = [siteid,date]
             inspection_type = inspection_info[2:match.start()-1].replace(u'\xa0',u' ').encode("ascii")
@@ -111,21 +105,60 @@ while offset <= int(maxpage):
                 row_inspect.append(date)
                 row_inspect.append(reg.text.encode("ascii","ignore"))
                 details = tables[1].xpath('.//td[@class="cell_leftborder"]['+str(i+1)+']/following::td[@class="cell_border"][1]')
-                try:
+                if details[0].xpath('./a')[0].text is not None:
                     row_inspect.append(details[0].xpath('./a')[0].text.encode("ascii","ignore"))
-                except:
-                    row_inspect.append(details[0].text.encode("ascii","ignore"))
+                else:
+                    row_inspect.append(None)
                 details = tables[1].xpath('.//td[@class="cell_leftborder"]['+str(i+1)+']/following::td[@class="cell_border"][2]')
                 row_inspect.append(details[0].text.encode("ascii","ignore"))
                 details = tables[1].xpath('.//td[@class="cell_leftborder"]['+str(i+1)+']/following::td[@class="cell_border"][3]')
                 row_inspect.append(details[0].text.encode("ascii","ignore"))
                 writer_insp.writerow(row_inspect)
-        except:
+        else:
             row_summ = [siteid]
             row_summ.append('No visit found in database.')
-            row_summ.append('')
-            row_summ.append('')
+            row_summ.append(None)
+            row_summ.append(None)
             writer_summ.writerow(row_summ)
+
+        linkprev = root.xpath('.//a[text()="Previous Inspection Results"]')
+        request3 = mechanize.Request("https://a816-healthpsi.nyc.gov/ChildCare/History.do","linkPK="+str(siteid))
+        cj.add_cookie_header(request3)
+        response3 = mechanize.urlopen(request3)
+        page3 = response3.read()
+        rootprev = html.soupparser.fromstring(page3)
+        #output_prev = open("output_prev.html","wb")
+        #output_prev.write(etree.tostring(rootprev, pretty_print=True).strip())
+        #output_prev.close()
+        inspections = rootprev.xpath('.//td[@class="alt_border"]')
+        for i, inspection in enumerate(inspections):
+            inspection_info = inspection.xpath('./a')[0].text
+            match = re.search(r'DATE:\s(\d+/\d+/\d+)',inspection_info)
+            date = match.group(1).encode("ascii","ignore")
+            row_summ = [siteid,date]
+            inspection_type = inspection_info[:match.start()-1].replace(u'\xa0',u' ').encode("ascii")
+            row_summ.append(inspection_type)
+            inspection_info = rootprev.xpath('.//a[@class="headline"][' + str(i+2) + ']/ancestor::div[@style="display:none"]')[0]
+            inspection_summ = inspection_info.xpath('.//br')[0].tail.strip()
+            row_summ.append(inspection_summ)
+            writer_summ.writerow(row_summ)
+
+            regulations_prev = inspection_info.xpath('.//td[@class="cell_leftborder"]')
+            for i,reg_prev in enumerate(regulations_prev):
+                row_inspect = []
+                row_inspect.append(siteid)
+                row_inspect.append(date)
+                row_inspect.append(reg_prev.text.encode("ascii","ignore"))
+                details = inspection_info.xpath('.//td[@class="cell_leftborder"]['+str(i+1)+']/following::td[@class="cell_border"][1]')
+                if details[0].xpath('./a')[0].text is not None:
+                    row_inspect.append(details[0].xpath('./a')[0].text.encode("ascii","ignore"))
+                else:
+                    row_inspect.append(None)
+                details = inspection_info.xpath('.//td[@class="cell_leftborder"]['+str(i+1)+']/following::td[@class="cell_border"][2]')
+                row_inspect.append(details[0].text.encode("ascii","ignore"))
+                details = inspection_info.xpath('.//td[@class="cell_leftborder"]['+str(i+1)+']/following::td[@class="cell_border"][3]')
+                row_inspect.append(details[0].text.encode("ascii","ignore"))
+                writer_insp.writerow(row_inspect)
 
     offset = offset + 10
 
