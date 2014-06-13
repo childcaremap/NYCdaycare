@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Easy example | CartoDB.js</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
+    <style>
+      html, body, #map {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+
+  <script type="infowindow/html" id="infowindow_template">
+  <div class="cartodb-popup">
+    <a href="#close" class="cartodb-popup-close-button close">x</a>
+     <div class="cartodb-popup-content-wrapper">
+       <div class="cartodb-popup-header">
+         <img style="width: 100%" src="http://cartodb.com/assets/logos/logos_full_cartodb_light-5ef5e4ff558f4f8d178ab2c8faa231c1.png"></src>
+       </div>
+       <div class="cartodb-popup-content">
+         <!-- content.data contains the field info -->
+         <h4>City: </h4>
+         <p>{{content.data.name}}</p>
+       </div>
+     </div>
+     <div class="cartodb-popup-tip-container"></div>
+  </div>
+</script>
+
+  <!-- include google maps library *before* load cartodb.js -->
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <!-- include cartodb.js library -->
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+
+  <script>
+    function main() {
+      //var map = new L.Map('map', { 
+      //  center: [40.61538583964019,-74.06192779541016],
+      //  zoom: 10
+      //});
+      var map;
+     // create google maps map
+      var mapOptions = {
+        zoom: 10,
+        center: new google.maps.LatLng(40.61538583964019, -74.06192779541016),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var styles = [
+  {
+    stylers: [
+      { hue: "#cca300" },
+      { saturation: -60 }
+    ]
+  },{
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { lightness: 10 },
+   
+   { visibility: "simplified" }
+    ]
+  },{
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  }
+];
+
+
+      map = new google.maps.Map(document.getElementById('map'),  mapOptions);
+      // create a layer with 1 sublayer
+      map.setOptions({styles: styles});
+      cartodb.createLayer(map, {
+        user_name: 'nycdaycaremap',
+        type: 'cartodb',
+        sublayers: [{
+          sql: "SELECT * FROM basicinfo",
+          cartocss: "#basicinfo_2014_06_09_geocoded {\
+            marker-fill-opacity: 0.9;\
+            marker-line-color: #FFF;\
+            marker-line-width: 1.5;\
+            marker-line-opacity: 1;\
+            marker-placement: point;\
+            marker-type: ellipse;\
+            marker-width: 10;\
+            marker-fill: #FF6600;\
+            marker-allow-overlap: true;\
+          }"
+        }]
+      })
+      .addTo(map) // add the layer to our map which already contains 1 sublayer
+      .done(function(layer) {
+
+        // create and add a new sublayer
+        //layer.createSubLayer({
+        //  sql: "SELECT * FROM basicinfo_2014_06_09_geocoded limit 200",
+        //  cartocss: '#table_name {marker-fill: #F0F0F0;}'
+        //});
+
+        // change the query for the first layer
+        //layer.getSubLayer(0).setSQL("SELECT * FROM basicinfo_2014_06_09_geocoded limit 10");
+      });
+            }
+
+    window.onload = main;
+  </script>
+
+</html>
