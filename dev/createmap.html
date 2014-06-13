@@ -74,19 +74,22 @@
         }]
       })
       .addTo(map) // add the layer to our map which already contains 1 sublayer
-      .on('done', function(layer) {
-        // get sublayer 0 and set the infowindow template
-        var sublayer = layer.getSubLayer(0);
-        sublayer.setInteraction(true);
-        
-        sublayer.infowindow.set('template', $('#infowindow_template').html()); //this doesn't work for some reason
-
-        sublayer.on('featureClick', function(e, pos, latlng, data) {
-          alert("You clicked entry " + data.cartodb_id + " at " + data.address);
-        });
-      }).on('error', function() {
-        console.log("some error occurred");
+      .done(function(layer) {
+          cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['cartodb_id'])
       });
+      //.on('done', function(layer) {
+       // // get sublayer 0 and set the infowindow template
+       // var sublayer = layer.getSubLayer(0);
+        //sublayer.setInteraction(true);
+        
+       // sublayer.infowindow.set('template', $('#infowindow_template').html()); //this doesn't work for some reason
+
+        //sublayer.on('featureClick', function(e, pos, latlng, data) {
+         // alert("You clicked entry " + data.cartodb_id + " at " + data.address);
+        //});
+      //}).on('error', function() {
+      //  console.log("some error occurred");
+      //});
     }
 
     window.onload = main;
