@@ -12,7 +12,7 @@ def main():
     print fname2
     fname3 = combine_geocode(fname2)
     print fname3
-    fname4 = combine_samegeo(frname3)
+    fname4 = combine_samegeo(fname3)
     print fname4
     time_elapsed = time.clock()
     print [str(time_elapsed)+" seconds"]
