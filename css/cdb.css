@@ -9,7 +9,7 @@ html, body, #map {
 /* line 8, ../_sass/cdb.scss */
 #age_selector {
   position: absolute;
-  top: 20px;
+  top: 120px;
   left: 20px;
   padding: 0;
   width: 230px;
@@ -18,7 +18,7 @@ html, body, #map {
 /* line 16, ../_sass/cdb.scss */
 #type_selector {
   position: absolute;
-  top: 170px;
+  top: 270px;
   left: 20px;
   padding: 0;
   width: 230px;
@@ -27,7 +27,7 @@ html, body, #map {
 /* line 23, ../_sass/cdb.scss */
 #medicine_selector {
   position: absolute;
-  top: 480px;
+  top: 580px;
   left: 20px;
   padding: 0;
   width: 230px;
