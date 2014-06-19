@@ -13,7 +13,7 @@
         <li data="Private">Private</li>
         <li data="ACS Head Start">ACS Head Start</li>
         <li data="ACS Contracted Preschools">ACS Contracted Preschools</li>
-        <li data="Head Start Direct Fed Funding">Head Start Direct Fed Funding</li>
+        <li data="Head Start (Direct Fed. Funding)">Head Start Direct Fed Funding</li>
         <li data="Corporate">Corporate</li>
       </ul>
       </div>
