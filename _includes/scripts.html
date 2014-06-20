@@ -251,19 +251,48 @@
       }
 
       function main() {
-        cartodb.createVis('map','http://nycdaycaremap.cartodb.com/api/v2/viz/ba2bce4e-f333-11e3-816d-0e230854a1cb/viz.json', {
-          tiles_loader: true,
-          center_lat: 40.61538583964019,
-          center_lon: -74.06192779541016,
-          zoom: 10,
-          searchControl: true
+              var map;
+ 
+        // create google maps map
+        var mapOptions = {
+          zoom: 11,
+          center: new google.maps.LatLng(40.682,-74.03),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map'),  mapOptions);
+        var styles = [
+          {
+            stylers: [
+              { hue: "#cca300" },
+              { saturation: -60 }
+            ]
+          },{
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+              { lightness: 10 },
+           
+           { visibility: "simplified" }
+            ]
+          },{
+            featureType: "road",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+          }
+        ];
+        map.setOptions({styles: styles});
+        // create layer and add to the map, then add some intera
+        cartodb.createLayer(map, 'http://nycdaycaremap.cartodb.com/api/v2/viz/ba2bce4e-f333-11e3-816d-0e230854a1cb/viz.json')
+        .addTo(map)
+        .on('done', function(layer) {
+          var v = cdb.vis.Overlay.create('search', map.viz, {})
+          $('#map').append(v.render().el);
+          createSelector(layer);
         })
-        .done(function(vis, layers) {
-          // layer 0 is the base layer, layer 1 is cartodb layer
-          createSelector(layers[1]);
-        })
-        .error(function(err) {
-          console.log(err);
+        .on('error', function() {
+          cartodb.log.log("some error occurred");
         });
       }
 
