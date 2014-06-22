@@ -25173,6 +25173,7 @@ cdb.geo.ui.Search = cdb.core.View.extend({
           ]);
         } else if (coords[0].lat && coords[0].lon) {
           self.model.setCenter([coords[0].lat, coords[0].lon]);
+          //Anita Schmid changed zoom from 10 to 15
           self.model.setZoom(15);
         }
       }
