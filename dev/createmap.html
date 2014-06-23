@@ -12,8 +12,28 @@
         margin: 0;
       }
     </style>
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <!-- include google maps library *before* load cartodb.js -->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <!-- include cartodb.js library -->
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
 
     <script type="infowindow/html" id="infowindow_template">
+      <div class="cartodb-popup">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+         <div class="cartodb-popup-content-wrapper">
+           <div class="cartodb-popup-content">
+            CartoDB ID: <%= content.data.cartodb_id %>
+           </div>
+         </div>
+         <div class="cartodb-popup-tip-container"></div>
+      </div>
+    </script>
+    <!-- <script type="infowindow/html" id="infowindow_template">
       <div class="cartodb-popup">
         <a href="#close" class="cartodb-popup-close-button close">x</a>
          <div class="cartodb-popup-content-wrapper">
@@ -21,78 +41,68 @@
              <img style="width: 100%" src="http://cartodb.com/assets/logos/logos_full_cartodb_light-5ef5e4ff558f4f8d178ab2c8faa231c1.png"></src>
            </div>
            <div class="cartodb-popup-content">
-             <!-- content.data contains the field info -->
+             
              <h4>CartoDB ID: </h4>
              <p>{{content.data.cartodb_id}}</p>
            </div>
          </div>
          <div class="cartodb-popup-tip-container"></div>
       </div>
-    </script>
+    </script> -->
 
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
-  </head>
-  <body>
-    <div id="map"></div>
-  </body>
+    <script>
+      function main() {
+        var map;
+       // create google maps map
+        var mapOptions = {
+          zoom: 10,
+          center: new google.maps.LatLng(40.61538583964019, -74.06192779541016),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map'),  mapOptions);
+        // create a layer with 1 sublayer
+        cartodb.createLayer(map, {
+          user_name: 'nycdaycaremap',
+          type: 'cartodb',
+          sublayers: [{
+            sql: "SELECT * FROM basicinfo_combined",
+            cartocss: "#basicinfo_combined {\
+              marker-fill-opacity: 0.9;\
+              marker-line-color: #FFF;\
+              marker-line-width: 1.5;\
+              marker-line-opacity: 1;\
+              marker-placement: point;\
+              marker-type: ellipse;\
+              marker-width: 10;\
+              marker-fill: #FF6600;\
+              marker-allow-overlap: true;\
+            }",
+            interactivity: 'cartodb_id, address', // optional
+          }]
+        })
+        .addTo(map) // add the layer to our map which already contains 1 sublayer
+        .done(function(layer) {
+            var infowindow = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['center_name','phone','age_range']);
+            //infowindow.model.set('template', function(data) {
+                //return _.template($('#infowindow_template').html())(data);
+              //});
+        });
+        //.on('done', function(layer) {
+         // // get sublayer 0 and set the infowindow template
+         // var sublayer = layer.getSubLayer(0);
+          //sublayer.setInteraction(true);
+          
+         // sublayer.infowindow.set('template', $('#infowindow_template').html()); //this doesn't work for some reason
 
-  
-
-  <!-- include google maps library *before* load cartodb.js -->
-  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-  <!-- include cartodb.js library -->
-  <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
-
-  <script>
-    function main() {
-      var map;
-     // create google maps map
-      var mapOptions = {
-        zoom: 10,
-        center: new google.maps.LatLng(40.61538583964019, -74.06192779541016),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      map = new google.maps.Map(document.getElementById('map'),  mapOptions);
-      // create a layer with 1 sublayer
-      cartodb.createLayer(map, {
-        user_name: 'nycdaycaremap',
-        type: 'cartodb',
-        sublayers: [{
-          sql: "SELECT * FROM basicinfo",
-          cartocss: "#basicinfo_2014_06_09_geocoded {\
-            marker-fill-opacity: 0.9;\
-            marker-line-color: #FFF;\
-            marker-line-width: 1.5;\
-            marker-line-opacity: 1;\
-            marker-placement: point;\
-            marker-type: ellipse;\
-            marker-width: 10;\
-            marker-fill: #FF6600;\
-            marker-allow-overlap: true;\
-          }",
-          interactivity: 'cartodb_id, address', // optional
-        }]
-      })
-      .addTo(map) // add the layer to our map which already contains 1 sublayer
-      .done(function(layer) {
-          cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['cartodb_id'])
-      });
-      //.on('done', function(layer) {
-       // // get sublayer 0 and set the infowindow template
-       // var sublayer = layer.getSubLayer(0);
-        //sublayer.setInteraction(true);
-        
-       // sublayer.infowindow.set('template', $('#infowindow_template').html()); //this doesn't work for some reason
-
-        //sublayer.on('featureClick', function(e, pos, latlng, data) {
-         // alert("You clicked entry " + data.cartodb_id + " at " + data.address);
+          //sublayer.on('featureClick', function(e, pos, latlng, data) {
+           // alert("You clicked entry " + data.cartodb_id + " at " + data.address);
+          //});
+        //}).on('error', function() {
+        //  console.log("some error occurred");
         //});
-      //}).on('error', function() {
-      //  console.log("some error occurred");
-      //});
-    }
+      }
 
-    window.onload = main;
-  </script>
-
+      window.onload = main;
+    </script>
+  </body>
 </html>

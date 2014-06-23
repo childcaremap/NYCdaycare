@@ -3,14 +3,14 @@
 html, body, #map {
   height: 100%;
   padding: 0;
-  margin: .5rem;
+  margin: 0;
 }
 
 /* line 8, ../_sass/cdb.scss */
 #age_selector {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 220px;
+  left: 20px;
   padding: 0;
   width: 230px;
 }
@@ -18,8 +18,8 @@ html, body, #map {
 /* line 16, ../_sass/cdb.scss */
 #type_selector {
   position: absolute;
-  top: 170px;
-  right: 20px;
+  top: 370px;
+  left: 20px;
   padding: 0;
   width: 230px;
 }
@@ -27,8 +27,8 @@ html, body, #map {
 /* line 23, ../_sass/cdb.scss */
 #medicine_selector {
   position: absolute;
-  top: 480px;
-  right: 20px;
+  top: 680px;
+  left: 20px;
   padding: 0;
   width: 230px;
 }

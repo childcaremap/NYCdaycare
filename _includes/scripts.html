@@ -70,12 +70,14 @@
  <!-- include google maps library *before* load cartodb.js -->
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <!-- include cartodb.js library -->
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <!--<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script> -->
+    <!-- use custom cartodb.js library -->
+    <script src="js/cartodb_custom.js"></script>
 
     <script>
       // create layer selector
       function createSelector(layer) {
-        var sql = new cartodb.SQL({ user: 'schmiani' });
+        var sql = new cartodb.SQL({ user: 'nycdaycaremap' });
         
         
         //set three variables intially at all
@@ -97,40 +99,40 @@
           $li.addClass('selected');
 
           // create query based on data from the layer
-          //var query = "select * from table_04apr2014";
+          //var query = "select * from basicinfo_combined";
 
           
           //all possible cases
           if(medicinetype != 'all' && sitetype != 'all' && agerange != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }
             //
           if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }            
             //
           if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }
             //
           if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
             }
             //
           if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }
             //
           if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'";
             }
             //
           if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'";
             }
             //
           if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
-              query = "select * from table_04apr2014";
+              query = "select * from basicinfo_combined";
             }
 
           // change the query in the layer to update the map
@@ -153,39 +155,39 @@
           $li.addClass('selected');
 
           // create query based on data from the layer
-          //var query = "select * from table_04apr2014";
+          //var query = "select * from basicinfo_combined";
 
           //all possible cases
           if(medicinetype != 'all' && sitetype != 'all' && agerange != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }
             //
           if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }            
             //
           if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }
             //
           if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
             }
             //
           if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }
             //
           if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'";
             }
             //
           if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'";
             }
             //
           if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
-              query = "select * from table_04apr2014";
+              query = "select * from basicinfo_combined";
             }
 
 
@@ -207,40 +209,40 @@
           $li.addClass('selected');
 
           // create query based on data from the layer
-          //var query = "select * from table_04apr2014";
+          //var query = "select * from basicinfo_combined";
 
           
           //all possible cases
           if(medicinetype != 'all' && sitetype != 'all' && agerange != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }
             //
           if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }            
             //
           if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }
             //
           if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
             }
             //
           if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
             }
             //
           if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE site_type like "+ "'%"+sitetype+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'";
             }
             //
           if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM table_04apr2014 WHERE age_range LIKE "+ "'%"+agerange+"%'";
+              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'";
             }
             //
           if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
-              query = "select * from table_04apr2014";
+              query = "select * from basicinfo_combined";
             }
 
           // change the query in the layer to update the map
@@ -249,19 +251,48 @@
       }
 
       function main() {
-        cartodb.createVis('map', 'http://schmiani.cartodb.com/api/v2/viz/77a6017a-b918-11e3-8a7a-0e73339ffa50/viz.json', {
-          tiles_loader: true,
-          center_lat: 40.61538583964019,
-          center_lon: -74.06192779541016,
-          zoom: 10
+              var map;
  
+        // create google maps map
+        var mapOptions = {
+          zoom: 11,
+          center: new google.maps.LatLng(40.682,-74.03),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map'),  mapOptions);
+        var styles = [
+          {
+            stylers: [
+              { hue: "#cca300" },
+              { saturation: -60 }
+            ]
+          },{
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+              { lightness: 10 },
+           
+           { visibility: "simplified" }
+            ]
+          },{
+            featureType: "road",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+          }
+        ];
+        map.setOptions({styles: styles});
+        // create layer and add to the map, then add some intera
+        cartodb.createLayer(map, 'http://nycdaycaremap.cartodb.com/api/v2/viz/ba2bce4e-f333-11e3-816d-0e230854a1cb/viz.json')
+        .addTo(map)
+        .on('done', function(layer) {
+          var v = cdb.vis.Overlay.create('search', map.viz, {})
+          $('#map').append(v.render().el);
+          createSelector(layer);
         })
-        .done(function(vis, layers) {
-          // layer 0 is the base layer, layer 1 is cartodb layer
-          createSelector(layers[1]);
-        })
-        .error(function(err) {
-          console.log(err);
+        .on('error', function() {
+          cartodb.log.log("some error occurred");
         });
       }
 
