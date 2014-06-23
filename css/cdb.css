@@ -3,58 +3,54 @@
 html, body, #map {
   height: 100%;
   padding: 0;
-  margin: 0;
 }
 
-/* line 8, ../_sass/cdb.scss */
+/* line 7, ../_sass/cdb.scss */
 #age_selector {
   position: absolute;
-  top: 220px;
-  left: 20px;
+  top: 190px;
   padding: 0;
   width: 230px;
 }
 
-/* line 16, ../_sass/cdb.scss */
+/* line 14, ../_sass/cdb.scss */
 #type_selector {
   position: absolute;
-  top: 370px;
-  left: 20px;
+  top: 340px;
   padding: 0;
   width: 230px;
 }
 
-/* line 23, ../_sass/cdb.scss */
+/* line 20, ../_sass/cdb.scss */
 #medicine_selector {
   position: absolute;
-  top: 680px;
-  left: 20px;
+  top: 645px;
   padding: 0;
   width: 230px;
 }
 
-/* line 31, ../_sass/cdb.scss */
+/* line 27, ../_sass/cdb.scss */
 #age_selector ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-/* line 36, ../_sass/cdb.scss */
+/* line 32, ../_sass/cdb.scss */
 #type_selector ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-/* line 40, ../_sass/cdb.scss */
+/* line 36, ../_sass/cdb.scss */
 #medicine_selector ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-/* line 45, ../_sass/cdb.scss */
+/* line 41, ../_sass/cdb.scss */
 #age_selector li {
   border-bottom: 1px solid #999;
   padding: 15px 30px;
@@ -64,7 +60,7 @@ html, body, #map {
   cursor: auto;
 }
 
-/* line 53, ../_sass/cdb.scss */
+/* line 49, ../_sass/cdb.scss */
 #medicine_selector li {
   border-bottom: 1px solid #999;
   padding: 15px 30px;
@@ -74,7 +70,7 @@ html, body, #map {
   cursor: auto;
 }
 
-/* line 61, ../_sass/cdb.scss */
+/* line 57, ../_sass/cdb.scss */
 #type_selector li {
   border-bottom: 1px solid #999;
   padding: 15px 30px;
@@ -84,35 +80,50 @@ html, body, #map {
   cursor: auto;
 }
 
-/* line 70, ../_sass/cdb.scss */
+/* line 66, ../_sass/cdb.scss */
 #age_selector li:hover {
   background-color: #F0F0F0;
   cursor: pointer;
 }
 
-/* line 74, ../_sass/cdb.scss */
+/* line 70, ../_sass/cdb.scss */
 #medicine_selector li:hover {
   background-color: #F0F0F0;
   cursor: pointer;
 }
 
-/* line 78, ../_sass/cdb.scss */
+/* line 74, ../_sass/cdb.scss */
 #type_selector li:hover {
   background-color: #F0F0F0;
   cursor: pointer;
 }
 
-/* line 83, ../_sass/cdb.scss */
+/* line 79, ../_sass/cdb.scss */
 #age_selector li.selected {
   background-color: #EEE;
 }
 
-/* line 87, ../_sass/cdb.scss */
+/* line 83, ../_sass/cdb.scss */
 #type_selector li.selected {
   background-color: #EEE;
 }
 
-/* line 90, ../_sass/cdb.scss */
+/* line 86, ../_sass/cdb.scss */
 #medicine_selector li.selected {
   background-color: #EEE;
+}
+
+/* Cartdb.css selectors */
+/* line 92, ../_sass/cdb.scss */
+div.cartodb-searchbox {
+  width: 300px;
+  height: 30px;
+  top: 40px;
+  right: 1rem;
+  margin: 0px;
+}
+
+/* line 100, ../_sass/cdb.scss */
+div.cartodb-searchbox input.text {
+  width: 260px;
 }
