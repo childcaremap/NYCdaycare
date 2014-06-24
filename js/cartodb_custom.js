@@ -25173,6 +25173,7 @@ cdb.geo.ui.Search = cdb.core.View.extend({
           ]);
         } else if (coords[0].lat && coords[0].lon) {
           self.model.setCenter([coords[0].lat, coords[0].lon]);
+          //Anita Schmid changed zoom from 10 to 15
           self.model.setZoom(15);
         }
       }
@@ -31945,11 +31946,12 @@ cdb.vis.Overlay.register('share', function(data, vis) {
 // search content
 cdb.vis.Overlay.register('search', function(data, vis) {
 
+// ttip class and placeholder attribute for tooltips
   var template = cdb.core.Template.compile(
     data.template || '\
       <form>\
         <span class="loader"></span>\
-        <input type="text" class="text" value="" />\
+        <input type="text" class="text" data-tooltip="” value="" placeholder="Enter street address"/>\
         <input type="submit" class="submit" value="" />\
       </form>\
     ',

@@ -1,5 +1,6 @@
 <div id="map"></div>
 
+<div class="infobox">
 <div id="age_selector" class="cartodb-infobox">
    <ul>
         <li data="all" class="selected">All Years</li>
@@ -21,6 +22,7 @@
       <ul>
         <li data="all" class="selected">All</li>
         <li data="Yes">Certified to give medicine</li>
-        <!-- <li data="No">Not certified to give medicine</li> -->
+        <li data="No">Not certified to give medicine</li>
       </ul>
+</div>
 </div>
