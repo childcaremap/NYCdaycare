@@ -31946,6 +31946,7 @@ cdb.vis.Overlay.register('share', function(data, vis) {
 // search content
 cdb.vis.Overlay.register('search', function(data, vis) {
 
+// ttip class and placeholder attribute for tooltips
   var template = cdb.core.Template.compile(
     data.template || '\
       <form>\
