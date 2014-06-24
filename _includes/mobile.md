@@ -21,8 +21,8 @@
 <div id="medicine_selector" class="cartodb-infobox">
       <ul>
         <li data="all" class="selected">All</li>
+        <li data="No">Not certified to give medicine</li>
         <li data="Yes">Certified to give medicine</li>
-        <!-- <li data="No">Not certified to give medicine</li> -->
       </ul>
 </div>
 </div>
