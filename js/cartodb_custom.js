@@ -31950,7 +31950,7 @@ cdb.vis.Overlay.register('search', function(data, vis) {
     data.template || '\
       <form>\
         <span class="loader"></span>\
-        <input type="text" class="text" value="" />\
+        <input type="text" class="text ttip" value="" placeholder="Enter street address"/>\
         <input type="submit" class="submit" value="" />\
       </form>\
     ',
