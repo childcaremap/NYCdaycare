@@ -31951,9 +31951,7 @@ cdb.vis.Overlay.register('search', function(data, vis) {
     data.template || '\
       <form>\
         <span class="loader"></span>\
-        <div class="ttip" data-tooltip="Search by street address” alt="">\
-        <input type="text" class="text" value="" placeholder="Enter street address"/>\
-        </div>\
+        <input type="text" class="text" data-tooltip="” value="" placeholder="Enter street address"/>\
         <input type="submit" class="submit" value="" />\
       </form>\
     ',
