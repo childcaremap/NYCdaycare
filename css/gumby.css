@@ -1681,3 +1681,9 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 .ie8 .ttip:hover:before, .ie8 .ttip:hover:after { display: block; }
 
 .ie9 .radio.checked i, .ie9 .checkbox.checked i { top: 0; }
+
+@media only screen and (max-width: 320px) { background: gray;
+  h1, h2, h3, h4, h5, h6 { word-wrap: break-word; } }
+@media only screen and (max-width: 767px) { h1, h2, h3, h4, h5, h6 { word-wrap: break-word; }
+  .head h1 a { color: white; margin-left: 0px; }
+  .infobox { display: none; } }
