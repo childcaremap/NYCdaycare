@@ -108,8 +108,6 @@ button + button { margin-left: 5px; }
 /* line 14, ../_sass/app.scss */
 html { background-color: #FFF; }
 
-@media (min-width: 20rem) { body { margin: 0rem 1rem; } }
-@media (min-width: 60rem) { body { margin: 0rem 1rem; } }
 h1, h2 { font-size: 2rem; font-weight: 700; }
 
 .container { height: 95%; }
