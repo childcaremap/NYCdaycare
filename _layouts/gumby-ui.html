@@ -40,22 +40,49 @@
 
     <div class="container"> <!---->
 
-        <div class="head">
-            <!--a class="extra" href="{{ site.baseurl }}/dev">Dev</a-->
-            <h1><a href="{{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
-            <p>Map of daycare centers with permit issued by NYC DoHMH.</p>
+<div class="navbar head" id="nav1">
+  <!-- Toggle for mobile navigation, targeting the <ul> -->
+  <a class="toggle" gumby-trigger="#nav1 > ul" href="#"><i class="icon-menu"></i></a>
+  <h1>
+    <a href="#">
+        <a href="{{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
+    </a>
+  </h1>
+</div>
+
+    <div id="map"></div>
+    <div class="infobox">
+        <div id="age_selector" class="cartodb-infobox">
+            <ul>
+            <li data="all" class="selected">All Years</li>
+            <li data="0 YEARS - 2 YEARS">0 - 2 Years</li>
+            <li data="2 YEARS - 5 YEARS">2 - 5 Years</li>
+            </ul>
         </div>
-        <p>
-        <hr>
-        </p>
+        <div id="type_selector" class="cartodb-infobox">
+            <ul>
+                <li data="all" class="selected">All Types</li>
+                <li data="Private">Private</li>
+                <li data="ACS Head Start">ACS Head Start</li>
+                <li data="ACS Contracted Preschools">ACS Contracted Preschools</li>
+                <li data="Head Start (Direct Fed. Funding)">Head Start Direct Fed Funding</li>
+                <li data="Corporate">Corporate</li>
+            </ul>
+            </div>
+        <div id="medicine_selector" class="cartodb-infobox">
+            <ul>
+                <li data="all" class="selected">All</li>
+                <li data="No">Not certified to give medicine</li>
+                <li data="Yes">Certified to give medicine</li>
+            </ul>
+        </div>
+    </div>
 
     {{ content }}
 
         <div class="footer">
-            <hr>
-
 <p>
-This map was made with great help from the <a href="http://betanyc.us/" target="new window">BetaNYC</a> community. This is work in progress, check out the current status on our <a href="https://github.com/child-care-map/NYCmap" target="new window">github repo</a>.
+Map of daycare centers with permit issued by NYC DoHMH. This map was made with great help from the <a href="http://betanyc.us/" target="new window">BetaNYC</a> community. This is work in progress, check out the current status on our <a href="https://github.com/child-care-map/NYCmap" target="new window">github repo</a>.
 </p>
         </div>
 

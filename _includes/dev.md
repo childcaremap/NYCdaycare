@@ -1,6 +1,6 @@
-<br><hr><br>
+<hr>
 
-<h2>Sample Maps</h2>
+<p><strong>Sample Maps</strong></p>
 
 <a href="multiple_selects.html">Multiple-layer selector example | CartoDB.js</a>
 
