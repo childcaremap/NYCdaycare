@@ -78,16 +78,54 @@
     <script src="{{ site.baseurl }}/js/cartodb_custom.js"></script>
 
     <script>
+      
+      function filterData(medicinetype,sitetype,agerange,layer) {
+        //cover all possible cases
+        var query;
+        if(medicinetype != 'all' && sitetype != 'all' && agerange != 'all') {
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+          }
+          //
+        if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
+            query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+          }            
+          //
+        if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+          }
+          //
+        if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
+          }
+          //
+        if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
+            query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+          }
+          //
+        if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
+            query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'";
+          }
+          //
+        if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'";
+          }
+          //
+        if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
+            query = "select * from basicinfo_combined";
+          }
+
+          // change the query in the layer to update the map
+        layer.setQuery(query);
+      }
+
       // create layer selector
       function createSelector(layer) {
         var sql = new cartodb.SQL({ user: 'nycdaycaremap' });
-        
         
         //set three variables intially at all
         var agerange = $('#age_selector li').attr('data');
         var sitetype = $('#type_selector li').attr('data');
         var medicinetype = $('#medicine_selector li').attr('data');
-        
 
         //age
         var $options_age = $('#age_selector li');
@@ -96,7 +134,6 @@
           var $li = $(e.target);
           agerange = $li.attr('data');
 
-
           // deselect all and select the clicked one
           $options_age.removeClass('selected');
           $li.addClass('selected');
@@ -104,55 +141,17 @@
           // create query based on data from the layer
           //var query = "select * from basicinfo_combined";
 
-          
-          //all possible cases
-          if(medicinetype != 'all' && sitetype != 'all' && agerange != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }
-            //
-          if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }            
-            //
-          if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }
-            //
-          if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
-            }
-            //
-          if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }
-            //
-          if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'";
-            }
-            //
-          if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'";
-            }
-            //
-          if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
-              query = "select * from basicinfo_combined";
-            }
-
-          // change the query in the layer to update the map
-          layer.setQuery(query);
-
+          filterData(medicinetype,sitetype,agerange,layer);
         });
         
         
-//site type
+        //site type
         var $options_type = $('#type_selector li');
         $options_type.click(function(e) {
           // get the data of the selected layer
           var $li = $(e.target);
           sitetype = $li.attr('data');
 
-
- 
           // deselect all and select the clicked one
           $options_type.removeClass('selected');
           $li.addClass('selected');
@@ -160,52 +159,15 @@
           // create query based on data from the layer
           //var query = "select * from basicinfo_combined";
 
-          //all possible cases
-          if(medicinetype != 'all' && sitetype != 'all' && agerange != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }
-            //
-          if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }            
-            //
-          if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }
-            //
-          if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
-            }
-            //
-          if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }
-            //
-          if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'";
-            }
-            //
-          if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'";
-            }
-            //
-          if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
-              query = "select * from basicinfo_combined";
-            }
-
-
-          // change the query in the layer to update the map
-          layer.setQuery(query);
+          filterData(medicinetype,sitetype,agerange,layer);
         });
         
-//medicine
-
+        //medicine
         var $options_medicine = $('#medicine_selector li');
         $options_medicine.click(function(e) {
           // get the data of the selected layer
           var $li = $(e.target);
           medicinetype = $li.attr('data');
-
 
           // deselect all and select the clicked one
           $options_medicine.removeClass('selected');
@@ -214,47 +176,12 @@
           // create query based on data from the layer
           //var query = "select * from basicinfo_combined";
 
-          
-          //all possible cases
-          if(medicinetype != 'all' && sitetype != 'all' && agerange != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }
-            //
-          if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }            
-            //
-          if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }
-            //
-          if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
-            }
-            //
-          if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
-            }
-            //
-          if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'";
-            }
-            //
-          if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
-              query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'";
-            }
-            //
-          if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
-              query = "select * from basicinfo_combined";
-            }
-
-          // change the query in the layer to update the map
-          layer.setQuery(query);
+          filterData(medicinetype,sitetype,agerange,layer);
         });
       }
 
       function main() {
-              var map;
+        var map;
  
         // create google maps map
         var mapOptions = {
@@ -274,14 +201,13 @@
             elementType: "geometry",
             stylers: [
               { lightness: 10 },
-           
-           { visibility: "simplified" }
+              { visibility: "simplified" }
             ]
           },{
             featureType: "road",
             elementType: "labels",
             stylers: [
-              { visibility: "off" }
+              { visibility: "on" }
             ]
           }
         ];
