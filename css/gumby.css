@@ -1682,12 +1682,11 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 .ie9 .radio.checked i, .ie9 .checkbox.checked i { top: 0; }
 
-@media only screen and (max-width: 320px) { background: gray;
-  h1, h2, h3, h4, h5, h6 { word-wrap: break-word; } }
+@media only screen and (max-width: 320px) { div.cartodb-searchbox { width: 250px !important; height: 30px; top: 40px !important; right: 0.5rem !important; margin: 0px; } }
 @media only screen and (max-width: 767px) { h1, h2, h3, h4, h5, h6 { word-wrap: break-word; }
-  .head h1 a { margin-left: 0px; }
+  .head h1 a { margin-left: !important; }
   .infobox { display: none; }
-  #footer { font-size: 10px; font-size: 0.625rem; } }
+  #footer { font-size: 10px; font-size: 0.625rem; line-height: 1rem; } }
 .container { height: 100%; }
 
 #footer { color: white; position: fixed; bottom: 0; padding: 5px; }
