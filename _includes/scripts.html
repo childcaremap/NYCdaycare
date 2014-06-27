@@ -82,40 +82,67 @@
       function filterData(medicinetype,sitetype,agerange,layer) {
         //cover all possible cases
         var query;
-        if(medicinetype != 'all' && sitetype != 'all' && agerange != 'all') {
+        var query2;
+        if(agerange != 'all' && sitetype != 'all' && medicinetype != 'all') {
             query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+            if(medicinetype == 'No'){
+              query2 = "select * from homebaseddaycare";
+            } else {
+              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+            }
           }
           //
         if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
             query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+            if(medicinetype == 'No'){
+              query2 = "select * from homebaseddaycare";
+            } else {
+              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+            }
+              
           }            
           //
         if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
             query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+            if(medicinetype == 'No'){
+              query2 = "select * from homebaseddaycare";
+            } else {
+              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+            }
           }
           //
         if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
             query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
+            query2 = "select * from homebaseddaycare WHERE facility_status is null";
           }
           //
         if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
             query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+            if(medicinetype == 'No'){
+              query2 = "select * from homebaseddaycare";
+            } else {
+              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+            }
           }
           //
         if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
             query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'";
+            query2 = "select * from homebaseddaycare WHERE facility_status is null";
           }
           //
         if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
             query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'";
+            query2 = "select * from homebaseddaycare";
           }
           //
-        if(medicinetype == 'all' && sitetype == 'all' && agerange == 'all') {
+        if(agerange == 'all' && sitetype == 'all' &&  medicinetype == 'all') {
             query = "select * from basicinfo_combined";
+            query2 = "select * from homebaseddaycare";
           }
 
           // change the query in the layer to update the map
-        layer.setQuery(query);
+        layer.setQuery(0,query);
+        layer.setQuery(1,query2);
       }
 
       // create layer selector
@@ -224,7 +251,9 @@
           cartodb.log.log("some error occurred");
         })
         .done(function(layer) {
-          layer.getSubLayer(1).hide();
+          //layer.getSubLayer(1).hide();
+          var sublayer = layer.getSubLayer(1);
+          //sublayer.setSQL("SELECT * FROM homebaseddaycare WHERE facility_status IN ('Pending Revocation','Suspended','Pending Revocation and Denial','Pending Denial')");
         });
       }
 
