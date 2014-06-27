@@ -213,7 +213,7 @@
         ];
         map.setOptions({styles: styles});
         // create layer and add to the map, then add some intera
-        cartodb.createLayer(map, 'http://nycdaycaremap.cartodb.com/api/v2/viz/ba2bce4e-f333-11e3-816d-0e230854a1cb/viz.json')
+        cartodb.createLayer(map,'http://nycdaycaremap.cartodb.com/api/v2/viz/ba2bce4e-f333-11e3-816d-0e230854a1cb/viz.json')
         .addTo(map)
         .on('done', function(layer) {
           var v = cdb.vis.Overlay.create('search', map.viz, {})
@@ -222,6 +222,9 @@
         })
         .on('error', function() {
           cartodb.log.log("some error occurred");
+        })
+        .done(function(layer) {
+          layer.getSubLayer(1).hide();
         });
       }
 
