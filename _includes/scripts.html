@@ -84,26 +84,35 @@
         var query;
         var query2;
         if(agerange != 'all' && sitetype != 'all' && medicinetype != 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+          if(sitetype != 'Home-Based'){
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'AND certified_to_administer_medication like '%"+medicinetype+"%'";
+            query2 = "select * from homebaseddaycare WHERE facility_status is null";
+          }  else {
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'AND certified_to_administer_medication like '%"+medicinetype+"%'";
             if(medicinetype == 'No'){
               query2 = "select * from homebaseddaycare";
             } else {
               query2 = "select * from homebaseddaycare WHERE facility_status is null";
             }
           }
+        }
           //
         if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+          if(sitetype != 'Home-Based'){
+            query = "SELECT * FROM basicinfo_combined WHERE site_type like '%"+sitetype+"%' AND certified_to_administer_medication like '%"+medicinetype+"%'";
+              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+          } else{
+            query = "SELECT * FROM basicinfo_combined WHERE site_type like '%"+sitetype+"%' AND certified_to_administer_medication like '%"+medicinetype+"%'";
             if(medicinetype == 'No'){
               query2 = "select * from homebaseddaycare";
             } else {
               query2 = "select * from homebaseddaycare WHERE facility_status is null";
-            }
-              
-          }            
+            } 
+          }    
+        }            
           //
         if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND certified_to_administer_medication like '%"+medicinetype+"%'";
             if(medicinetype == 'No'){
               query2 = "select * from homebaseddaycare";
             } else {
@@ -112,12 +121,17 @@
           }
           //
         if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'"+"AND site_type like "+ "'%"+sitetype+"%'";
+          if(sitetype != 'Home-Based'){
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'";
             query2 = "select * from homebaseddaycare WHERE facility_status is null";
-          }
+          } else {
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'";
+            query2 = "select * from homebaseddaycare";
+          }   
+        }
           //
         if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like "+ "'%"+medicinetype+"%'";
+            query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like '%"+medicinetype+"%'";
             if(medicinetype == 'No'){
               query2 = "select * from homebaseddaycare";
             } else {
@@ -126,12 +140,17 @@
           }
           //
         if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE site_type like "+ "'%"+sitetype+"%'";
+          if(sitetype != 'Home-Based'){
+            query = "SELECT * FROM basicinfo_combined WHERE site_type like '%"+sitetype+"%'";
             query2 = "select * from homebaseddaycare WHERE facility_status is null";
-          }
+          } else {
+            query = "SELECT * FROM basicinfo_combined WHERE site_type like '%"+sitetype+"%'";
+            query2 = "select * from homebaseddaycare";
+          }   
+        }
           //
         if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE "+ "'%"+agerange+"%'";
+            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%'";
             query2 = "select * from homebaseddaycare";
           }
           //
