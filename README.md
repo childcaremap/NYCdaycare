@@ -1,7 +1,7 @@
 =====================
 childcaremap/NYCdaycare
 =====================
-Project to map licensed day care centers for children 0-5 years in New York City.
+Project to map licensed day care centers specifically for children 0-5 years in New York City.
 
 Data from NYC Department of Health and Mental Hygiene:
 
@@ -10,7 +10,7 @@ Data from NYC Department of Health and Mental Hygiene:
 
 Located home-based child care information for download (or API access) on NY State Open Data Portal: https://data.ny.gov/Human-Services/Child-Care-Regulated-Programs/cb42-qumz
 
-Current status is that we map the daycare centers, provide basic information (phone number, capacity, age range, etc). Ranking based on summarization of health inspection results is still work in progress.
+Current status is that we map the daycare centers, provide basic information (phone number, capacity, age range, etc) and we provide filter options. Ranking based on summarization of health inspection results is  work in progress.
 
 Attempts to get data released though NYC Open Data Portal failed, therefore we are scraping the data where necessary (basic information for home-based day cares is available, see above).
 
@@ -27,7 +27,7 @@ Group-based child care permits are issued for 0-2 years or 2-5 years, therefore 
 
 Mapping:
 
-Right now, cartoDB is used for the mapping. We are looking into their SQL API to update data autonatically. We are using the CartoDB.js API for filtering.
+We use cartoDB for the mapping. We are using the CartoDB.js API for filtering. We are looking into their SQL API to update data automatically. 
 
 [To view default map](http://childcaremap.github.io/NYCdaycare/)
 
