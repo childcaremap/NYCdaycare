@@ -43,7 +43,7 @@
 <div class="pretty navbar row nav1" id="nav1">
   <!-- Toggle for mobile navigation, targeting the <ul> -->
   <a class="toggle" gumby-trigger=".nav1 > ul" href="#"><i class="icon-menu"></i></a>
-  <h1 class="four columns header">
+  <h1 class="ten columns header">
     <a href="#">
         <a href="{{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
     </a>
@@ -64,12 +64,23 @@
   </ul>
 </div>
 
-<!--filterbar -->
-<div class="row mob-filter" style="min-height:30px;">
-    <ul class="twelve columns">
-        <li class="" style="padding-right:20px">listing:xxx</li>
-        <li class="" style="padding-right:20px"><a href="#">list icn</a></li>
-        <li class=""><div class="btn medium primary"><a href="#" class="switch" gumby-trigger=".infobox">Filter</a></div></li>
+<!--mobile searchbar -->
+<div class="row searchbar">
+    <div class="cartodb-searchbox">
+        <form>
+            <span class="loader"></span>
+            <input type="text" class="text" data-tooltip="” value="" placeholder="Enter street address"><input type="submit" class="submit" value=" "="">
+            <a href="#" class="location"><i class="icon-direction"></i></i></a>
+        </form>
+    </div>
+</div>
+
+<!--mobile filterbar -->
+<div class="row mob-filter" style="min-height:0px;">
+    <ul class="twelve columns" style="">
+        <li class="" style="padding-right:20px;">listing:xxx</li>
+        <li class="" style="padding-right:20px;"><a href="#"><i class="icon-list"></i></a></li>
+        <li class="" style=""><div class="btn medium primary"><a href="#" class="switch" gumby-trigger=".infobox">Filter</a></div></li>
         </ul>
 </div>
 

@@ -1682,23 +1682,24 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 .ie9 .radio.checked i, .ie9 .checkbox.checked i { top: 0; }
 
-@media only screen and (max-width: 767px) { div.cartodb-searchbox { width: 250px !important; height: 30px; top: 40px !important; right: 0.5rem !important; margin: 0px; } }
+@media only screen and (max-width: 767px) { .searchbar { background-color: lightblue; min-height: 40px; border-bottom: 0px solid gray; }
+  div.cartodb-searchbox { width: 300px !important; height: 20px; top: 5px !important; left: 3rem !important; margin: 0px; float: none !important; }
+  .location { left: 19rem; position: relative; }
+  h1, h2, h3, h4, h5, h6 { word-wrap: break-word; }
+  h1.header a { margin-left: 3px !important; }
+  #footer { font-size: 10px; font-size: 0.625rem; line-height: 1rem; } }
 @media only screen and (max-width: 767px) { .infobox { display: none !important; } }
 
-@media only screen and (min-width: 768px) { .mob-search { display: none !important; } }
-@media only screen and (min-width: 768px) and (max-width: 1279px) { .mob-search { display: none !important; } }
+@media only screen and (min-width: 768px) { .mob-filter, .searchbar { display: none !important; } }
+@media only screen and (min-width: 768px) and (max-width: 1279px) { .mob-filter, .searchbar { display: none !important; } }
 
-@media only screen and (min-width: 768px) { .mob-filter { display: none !important; } }
-@media only screen and (min-width: 768px) and (max-width: 1279px) { .mob-filter { display: none !important; } }
+@media only screen and (max-width: 767px) { #map div.cartodb-searchbox { display: none !important; } }
 
-@media only screen and (max-width: 767px) { .active, .mobsearch { display: inherit !important; } }
+@media only screen and (max-width: 767px) { .active, .searchbar { display: inherit !important; } }
 
 @media only screen and (min-width: 768px) { #nav1 .btn { display: inherit !important; } }
 @media only screen and (min-width: 768px) and (max-width: 1279px) { #nav1 .btn { display: inherit !important; } }
 
-@media only screen and (max-width: 767px) { h1, h2, h3, h4, h5, h6 { word-wrap: break-word; }
-  h1.header a { margin-left: 3px !important; }
-  #footer { font-size: 10px; font-size: 0.625rem; line-height: 1rem; } }
 .container { height: 100%; }
 
 #footer { color: white; position: fixed; bottom: 0; padding: 5px; }
