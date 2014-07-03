@@ -66,21 +66,29 @@
 
 <!--mobile searchbar -->
 <div class="row searchbar">
-    <div class="cartodb-searchbox">
+    <ul>
+        <li>
+        <div class="twelve columns cartodb-searchbox mobile">
         <form>
             <span class="loader"></span>
-            <input type="text" class="text" data-tooltip="” value="" placeholder="Enter street address"><input type="submit" class="submit" value=" "="">
-            <a href="#" class="location"><i class="icon-direction"></i></i></a>
+            <input type="text" class="text" data-tooltip="” value="" placeholder="Enter street address">
+            <input type="submit" class="submit" value=" ">
         </form>
-    </div>
+        </div>
+        </li>
+        <!--li>
+        <div class="two columns location"><a href="#" class=""><i class="icon-direction"></i></a>
+        </div>
+        </li-->
+    </ul>
 </div>
 
 <!--mobile filterbar -->
-<div class="row mob-filter" style="min-height:0px;border-bottom:1px solid lightgray;">
-    <ul class="twelve columns" style="">
-        <li class="" style="padding-right:90px;">listing:xxx</li>
-        <li class="" style="padding-right:90px;"><a href="#"><i class="icon-list"></i></a></li>
-        <li class=""><div class="btn medium info entypo icon-right icon-gauge"><a href="#" class="switch" gumby-trigger=".infobox">Filter</a></div></li>
+<div class="row nav2 filterbar" id="nav2">
+    <ul class="twelve columns">
+        <li class="" style="font-size:.8rem;padding-left:5px;vertical-align:middle;"><strong>Showing:</strong> xxx</li>
+        <li class="" style="font-size:2rem;vertical-align:middle;"><div><a href="#" class="ttip" data-tooltip="Show Listing" alt=" "><i class="icon-list"></i></a></div></li>
+        <li class="" style="vertical-align:middle;padding-right:5px;"><div class="medium info pretty btn icon-left icon-gauge"><a href="#" class="switch" gumby-trigger=".infobox">Filter</a></div></li>
         </ul>
 </div>
 
