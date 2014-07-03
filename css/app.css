@@ -1,11 +1,11 @@
 /* Cartdb.css selectors */
 html, body, #map { height: 100%; padding: 0; }
 
-#age_selector { position: absolute; top: 150px; padding: 0; width: 230px; }
+#age_selector { position: absolute; top: 150px; left: 50px; padding: 0; width: 230px; }
 
-#type_selector { position: absolute; top: 270px; padding: 0; width: 230px; }
+#type_selector { position: absolute; top: 270px; left: 50px; padding: 0; width: 230px; }
 
-#medicine_selector { position: absolute; top: 500px; padding: 0; width: 230px; }
+#medicine_selector { position: absolute; top: 500px; left: 50px; padding: 0; width: 230px; }
 
 #age_selector ul { padding: 0; margin: 0; list-style-type: none; }
 
