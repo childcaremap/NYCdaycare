@@ -66,21 +66,29 @@
 
 <!--mobile searchbar -->
 <div class="row searchbar">
-    <div class="cartodb-searchbox">
+    <ul>
+        <li>
+        <div class="twelve columns cartodb-searchbox mobile">
         <form>
             <span class="loader"></span>
-            <input type="text" class="text" data-tooltip="” value="" placeholder="Enter street address"><input type="submit" class="submit" value=" "="">
-            <a href="#" class="location"><i class="icon-direction"></i></i></a>
+            <input type="text" class="text" data-tooltip="” value="" placeholder="Enter street address">
+            <input type="submit" class="submit" value=" ">
         </form>
-    </div>
+        </div>
+        </li>
+        <!--li>
+        <div class="two columns location"><a href="#" class=""><i class="icon-direction"></i></a>
+        </div>
+        </li-->
+    </ul>
 </div>
 
 <!--mobile filterbar -->
-<div class="row mob-filter" style="min-height:0px;border-bottom:1px solid lightgray;">
-    <ul class="twelve columns" style="">
-        <li class="" style="padding-right:90px;">listing:xxx</li>
-        <li class="" style="padding-right:90px;"><a href="#"><i class="icon-list"></i></a></li>
-        <li class=""><div class="btn medium info entypo icon-right icon-gauge"><a href="#" class="switch" gumby-trigger=".infobox">Filter</a></div></li>
+<div class="row nav2 filterbar" id="nav2">
+    <ul class="twelve columns">
+        <li class="" style="font-size:.8rem;padding-left:10px;vertical-align:middle;"><strong>Showing:</strong> xxx</li>
+        <li class="" style="font-size:2rem;vertical-align:middle;"><div><a href="#" class="ttip" data-tooltip="Show Listing" alt=" "><i class="icon-list"></i></a></div></li>
+        <li class="" style="vertical-align:middle;padding-right:10px;"><div class="medium info pretty btn icon-left icon-gauge"><a href="#" class="switch" gumby-trigger=".infobox">Filter</a></div></li>
         </ul>
 </div>
 
@@ -118,7 +126,7 @@
 
 
     <div id="footer" class="row navbar pretty">
-        Map of regulated day care centers, last updated June 12 2014. This map was made with great help from the <a href="http://betanyc.us/" target="new window">BetaNYC</a> community. <br>This is work in progress, check out the current status on our <a href="https://github.com/child-care-map/NYCmap" target="new window">github repo</a>.
+        Map of regulated day care centers, last updated June 12 2014. This map was made with generous help from the <a href="http://betanyc.us/" target="new window">BetaNYC</a> community. This is a work in progress. Check out the current status on <a href="https://github.com/child-care-map/NYCmap" target="new window">Github</a>.
     </div>
 
 <!-- /container -->
