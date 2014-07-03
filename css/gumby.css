@@ -1685,7 +1685,7 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 @media only screen and (max-width: 767px) { .searchbar { background-color: white; min-height: 40px; }
   .filterbar { width: 100% !important; margin: 0px; padding: 0px; background-color: lightblue; border-bottom: 1px solid gray; }
   .filterbar ul { width: 100%; display: table; top: 0px; background-color: transparent; margin: 0px; padding: 0px; }
-  .filterbar ul li { width: 50%; display: table-cell; margin: 0px; padding: 0px; }
+  .filterbar ul li { width: 55%; display: table-cell; margin: 0px; padding: 0px; }
   .location { /*position: relative;*/ }
   h1, h2, h3, h4, h5, h6 { word-wrap: break-word; }
   h1.header a { margin-left: 3px !important; }
