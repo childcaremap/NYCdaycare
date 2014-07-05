@@ -1,11 +1,11 @@
 /* Cartdb.css selectors */
-html, body, #map { height: 100%; padding: 0; }
+html, body, #map, .container { height: 100%; padding: 0; }
 
-#age_selector { position: absolute; top: 150px; padding: 0; width: 230px; }
+#age_selector { position: absolute; top: 140px; padding: 0; width: 230px; }
 
-#type_selector { position: absolute; top: 270px; padding: 0; width: 230px; }
+#type_selector { position: absolute; top: 250px; padding: 0; width: 230px; }
 
-#medicine_selector { position: absolute; top: 500px; padding: 0; width: 230px; }
+#medicine_selector { position: absolute; top: 460px; padding: 0; width: 230px; }
 
 #age_selector ul { padding: 0; margin: 0; list-style-type: none; }
 
@@ -13,7 +13,7 @@ html, body, #map { height: 100%; padding: 0; }
 
 #medicine_selector ul { padding: 0; margin: 0; list-style-type: none; }
 
-.cartodb-infobox ul li { border-bottom: 1px solid #999; padding: 5px 20px; font-family: "Helvetica", Arial; font-size: 13px; color: #444; cursor: auto; }
+.cartodb-infobox ul li { border-bottom: 1px solid #999; padding: 3px 20px; font-family: "Helvetica", Arial; font-size: 12px; font-weight: 600; color: #444; cursor: auto; }
 
 /* This has been made DRY deprecated */
 /*#age_selector li { border-bottom: 1px solid #999; padding: 10px 20px; font-family: "Helvetica", Arial; font-size: 13px; color: #444; cursor: auto;
