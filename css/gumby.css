@@ -1682,7 +1682,8 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 .ie9 .radio.checked i, .ie9 .checkbox.checked i { top: 0; }
 
-@media only screen and (max-width: 767px) { .searchbar { background-color: white; min-height: 40px; }
+@media only screen and (max-width: 767px) { .skiplink { background: none; }
+  .searchbar { background-color: white; min-height: 40px; }
   .filterbar { width: 100% !important; margin: 0px; padding: 0px; background-color: lightblue; border-bottom: 1px solid gray; }
   .filterbar ul { width: 100%; display: table; top: 0px; background-color: transparent; margin: 0px; padding: 0px; }
   .filterbar ul li { width: 55%; display: table-cell; margin: 0px; padding: 0px; }
@@ -1690,8 +1691,8 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
   h1, h2, h3, h4, h5, h6 { word-wrap: break-word; }
   h1.header a { margin-left: 3px !important; }
   #footer { font-size: 10px; font-size: 0.625rem; line-height: 1rem; } }
-@media only screen and (max-width: 320px) { div.cartodb-searchbox.mobile { /*width: 280px!important;*/ float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
-@media only screen and (min-width: 321px) and (max-width: 767px) { div.cartodb-searchbox.mobile { /*width: 440px!important;*/ float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
+@media only screen and (max-width: 320px) { div.cartodb-searchbox.mobile { float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
+@media only screen and (min-width: 321px) and (max-width: 767px) { div.cartodb-searchbox.mobile { float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
 @media only screen and (max-width: 767px) { .infobox { display: none !important; } }
 
 @media only screen and (min-width: 768px) { .filterbar, .searchbar { display: none !important; } }
@@ -1701,12 +1702,13 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 @media only screen and (max-width: 767px) { .active, .searchbar { display: inherit !important; } }
 
-@media only screen and (min-width: 768px) { #nav1 .btn { display: inherit !important; } }
-@media only screen and (min-width: 768px) and (max-width: 1279px) { #nav1 .btn { display: inherit !important; } }
+/*#nav1 .btn { @include visible(desktop); @include visible(tablets);
+}*/
+#footer { min-height: 20px; color: white; background-color: black; font-size: 10px; font-weight: 700; position: fixed; bottom: 0px; padding: 5px 0px; }
 
-.container { height: 100%; }
+#footer ul { width: 100%; display: table; margin: 0px; padding: 0 0 0 10px; }
 
-#footer { color: white; position: fixed; bottom: 0; padding: 5px; }
+#footer ul li { display: table-cell; margin: 0px; padding: 0px; }
 
 .navbar { margin-bottom: 0px; }
 
@@ -1726,3 +1728,13 @@ h1, h2 { font-size: 2rem; font-weight: 700; }
 h1.header a { font-size: 1.5rem; margin-left: 0px; color: white; }
 
 .infobox { margin-left: 1rem; }
+
+h1.txt, p.txt { color: white; -webkit-transition: all 3s; -moz-transition: all 3s; -o-transition: all 3s; transition: all 3s; }
+
+h1.txt.onscreen, p.txt.onscreen { color: black; }
+
+.about-box { height: 420px; padding: 1rem; margin: 2rem 2em; border: 1px solid gray; }
+
+.icon-github { color: white; font-size: 16px; }
+
+.icon-home { font-size: 26px; text-align: center; }

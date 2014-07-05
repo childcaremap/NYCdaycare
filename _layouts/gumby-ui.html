@@ -40,7 +40,7 @@
 
 <div class="container"> <!--container-->
 
-<div class="pretty navbar row nav1" id="nav1">
+<div gumby-fixed="1" gumby-pinoffset="0" class="pretty navbar row nav1" id="nav1">
   <!-- Toggle for mobile navigation, targeting the <ul> -->
   <a class="toggle" gumby-trigger=".nav1 > ul" href="#"><i class="icon-menu"></i></a>
   <h1 class="ten columns header">
@@ -55,9 +55,9 @@
       <a href="#">About</a>
       <div class="dropdown">
         <ul>
-          <li><a href="#">How it started</a></li>
-          <li><a href="#">The map</a></li>
-          <li><a href="#">The team</a></li>
+          <li class="skiplink"><a href="#the-story" gumby-update gumby-duration="600" gumby-goto="[data-target='the-story']">How it started</a></li>
+          <li class="skiplink"><a href="#the-map" gumby-update gumby-duration="600" gumby-goto="[data-target='the-map']">The map</a></li>
+          <li class="skiplink"><a href="#the-team" gumby-update gumby-duration="600" gumby-goto="[data-target='the-team']">The team</a></li>
         </ul>
       </div>
     </li>
@@ -71,7 +71,7 @@
         <div class="twelve columns cartodb-searchbox mobile">
         <form>
             <span class="loader"></span>
-            <input type="text" class="text" data-tooltip="” value="" placeholder="Enter street address">
+            <input type="text" class="text" value="" placeholder="Enter street address"><!--data-tooltip="” -->
             <input type="submit" class="submit" value=" ">
         </form>
         </div>
@@ -89,7 +89,7 @@
         <li class="" style="font-size:.8rem;padding-left:10px;vertical-align:middle;"><strong>Showing:</strong> xxx</li>
         <li class="" style="font-size:2rem;vertical-align:middle;"><div><a href="#" class="ttip" data-tooltip="Show Listing" alt=" "><i class="icon-list"></i></a></div></li>
         <li class="" style="vertical-align:middle;padding-right:10px;"><div class="medium info pretty btn icon-left icon-gauge"><a href="#" class="switch" gumby-trigger=".infobox">Filter</a></div></li>
-        </ul>
+    </ul>
 </div>
 
 <div id="map"></div>
@@ -124,13 +124,37 @@
 
     {{ content }}
 
-
-    <div id="footer" class="row navbar pretty">
-        Map of regulated day care centers, last updated June 12 2014. This map was made with generous help from the <a href="http://betanyc.us/" target="new window">BetaNYC</a> community. This is a work in progress. Check out the current status on <a href="https://github.com/child-care-map/NYCmap" target="new window">Github</a>.
-    </div>
-
-<!-- /container -->
+<div data-target="the-story" class="about-box inview txt">
+    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="50">The Story</h1>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="50">
+        <a class="inview txt" gumby-classname="onscreen" gumby-offset="50" href="http://www.huffingtonpost.com/marc-shifflett/when-open-data-meets-app_b_5504232.html" target="_blank">Scraping Day Care Data in the Naked City</a>
+    </p>
 </div>
+<p style="text-align: center;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+
+<div data-target="the-map" class="about-box inview txt">
+    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="50">The Map</h1>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="50">This is a map of regulated day care centers within the five boroughs of NYC made possible in large part to the generous assisstance of the <a class="inview txt" gumby-classname="onscreen" gumby-offset="50" href="http://betanyc.us/" target="new window">BetaNYC</a> community.</p>
+</div>
+<p style="text-align: center;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+
+<div data-target="the-team" class="about-box inview txt">
+    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="50">The Team</h1>
+    <o class="inview txt" gumby-classname="onscreen" gumby-offset="50">
+        <a href="http://nycdaycaremap.splashthat.com/" target="_blank">BigAppsNYC</a>
+    </p>    
+</div>
+<p style="text-align:center;margin-bottom:3rem;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+
+<div id="footer" class="row">
+    <ul>
+    <li class="two columns" style="vertical-align:middle;"><a href="#top" gumby-update gumby-goto="[data-target='top']">&copy; NYC Day Care Map</a></li> 
+    <li class="ten columns" style="text-align:right;vertical-align:top;">Check us out on <a href="https://github.com/childcaremap/NYCdaycare" target="new window"><i class="icon-github"></i></a></li>
+    <ul>
+</div>
+
+    <!-- /container -->
+    </div>
 
     {% include scripts.html %} 
 
