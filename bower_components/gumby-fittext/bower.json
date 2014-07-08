@@ -1,0 +1,5 @@
+{
+  "name": "gumby-fittext",
+  "version": "1.0.1",
+  "main": ["./gumby.fittext.js"]
+}

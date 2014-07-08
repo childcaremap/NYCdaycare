@@ -1,40 +1,104 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="Map of group child care services that have been issued permits by the New York City Department of Health. Information such as center name, site type, permit number provided in infowindows.">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en" itemscope="" itemtype="http://schema.org/Product"> <!--<![endif]-->
+<head>
 
-        <title>{{ site.title_tag_text }}</title>
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+             More info: h5bp.com/b/378 -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Map of group child care services that have been issued permits by the New York City Department of Health. Information such as center name, site type, permit number provided in infowindows.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-        <!-- syntax highlighting CSS -->
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
-        {% include head.html %}
+    <!-- Facebook Metadata /-->
+    <meta property="fb:page_id" content="">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="">
+    <meta property="og:title" content="">
+
+    <!-- Google+ Metadata /-->
+    <meta itemprop="name" content="Day Care Map NYC">
+    <meta itemprop="description" content="Map of group child care services that have been issued permits by the New York City Department of Health. Information such as center name, site type, permit number provided in infowindows.">
+    <meta itemprop="image" content="">
+
+
+    <title>{{ site.title_tag_text }}</title>
+
+    <!-- syntax highlighting CSS -->
+
+    {% include head.html %}
 
     </head>
-    <body>
+<body>
 
-    <div class="container"> <!---->
+<div class="container"> <!--container-->
 
-        <div class="head">
-            <!--a class="extra" href="{{ site.baseurl }}/dev">Dev</a-->
-            <h1><a href="{{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
-            <p>Map of daycare centers with permit issued by NYC DoHMH.</p>
-        </div>
-        <p>
-        <hr>
-        </p>
+<div class="pretty navbar row nav1" id="nav1">
+  <!-- Toggle for mobile navigation, targeting the <ul> -->
+  <a class="toggle" gumby-trigger=".nav1 > ul" href="#"><i class="icon-menu"></i></a>
+  <h1 class="ten columns header">
+    <a href="#">
+        <a href="{{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
+    </a>
+  </h1>
+  <ul class="two columns">
+  
+    <!--li><a href="#">Filter</a></li-->
+    <li>
+      <a href="#">About</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="#">How it started</a></li>
+          <li><a href="#">The map</a></li>
+          <li><a href="#">The team</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div id="map"></div>
+
+<div class="infobox">
+    <div id="age_selector" class="cartodb-infobox">
+       <ul>
+        <li data="all" class="selected">All Years</li>
+        <li data="0 YEARS - 2 YEARS">0 - 2 Years</li>
+        <li data="2 YEARS - 5 YEARS">2 - 5 Years</li>
+        </ul>
+    </div>
+    <div id="type_selector" class="cartodb-infobox">
+        <ul>
+        <li data="all" class="selected">All Types</li>
+        <li data="Private">Private</li>
+        <li data="ACS Head Start">ACS Head Start</li>
+        <li data="ACS Contracted Preschools">ACS Contracted Preschools</li>
+        <li data="Head Start (Direct Fed. Funding)">Head Start Direct Fed Funding</li>
+        <!-- <li data="Corporate">Corporate</li> -->
+        <li data="Home-Based">Home-Based (Family Day Care)</li>
+      </ul>
+    </div>
+    <div id="medicine_selector" class="cartodb-infobox">
+        <ul>
+        <li data="all" class="selected">All</li>
+        <li data="Yes">Certified to give medicine</li>
+        <li data="No">Not certified to give medicine</li>
+        </ul>
+    </div>
+</div>
 
     {{ content }}
 
-        <div class="footer">
-            <hr>
-
-<p>
-This map was made with great help from the <a href="http://betanyc.us/" target="new window">BetaNYC</a> community. This is work in progress, check out the current status on our <a href="https://github.com/child-care-map/NYCmap" target="new window">github repo</a>.
-</p>
-        </div>
+    <div id="footer" class="row navbar pretty">
+        Map of regulated day care centers, last updated June 12 2014. This map was made with great help from the <a href="http://betanyc.us/" target="new window">BetaNYC</a> community. <br>This is work in progress, check out the current status on our <a href="https://github.com/child-care-map/NYCmap" target="new window">github repo</a>.
+    </div>
 
     <!-- /container -->
     </div>
