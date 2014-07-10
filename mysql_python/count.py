@@ -82,34 +82,4 @@ with mydb:
     cur.execute("UPDATE BasicSum SET Number_Of_Visits = 0 WHERE Number_Of_Visits IS NULL")
     mydb.commit()
 
-    #Add 2 more columns
-    cur.execute("ALTER TABLE BasicSum ADD Median_Violations_Per_Visit FLOAT")
-    cur.execute("ALTER TABLE BasicSum ADD Mean_Violations_Per_Visit FLOAT")
-    #insert median and mean number of violations per visit
-    cur.execute("SELECT SITE_ID, Visit_Date, COUNT(Violation_Category) FROM Inspections \
-        WHERE Violation_Category != '' AND Visit_Date >  %s GROUP BY Site_ID, Visit_Date", (mindate,))
-    rows = cur.fetchall()
-    LastID = []
-    nviol = []
-    for row in rows:
-        if LastID == []:
-            LastID = row[0]
-            nviol = [row[2]]
-        elif row[0] != LastID:
-            median = np.median(np.array(nviol))
-            mean = np.mean(np.array(nviol))
-            cur.execute("UPDATE BasicSum SET Median_Violations_Per_Visit = %s WHERE Site_ID = %s" , (median,LastID))
-            cur.execute("UPDATE BasicSum SET Mean_Violations_Per_Visit = %s WHERE Site_ID = %s" , (mean,LastID))
-            np.array(nviol)
-            LastID = row[0]
-            nviol = [row[2]]
-        elif row[0] == LastID:
-            nviol.append(row[2]) 
-
-        #cur.execute("UPDATE BasicSum SET Median_Violations_Per_Visit = %s WHERE Site_ID = %s" , (row[1],row[0]))
-    #Make NULL values into 0s
-    cur.execute("UPDATE BasicSum SET Median_Violations_Per_Visit = 0 WHERE Median_Violations_Per_Visit IS NULL AND Number_Of_Visits != 0")
-    cur.execute("UPDATE BasicSum SET Mean_Violations_Per_Visit = 0 WHERE Mean_Violations_Per_Visit IS NULL AND Number_Of_Visits != 0")
-    mydb.commit()
-
 print "Done"
