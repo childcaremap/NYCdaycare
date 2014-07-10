@@ -1,5 +1,6 @@
 import MySQLdb
 import re
+import numpy as np
 
 mydb = MySQLdb.connect(host='localhost',
     user='root',
@@ -9,13 +10,17 @@ with mydb:
 
     cur = mydb.cursor()
 
-    #Make new table and add a column
+    # 2 years prior to scrape date
+    mindate =  '2012-6-12'
+    #Make new table
     cur.execute('DROP TABLE IF EXISTS BasicSum')
     cur.execute("CREATE TABLE BasicSum LIKE Basic")
     cur.execute("INSERT BasicSum SELECT * FROM Basic")
+    #add a column
     cur.execute("ALTER TABLE BasicSum ADD Number_Of_Violations INT")
     #insert sum of violations for each site
-    cur.execute("SELECT SITE_ID, COUNT(Violation_Category) FROM Inspections WHERE Violation_Category != '' GROUP BY Site_ID")
+    cur.execute("SELECT SITE_ID, COUNT(Violation_Category) FROM Inspections \
+        WHERE Violation_Category != '' AND Visit_Date >  %s GROUP BY Site_ID", (mindate,))
     rows = cur.fetchall()
     for row in rows:
         cur.execute("UPDATE BasicSum SET Number_Of_Violations = %s WHERE Site_ID = %s" , (row[1],row[0]))
@@ -27,7 +32,9 @@ with mydb:
     cur.execute("ALTER TABLE BasicSum ADD Hazard_Violations INT")
 
     #insert sum of PUBLIC HEALTH HAZARD violations for each site
-    cur.execute("SELECT SITE_ID, COUNT(Violation_Category) FROM Inspections WHERE Violation_Category = 'PUBLIC HEALTH HAZARD' GROUP BY Site_ID")
+    cur.execute("SELECT SITE_ID, COUNT(Violation_Category) FROM Inspections \
+        WHERE Violation_Category = 'PUBLIC HEALTH HAZARD' AND Visit_Date > %s\
+        GROUP BY Site_ID", (mindate,))
     rows = cur.fetchall()
     for row in rows:
         cur.execute("UPDATE BasicSum SET Hazard_Violations = %s WHERE Site_ID = %s" , (row[1],row[0]))
@@ -39,7 +46,9 @@ with mydb:
     cur.execute("ALTER TABLE BasicSum ADD Critical_Violations INT")
 
     #insert sum of critical violations for each site
-    cur.execute("SELECT SITE_ID, COUNT(Violation_Category) FROM Inspections WHERE Violation_Category = 'CRITICAL' GROUP BY Site_ID")
+    cur.execute("SELECT SITE_ID, COUNT(Violation_Category) FROM Inspections \
+        WHERE Violation_Category = 'CRITICAL' AND Visit_Date > %s\
+        GROUP BY Site_ID", (mindate,))
     rows = cur.fetchall()
     for row in rows:
         cur.execute("UPDATE BasicSum SET Critical_Violations = %s WHERE Site_ID = %s" , (row[1],row[0]))
@@ -51,7 +60,9 @@ with mydb:
     cur.execute("ALTER TABLE BasicSum ADD General_Violations INT")
 
     #insert sum of general violations for each site
-    cur.execute("SELECT SITE_ID, COUNT(Violation_Category) FROM Inspections WHERE Violation_Category = 'GENERAL' GROUP BY Site_ID")
+    cur.execute("SELECT SITE_ID, COUNT(Violation_Category) FROM Inspections \
+        WHERE Violation_Category = 'GENERAL' AND Visit_Date > %s\
+        GROUP BY Site_ID", (mindate,))
     rows = cur.fetchall()
     for row in rows:
         cur.execute("UPDATE BasicSum SET General_Violations = %s WHERE Site_ID = %s" , (row[1],row[0]))
@@ -62,11 +73,43 @@ with mydb:
     #Add another column
     cur.execute("ALTER TABLE BasicSum ADD Number_Of_Visits INT")
     #insert number of visits per site
-    cur.execute("SELECT SITE_ID, COUNT(Visit_Date) FROM InspectionSum GROUP BY Site_ID")
+    cur.execute("SELECT SITE_ID, COUNT(Visit_Date) FROM InspectionSum \
+        WHERE Visit_Date > %s \
+        GROUP BY Site_ID", (mindate,))
     rows = cur.fetchall()
     for row in rows:
         cur.execute("UPDATE BasicSum SET Number_Of_Visits = %s WHERE Site_ID = %s" , (row[1],row[0]))
     cur.execute("UPDATE BasicSum SET Number_Of_Visits = 0 WHERE Number_Of_Visits IS NULL")
+    mydb.commit()
+
+    #Add 2 more columns
+    cur.execute("ALTER TABLE BasicSum ADD Median_Violations_Per_Visit FLOAT")
+    cur.execute("ALTER TABLE BasicSum ADD Mean_Violations_Per_Visit FLOAT")
+    #insert median and mean number of violations per visit
+    cur.execute("SELECT SITE_ID, Visit_Date, COUNT(Violation_Category) FROM Inspections \
+        WHERE Violation_Category != '' AND Visit_Date >  %s GROUP BY Site_ID, Visit_Date", (mindate,))
+    rows = cur.fetchall()
+    LastID = []
+    nviol = []
+    for row in rows:
+        if LastID == []:
+            LastID = row[0]
+            nviol = [row[2]]
+        elif row[0] != LastID:
+            median = np.median(np.array(nviol))
+            mean = np.mean(np.array(nviol))
+            cur.execute("UPDATE BasicSum SET Median_Violations_Per_Visit = %s WHERE Site_ID = %s" , (median,LastID))
+            cur.execute("UPDATE BasicSum SET Mean_Violations_Per_Visit = %s WHERE Site_ID = %s" , (mean,LastID))
+            np.array(nviol)
+            LastID = row[0]
+            nviol = [row[2]]
+        elif row[0] == LastID:
+            nviol.append(row[2]) 
+
+        #cur.execute("UPDATE BasicSum SET Median_Violations_Per_Visit = %s WHERE Site_ID = %s" , (row[1],row[0]))
+    #Make NULL values into 0s
+    cur.execute("UPDATE BasicSum SET Median_Violations_Per_Visit = 0 WHERE Median_Violations_Per_Visit IS NULL AND Number_Of_Visits != 0")
+    cur.execute("UPDATE BasicSum SET Mean_Violations_Per_Visit = 0 WHERE Mean_Violations_Per_Visit IS NULL AND Number_Of_Visits != 0")
     mydb.commit()
 
 print "Done"
