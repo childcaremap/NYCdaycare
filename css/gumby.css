@@ -1704,9 +1704,9 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 /*#nav1 .btn { @include visible(desktop); @include visible(tablets);
 }*/
-#footer { min-height: 20px; color: white; background-color: black; font-size: 10px; font-weight: 700; position: fixed; bottom: 0px; padding: 5px 0px; }
+#footer { min-height: 20px; color: white; background-color: black; font-size: 10px; font-weight: 700; position: fixed; bottom: 0px; padding: 5px 0 0 10px; }
 
-#footer ul { width: 100%; display: table; margin: 0px; padding: 0 0 0 10px; }
+#footer ul { width: 100%; display: table; margin: 0; padding: 0; }
 
 #footer ul li { display: table-cell; margin: 0px; padding: 0px; }
 
