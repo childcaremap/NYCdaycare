@@ -1729,12 +1729,16 @@ h1.header a { font-size: 1.5rem; margin-left: 0px; color: white; }
 
 .infobox { margin-left: 1rem; }
 
-h1.txt, p.txt { color: white; -webkit-transition: all 3s; -moz-transition: all 3s; -o-transition: all 3s; transition: all 3s; }
+h1.txt, p.txt, p.link a, p .link a { color: white; -webkit-transition: all 3s; -moz-transition: all 3s; -o-transition: all 3s; transition: all 3s; }
 
 h1.txt.onscreen, p.txt.onscreen { color: black; }
 
-.about-box { height: 420px; padding: 1rem; margin: 2rem 2em; border: 1px solid gray; }
+p.link.onscreen a { color: #d04526 !important; }
+
+p link.onscreen a { color: #d04526 !important; }
+
+.about-box { height: 400px; padding: 1rem; margin: 1rem 2em; border: 1px solid gray; }
 
 .icon-github { color: white; font-size: 16px; }
 
-.icon-home { font-size: 26px; text-align: center; }
+.icon-home { font-size: 26px; }
