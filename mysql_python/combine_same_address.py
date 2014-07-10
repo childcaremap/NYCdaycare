@@ -23,9 +23,15 @@ def combine_same(filename):
 	 	incri = header.index('Critical_Violations')
 	 	ingen = header.index('General_Violations')
 	 	invis = header.index('Number_Of_Visits')
-	 	iviopervis = len(header)
-	 	ihazpervis = len(header)+1
-	 	itotcap = len(header)+2
+	 	imedvio = header.index('Median_Violations_Per_Visit')
+	 	imeavio = header.index('Mean_Violations_Per_Visit')
+	 	imedran = header.index('Median_Rank')
+	 	imearan = header.index('Mean_Rank')
+	 	imedcat = header.index('Median_Cat')
+	 	imeacat = header.index('Mean_Cat')
+	 	#iviopervis = len(header)
+	 	#ihazpervis = len(header)+1
+	 	#itotcap = len(header)+2
 	 	
 
 		newrows = []  # Initialize clean rows
@@ -35,16 +41,16 @@ def combine_same(filename):
 		    if (row[iaddress], row[izip]) not in address:
 		        address.append((row[iaddress], row[izip]))
 		        newrows.append(row)
-		        ind = len(newrows)-1
-		        if int(row[invis]) is not 0:
-		        	newrows[ind].append("{:.2f}".format(float(row[invio])/float(row[invis])))
-		        else:
-		        	newrows[ind].append('No Visits')
-		        if int(row[invis]) is not 0:
-		        	newrows[ind].append("{:.2f}".format(float(row[inhaz])/float(row[invis])))
-		        else:
-		        	newrows[ind].append('No Visits')
-		        newrows[ind].append(int(row[icap]))
+		        #ind = len(newrows)-1
+		        #if int(row[invis]) is not 0:
+		       # 	newrows[ind].append("{:.2f}".format(float(row[invio])/float(row[invis])))
+		       # else:
+		       # 	newrows[ind].append('No Visits')
+		       #if int(row[invis]) is not 0:
+		       # 	newrows[ind].append("{:.2f}".format(float(row[inhaz])/float(row[invis])))
+		       #else:
+		       # 	newrows[ind].append('No Visits')
+		        #newrows[ind].append(int(row[icap]))
 		    else:
 		    	i_comb = address.index((row[iaddress], row[izip]))
 		    	combid = row[iid] + ', ' + newrows[i_comb][iid]
@@ -70,7 +76,7 @@ def combine_same(filename):
 		    	combtype = row[itype] + ', ' + newrows[i_comb][itype]
 		    	newrows[i_comb][itype] = combtype
 		    	# add up for total capacity
-		    	newrows[i_comb][itotcap] = newrows[i_comb][itotcap] + int(row[icap])
+		    	#newrows[i_comb][itotcap] = newrows[i_comb][itotcap] + int(row[icap])
 		    	combnvio = row[invio] + ', ' + newrows[i_comb][invio]
 		    	newrows[i_comb][invio] = combnvio
 		    	combnhaz = row[inhaz] + ', ' + newrows[i_comb][inhaz]
@@ -81,24 +87,36 @@ def combine_same(filename):
 		    	newrows[i_comb][ingen] = combngen
 		    	combnvis = row[invis] + ', ' + newrows[i_comb][invis]
 		    	newrows[i_comb][invis] = combnvis
+		    	combmedvio = row[imedvio] + ', ' + newrows[i_comb][imedvio]
+		    	newrows[i_comb][imedvio] = combmedvio
+		    	combmeavio = row[imeavio] + ', ' + newrows[i_comb][imeavio]
+		    	newrows[i_comb][imeavio] = combmeavio
+		    	combmedran = row[imedran] + ', ' + newrows[i_comb][imedran]
+		    	newrows[i_comb][imedran] = combmedran
+		    	combmearan = row[imearan] + ', ' + newrows[i_comb][imearan]
+		    	newrows[i_comb][imearan] = combmearan
+		    	combmedcat = row[imedcat] + ', ' + newrows[i_comb][imedcat]
+		    	newrows[i_comb][imedcat] = combmedcat
+		    	combmeacat = row[imeacat] + ', ' + newrows[i_comb][imeacat]
+		    	newrows[i_comb][imeacat] = combmeacat
 		    	# combine numbers in string for now
 		    	
-		    	if int(row[invis]) is not 0:
-		    		combviopervis = "{:.2f}".format(float(row[invio])/float(row[invis])) + ', ' + newrows[i_comb][iviopervis]
-		    	else:
-		    		combviopervis = 'No Visits' + ', ' + newrows[i_comb][iviopervis]
-		    	newrows[i_comb][iviopervis] = combviopervis
+		    	#if int(row[invis]) is not 0:
+		    #		combviopervis = "{:.2f}".format(float(row[invio])/float(row[invis])) + ', ' + newrows[i_comb][iviopervis]
+		   #	else:
+		   # 		combviopervis = 'No Visits' + ', ' + newrows[i_comb][iviopervis]
+		   #	newrows[i_comb][iviopervis] = combviopervis
 
-		    	if int(row[invis]) is not 0:
-		    		combhazpervis = "{:.2f}".format(float(row[inhaz])/float(row[invis])) + ', ' + newrows[i_comb][ihazpervis]
-		    	else:
-		    		combhazpervis = 'No Visits' + ', ' + newrows[i_comb][ihazpervis]
-		    	newrows[i_comb][ihazpervis] = combhazpervis
+		    	#if int(row[invis]) is not 0:
+		    #		combhazpervis = "{:.2f}".format(float(row[inhaz])/float(row[invis])) + ', ' + newrows[i_comb][ihazpervis]
+		    #	else:
+		    #		combhazpervis = 'No Visits' + ', ' + newrows[i_comb][ihazpervis]
+		    #	newrows[i_comb][ihazpervis] = combhazpervis
 
 	nname = filename[:-4] + "_combinedaddress.csv" # The filename of the output file
-	header.append('Violations_Per_Visit')
-	header.append('Hazard_Per_Visit')
-	header.append('Total_Maximum_Capacity')
+	#header.append('Violations_Per_Visit')
+	#header.append('Hazard_Per_Visit')
+	#header.append('Total_Maximum_Capacity')
 	
 	with open(nname, "wb") as output_file:
 		writer = csv.writer(output_file)
