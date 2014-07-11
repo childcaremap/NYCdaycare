@@ -1698,8 +1698,6 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 @media only screen and (min-width: 768px) { .filterbar, .searchbar { display: none !important; } }
 @media only screen and (min-width: 768px) and (max-width: 1279px) { .filterbar, .searchbar { display: none !important; } }
 
-@media only screen and (max-width: 767px) { #map div.cartodb-searchbox { display: none !important; } }
-
 @media only screen and (max-width: 767px) { .active, .searchbar { display: inherit !important; } }
 
 /*#nav1 .btn { @include visible(desktop); @include visible(tablets);
