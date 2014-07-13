@@ -31569,12 +31569,23 @@ var Vis = cdb.core.View.extend({
 
     layer.bind(options.triggerEvent, function(e, latlng, pos, data, layer) {
       var render_fields = [];
-      for(var k in data) {
-        render_fields.push({
-          title: k,
-          value: data[k],
-          index: 0
-        });
+      //June 25th 2014, Anita manually added patch for order issue: https://github.com/CartoDB/cartodb.js/issues/126
+      //for(var k in data) {
+      //  render_fields.push({
+      //    title: k,
+      //    value: data[k],
+      //    index: 0
+      //  });
+      var d;
+      for (var f = 0; f < fields.length; ++f) {
+        var field = fields[f];
+        if (d = data[field]) {
+          render_fields.push({
+            title: field,
+            value: d,
+            index: 0
+          });
+        }
       }
       infowindow.model.set({
         content:  {

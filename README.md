@@ -1,16 +1,18 @@
 =====================
 childcaremap/NYCdaycare
 =====================
-Project to map licensed day care centers for children 0-5 years in New York City.
+Project to map licensed day care centers specifically for children 0-5 years in New York City.
 
 Data from NYC Department of Health and Mental Hygiene:
 
 1. Center-based child care at https://a816-healthpsi.nyc.gov/ChildCare/ChildCareList.do
 2. Home-based child care at http://it.ocfs.ny.gov/ccfs_facilitysearch/
 
-The plan is to map the daycare centers, provide basic information (phone number, capacity, age range, etc) and summarize health inspection results.
+Located home-based child care information for download (or API access) on NY State Open Data Portal: https://data.ny.gov/Human-Services/Child-Care-Regulated-Programs/cb42-qumz
 
-Attempts to get data released though NYC Open Data Portal failed, therefore we are scraping the data.
+Current status is that we map the daycare centers, provide basic information (phone number, capacity, age range, etc) and we provide filter options. Ranking based on summarization of health inspection results is  work in progress.
+
+Attempts to get data released though NYC Open Data Portal failed, therefore we are scraping the data where necessary (basic information for home-based day cares is available, see above).
 
 We are using python package mechanize, the code is in folder "python_scraper"
 
@@ -25,11 +27,9 @@ Group-based child care permits are issued for 0-2 years or 2-5 years, therefore 
 
 Mapping:
 
-Right now, cartoDB is used for the mapping. We are looking into their SQL API to update data autonatically. Also looking into their CartoDB.js API for filtering.
+We use cartoDB for the mapping. We are using the CartoDB.js API for filtering. We are looking into their SQL API to update data automatically. 
 
 [To view default map](http://childcaremap.github.io/NYCdaycare/)
-
-[To view map with filters (in development)](http://childcaremap.github.io/NYCdaycare/dev/layer-selector-example.html)
 
 GitHub page is maintained in seperate gh-pages branch (now the default) which gets updated with master but not vice-versa.
 

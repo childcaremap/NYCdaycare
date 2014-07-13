@@ -24,8 +24,8 @@
     <meta property="og:title" content="">
 
     <!-- Google+ Metadata /-->
-    <meta itemprop="name" content="">
-    <meta itemprop="description" content="">
+    <meta itemprop="name" content="Day Care Map NYC">
+    <meta itemprop="description" content="Map of group child care services that have been issued permits by the New York City Department of Health. Information such as center name, site type, permit number provided in infowindows.">
     <meta itemprop="image" content="">
 
 
@@ -33,74 +33,128 @@
 
     <!-- syntax highlighting CSS -->
 
-    {% include gumby-head.html %}
+    {% include head.html %}
 
     </head>
 <body>
 
 <div class="container"> <!--container-->
 
-<div class="pretty navbar row nav1" id="nav1">
+<div gumby-fixed="1" gumby-pinoffset="0" class="pretty navbar row nav1" id="nav1">
   <!-- Toggle for mobile navigation, targeting the <ul> -->
   <a class="toggle" gumby-trigger=".nav1 > ul" href="#"><i class="icon-menu"></i></a>
-  <h1 class="four columns header">
+  <h1 class="ten columns header">
     <a href="#">
         <a href="{{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
     </a>
   </h1>
-  <ul class="three columns">
-    <li><a href="#">Filter</a></li>
+  <ul class="two columns">
+  
+    <!--li><a href="#">Filter</a></li-->
     <li>
       <a href="#">About</a>
       <div class="dropdown">
         <ul>
-          <li><a href="#">How it started</a></li>
-          <li><a href="#">The map</a></li>
-          <li><a href="#">The team</a></li>
+          <li class="skiplink"><a href="#the-story" gumby-update gumby-duration="600" gumby-goto="[data-target='the-story']">How it started</a></li>
+          <li class="skiplink"><a href="#the-map" gumby-update gumby-duration="600" gumby-goto="[data-target='the-map']">The map</a></li>
+          <li class="skiplink"><a href="#the-team" gumby-update gumby-duration="600" gumby-goto="[data-target='the-team']">The team</a></li>
         </ul>
       </div>
     </li>
   </ul>
 </div>
 
-    <div id="map"></div>
+<!--mobile searchbar -->
+<div class="row searchbar">
+    <ul>
+        <li>
+        <div class="twelve columns cartodb-searchbox mobile">
+        <form>
+            <span class="loader"></span>
+            <input type="text" class="text" value="" placeholder="Enter street address"><!--data-tooltip="” -->
+            <input type="submit" class="submit" value=" ">
+        </form>
+        </div>
+        </li>
+        <!--li>
+        <div class="two columns location"><a href="#" class=""><i class="icon-direction"></i></a>
+        </div>
+        </li-->
+    </ul>
+</div>
+
+<!--mobile filterbar -->
+<div class="row filterbar nav2" id="nav2">
+    <ul class="twelve columns">
+        <li class="" style="font-size:.8rem;padding-left:10px;vertical-align:middle;"><strong>Showing:</strong> xxx</li>
+        <li class="" style="font-size:2rem;vertical-align:middle;"><div><a href="#" class="ttip" data-tooltip="Show Listing" alt=" "><i class="icon-list"></i></a></div></li>
+        <li class="" style="vertical-align:middle;padding-right:10px;"><div class="medium info pretty btn icon-left icon-gauge"><a href="#" class="toggle" gumby-trigger=".infobox">Filter</a></div></li>
+    </ul>
+</div>
+
+<div id="map"></div>
+
     <div class="infobox">
-        <div id="age_selector" class="cartodb-infobox">
-            <ul>
-            <li data="all" class="selected">All Years</li>
-            <li data="0 YEARS - 2 YEARS">0 - 2 Years</li>
-            <li data="2 YEARS - 5 YEARS">2 - 5 Years</li>
-            </ul>
-        </div>
-        <div id="type_selector" class="cartodb-infobox">
-            <ul>
-                <li data="all" class="selected">All Types</li>
-                <li data="Private">Private</li>
-                <li data="ACS Head Start">ACS Head Start</li>
-                <li data="ACS Contracted Preschools">ACS Contracted Preschools</li>
-                <li data="Head Start (Direct Fed. Funding)">Head Start Direct Fed Funding</li>
-                <!-- <li data="Corporate">Corporate</li> -->
-                <li data="Home-Based">Home-Based (Family Day Care)</li>
-            </ul>
-            </div>
-        <div id="medicine_selector" class="cartodb-infobox">
-            <ul>
-                <li data="all" class="selected">All</li>
-                <li data="No">Not certified to give medicine</li>
-                <li data="Yes">Certified to give medicine</li>
-            </ul>
-        </div>
+    <div id="age_selector" class="cartodb-infobox">
+       <ul>
+        <li data="all" class="selected">All Years</li>
+        <li data="0 YEARS - 2 YEARS">0 - 2 Years</li>
+        <li data="2 YEARS - 5 YEARS">2 - 5 Years</li>
+        </ul>
     </div>
+    <div id="type_selector" class="cartodb-infobox">
+        <ul>
+        <li data="all" class="selected">All Types</li>
+        <li data="Private">Private</li>
+        <li data="ACS Head Start">ACS Head Start</li>
+        <li data="ACS Contracted Preschools">ACS Contracted Preschools</li>
+        <li data="Head Start (Direct Fed. Funding)">Head Start Direct Fed Funding</li>
+        <!-- <li data="Corporate">Corporate</li> -->
+        <li data="Home-Based">Home-Based (Family Day Care)</li>
+      </ul>
+    </div>
+    <div id="medicine_selector" class="cartodb-infobox">
+        <ul>
+        <li data="all" class="selected">All</li>
+        <li data="Yes">Certified to give medicine</li>
+        <li data="No">Not certified to give medicine</li>
+        </ul>
+    </div>
+</div>
 
     {{ content }}
 
-
-    <div id="footer" class="row navbar pretty">
-        Map of regulated day care centers, last updated June 12 2014. This map was made with great help from the <a href="http://betanyc.us/" target="new window">BetaNYC</a> community. <br>This is work in progress, check out the current status on our <a href="https://github.com/child-care-map/NYCmap" target="new window">github repo</a>.
-    </div>
-
-<!-- /container -->
+<div data-target="the-story" class="about-box inview txt">
+    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="50">The Story</h1>
+    <p class="inview link" gumby-classname="onscreen" gumby-offset="50">
+        For background on how the project was started please read the following HuffPostCode article:</p>
+        <p class="inview link" gumby-classname="onscreen"><a href="http://www.huffingtonpost.com/marc-shifflett/when-open-data-meets-app_b_5504232.html" target="_blank">Scraping Day Care Data in the Naked City</a></p>
 </div>
+<p style="text-align: center;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+
+<div data-target="the-map" class="about-box inview txt">
+    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="50">The Map</h1>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="50">This is a map of regulated day care centers within the five boroughs of NYC made possible in large part to the generous assisstance of the:</p> <p class="inview link" gumby-classname="onscreen"><a href="http://betanyc.us/" target="_blank">BetaNYC civic hacker community</a></p>.
+</div>
+<p style="text-align: center;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+
+<div data-target="the-team" class="about-box inview txt">
+    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="50">The Team</h1>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="50">
+        For Details please visit our splash page at:</p> 
+        <p class="inview link" gumby-classname="onscreen"><a href="http://nycdaycaremap.splashthat.com/" target="_blank">BigAppsNYC</a></p>
+</div>
+<p style="text-align:center;margin-bottom:3rem;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+
+<div id="footer" class="row">
+    <ul>
+        <li class="six columns" style="vertical-align:middle;"><a href="#top" gumby-update gumby-goto="[data-target='top']">&copy; NYC Day Care Map</a></li> 
+        <li class="six columns" style="text-align:right;vertical-align:top;">Check us out on <a href="https://github.com/childcaremap/NYCdaycare" target="new window"><i class="icon-github"></i></a></li>
+    </ul>
+</div>
+
+    <!-- /container -->
+    </div>
 
     {% include scripts.html %} 
 
