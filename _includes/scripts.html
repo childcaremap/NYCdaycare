@@ -285,9 +285,14 @@
           //mapTypeId: google.maps.MapTypeId.ROADMAP
           mapTypeControl: true,
           mapTypeControlOptions: {
-              style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-              position: google.maps.ControlPosition.BOTTOM_RIGHT
+              style: google.maps.MapTypeControlStyle.DEFAULT,
+              position: google.maps.ControlPosition.RIGHT_CENTER
           },
+          //zoomControl: true,
+          //zoomControlOptions: {
+          //  style: google.maps.ZoomControlStyle.SMALL,
+          //  position: google.maps.ControlPosition.BOTTOM_RIGHT
+          //},
         };
         map = new google.maps.Map(document.getElementById('map'),  mapOptions);
         var styles = [
@@ -366,6 +371,7 @@
               })
         })
         .on('done', function(layer) {
+          //hack from https://gist.github.com/javisantana/4e50d53e4eeb7fbdab0e
           var v = cdb.vis.Overlay.create('search', map.viz, {})
           $('#map').append(v.render().el);
           createSelector(layer);
