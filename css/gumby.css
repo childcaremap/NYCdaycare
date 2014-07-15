@@ -1196,10 +1196,8 @@ abbr { text-transform: none; }
 .sixteen.colgrid .row .fourteen.centered { margin-left: 6.29883%; }
 .sixteen.colgrid .row .fifteen.centered { margin-left: 3.14941%; }
 
-/*img, object, embed {
-	max-width: 100%;
-	height: auto;
-}*/
+img, object, embed { max-width: 100%; height: auto; }
+
 img { -ms-interpolation-mode: bicubic; }
 
 #map_canvas img, .map_canvas img { max-width: none !important; }
