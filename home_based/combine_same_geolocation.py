@@ -18,20 +18,21 @@ def combine_samegeo(filename):
         ifloor = header.index('Floor')
         iapt = header.index('Apartment')
         
+        izip= header.index('Zip Code')
+        iborough = header.index('County')
+
         iphone = header.index('Phone Number')
         ipermit = header.index('Facility ID')
         iexp = header.index('License Expiration Date')
         iopen = header.index('Facility Opened Date')
         iissue = header.index('License Issue Date')
         istatus = header.index('Facility Status')
-        #iagerange= header.index('Age Range')
         icap = header.index('Capacity Description')
         iinfo = header.index('Additional Information')
-        #imed = header.index('Certified to Administer Medication')
         itype = header.index('Program Type')
+
         ilat = header.index('Latitude')
         ilon = header.index('Longitude')
-        #itotcap = header.index('Total Maximum Capacity')
 
         newrows = []  # Initialize clean rows
         coord = []  # Initialize coordinate tupels
@@ -80,21 +81,20 @@ def combine_samegeo(filename):
                     newrows[i_comb][iinfo] = combinfo
                     combcap = row[icap] + ' / ' + newrows[i_comb][icap]
                     newrows[i_comb][icap] = combcap
-                #combmed = row[imed] + ' / ' + newrows[i_comb][imed]
-                #newrows[i_comb][imed] = combmed
                     combtype = row[itype] + ' / ' + newrows[i_comb][itype]
                     newrows[i_comb][itype] = combtype
-                #newrows[i_comb][itotcap] = int(newrows[i_comb][itotcap]) + int(row[itotcap])
 
     nname = filename[:-4] + "_combinedgeo.csv" # The filename of the output file
     for newrow in newrows:
-        #remove unuseful capacity information
+        #remove unuseful information
+        newrow.pop(33)
         newrow[25:30] = []
-        #remove address components
+        #remove individual address components
         newrow[10:15] = []
 
     with open(nname, "wb") as output_file:
         writer = csv.writer(output_file)
+        header.pop(33)
         header[25:30] = []
         header[10:15] = []
         writer.writerow(header)
