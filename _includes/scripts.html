@@ -371,6 +371,7 @@
               })
         })
         .on('done', function(layer) {
+          //hack from https://gist.github.com/javisantana/4e50d53e4eeb7fbdab0e
           var v = cdb.vis.Overlay.create('search', map.viz, {})
           $('#map').append(v.render().el);
           createSelector(layer);
