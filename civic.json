@@ -1,12 +1,12 @@
 {
     "status": "In Progress",
-    "thumbnailUrl": "https://raw.githubusercontent.com/childcaremap/NYCdaycare/master/app-map-icon.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/childcaremap/NYCdaycare/gh-pages/NYCDayCareMap.png",
     "bornAt": "BetaNYC Maillist",
     "geography": "NYC",
-    "politicalEntity":"NYC Department of Health and Mental Hygiene",
+    "politicalEntity":"NYC Department of Health and Mental Hygiene and NYS Office of Children and Family Services",
     "type":"Web App",
     "needs": [
-        {"need": "Developer"}
+        {"need": "JS Developer"}
     ],
     "categories": [
         {"category": "Community"}
