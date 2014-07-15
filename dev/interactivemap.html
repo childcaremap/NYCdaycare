@@ -14,13 +14,9 @@
     <div class="cartodb-popup">
       <a href="#close" class="cartodb-popup-close-button close">x</a>
        <div class="cartodb-popup-content-wrapper">
-         //<div class="cartodb-popup-header">
-         //  <img style="width: 100%" src="http://cartodb.com/assets/logos/logos_full_cartodb_light-5ef5e4ff558f4f8d178ab2c8faa231c1.png"></src>
-         //</div>
          <div class="cartodb-popup-content">
-           <!-- content.data contains the field info -->
-           <h4>ID: </h4>
-           <p>{{content.data.cartodb_id}}</p>
+          <h4>Center Name:</h4>
+          <p>{{content.data.center_name}}</p>
          </div>
        </div>
        <div class="cartodb-popup-tip-container"></div>
@@ -40,7 +36,7 @@
         attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
       }).addTo(map);
 
-      var layerUrl = 'http://schmiani.cartodb.com/api/v2/viz/77a6017a-b918-11e3-8a7a-0e73339ffa50/viz.json';
+      var layerUrl = 'http://nycdaycaremap.cartodb.com/api/v2/viz/ba2bce4e-f333-11e3-816d-0e230854a1cb/viz.json';
 
       // change the query for the first layer
       var subLayerOptions = {

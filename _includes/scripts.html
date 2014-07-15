@@ -77,8 +77,57 @@
     <!-- use custom cartodb.js library -->
     <script src="{{ site.baseurl }}/js/cartodb_custom.js"></script>
 
+    <script type="infowindow/html" id="infowindow_template">
+      <div class="cartodb-popup">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+         <div class="cartodb-popup-content-wrapper">
+           <div class="cartodb-popup-content">
+            <h6><%=content.data.center_name%></h6>
+            <p></p>
+            <h4>age range:</h4>
+            <p><%=content.data.age_range%></p>
+            <h4>phone:</h4>
+            <p><%=content.data.phone%></p>
+            <h4>site_type:</h4>
+            <p><%=content.data.site_type%></p>
+            <h4>permit_status:</h4>
+            <p><%=content.data.permit_status%></p>
+            <h4>permit_expiration_date:</h4>
+            <p><%=content.data.permit_expiration_date%></p>
+            <h4>permit_number:</h4>
+            <p><%=content.data.permit_number%></p>
+            <h4>maximum_capacity:</h4>
+            <p><%=content.data.maximum_capacity%></p>
+            <h4>ertified_to_administer_medication:</h4>
+            <p><%=content.data.ertified_to_administer_medication%></p>
+           </div>
+         </div>
+         <div class="cartodb-popup-tip-container"></div>
+      </div>
+    </script>
+
+    <script type="infowindow2/html" id="infowindow_template2">
+      <div class="cartodb-popup">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+         <div class="cartodb-popup-content-wrapper">
+           <div class="cartodb-popup-content">
+            <h5><%=content.data.facility_name%></h5>
+            <p></p>
+            <h4>phone_number:</h4>
+            <p><%=content.data.phone_number%></p>
+            <h4>facility_status:</h4>
+            <p><%=content.data.facility_status%></p>
+            <h4>license_expiration_date:</h4>
+            <p><%=content.data.license_expiration_date%></p>
+            <h4>capacity_description:</h4>
+            <p><%=content.data.capacity_description%></p>
+           </div>
+         </div>
+         <div class="cartodb-popup-tip-container"></div>
+      </div>
+    </script>
+
     <script>
-      
       function filterData(medicinetype,sitetype,agerange,layer) {
         //cover all possible cases
         var query;
@@ -263,9 +312,59 @@
           }
         ];
         map.setOptions({styles: styles});
-        // create layer and add to the map, then add some intera
-        cartodb.createLayer(map,'http://nycdaycaremap.cartodb.com/api/v2/viz/ba2bce4e-f333-11e3-816d-0e230854a1cb/viz.json')
-        .addTo(map)
+        
+        cartodb.createLayer(map, {
+          user_name: 'nycdaycaremap',
+          type: 'cartodb',
+          sublayers: [{
+            sql: "SELECT * FROM basicinfo_combined",
+            cartocss: "#basicinfo_combined {\
+              marker-fill-opacity: 0.9;\
+              marker-line-color: #FFF;\
+              marker-line-width: 1.5;\
+              marker-line-opacity: 1;\
+              marker-width: 16;\
+              marker-fill: #FF6600;\
+              marker-allow-overlap: true;\
+              [zoom = 11] {marker-width: 18}\
+              [zoom = 12] {marker-width: 20}\
+              [zoom = 13] {marker-width: 22}\
+              [zoom = 14] {marker-width: 24}\
+              [zoom = 15] {marker-width: 26}\
+              [zoom = 16] {marker-width: 28}\
+              [zoom > 16] {marker-width: 30}\
+            }",
+          },{
+            sql: "SELECT * FROM homebaseddaycare",
+            cartocss: "#homebaseddaycare {\
+              marker-fill-opacity: 0.9;\
+              marker-line-color: #FFF;\
+              marker-line-width: 1.5;\
+              marker-line-opacity: 1;\
+              marker-width: 13;\
+              marker-fill: #FF6600;\
+              marker-allow-overlap: true;\
+              [zoom = 11] {marker-width: 14}\
+              [zoom = 12] {marker-width: 15}\
+              [zoom = 13] {marker-width: 16}\
+              [zoom = 14] {marker-width: 17}\
+              [zoom = 15] {marker-width: 18}\
+              [zoom = 16] {marker-width: 19}\
+              [zoom > 16] {marker-width: 20}\
+            }",
+          }]
+        })
+        .addTo(map,0)
+        .done(function(layer) {
+            var infowindow = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['center_name','age_range','phone','site_type','permit_status','permit_expiration_date','permit_number','maximum_capacity','certified_to_administer_medication']);
+            infowindow.model.set('template', function(data) {
+                return _.template($('#infowindow_template').html())(data);
+              })
+            var infowindow2 = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(1), ['facility_name','phone_number','facility_status','facility_id','license_expiration_date','capacity_description']);
+            infowindow2.model.set('template', function(data) {
+                return _.template($('#infowindow_template2').html())(data);
+              })
+        })
         .on('done', function(layer) {
           var v = cdb.vis.Overlay.create('search', map.viz, {})
           $('#map').append(v.render().el);
@@ -273,11 +372,6 @@
         })
         .on('error', function() {
           cartodb.log.log("some error occurred");
-        })
-        .done(function(layer) {
-          //layer.getSubLayer(1).hide();
-          var sublayer = layer.getSubLayer(1);
-          //sublayer.setSQL("SELECT * FROM homebaseddaycare WHERE facility_status IN ('Pending Revocation','Suspended','Pending Revocation and Denial','Pending Denial')");
         });
       }
 
