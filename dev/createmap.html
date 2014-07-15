@@ -29,28 +29,42 @@
         <a href="#close" class="cartodb-popup-close-button close">x</a>
          <div class="cartodb-popup-content-wrapper">
            <div class="cartodb-popup-content">
-            CartoDB ID: <%= content.data.cartodb_id %>
+            <h5><%=content.data.center_name%></h5>
+            <p></p>
+            <h4>Category:</h4>
+            <p><%=content.data.mean_cat%></p>
+            <h4>Mean Violations per Visit:</h4>
+            <p><%=content.data.mean_violations_per_visit%></p>
+            <h4>Number of Visits:</h4>
+            <p><%=content.data.number_of_visits%></p>
+            <h4>Number of Violations:</h4>
+            <p><%=content.data.number_of_violations%></p>
            </div>
          </div>
          <div class="cartodb-popup-tip-container"></div>
       </div>
     </script>
-    <!-- <script type="infowindow/html" id="infowindow_template">
+
+    <script type="infowindow2/html" id="infowindow_template2">
       <div class="cartodb-popup">
         <a href="#close" class="cartodb-popup-close-button close">x</a>
          <div class="cartodb-popup-content-wrapper">
-           <div class="cartodb-popup-header">
-             <img style="width: 100%" src="http://cartodb.com/assets/logos/logos_full_cartodb_light-5ef5e4ff558f4f8d178ab2c8faa231c1.png"></src>
-           </div>
            <div class="cartodb-popup-content">
-             
-             <h4>CartoDB ID: </h4>
-             <p>{{content.data.cartodb_id}}</p>
+            <h5><%=content.data.facility_name%></h5>
+            <p></p>
+            <h4>phone_number:</h4>
+            <p><%=content.data.phone_number%></p>
+            <h4>facility_status:</h4>
+            <p><%=content.data.facility_status%></p>
+            <h4>license_expiration_date:</h4>
+            <p><%=content.data.license_expiration_date%></p>
+            <h4>capacity_description:</h4>
+            <p><%=content.data.capacity_description%></p>
            </div>
          </div>
          <div class="cartodb-popup-tip-container"></div>
       </div>
-    </script> -->
+    </script>
 
     <script>
       function main() {
@@ -97,33 +111,43 @@
             }\
             #basicinfosum_2014_06_12_cartodb [ average_mean_violations_per_visit <= 0.6142855] {\
                marker-fill: #1a9850;\
-            }\
-            ",
-            interactivity: 'cartodb_id, address', // optional
+            }"
+          },
+          {
+            sql: "SELECT * FROM homebaseddaycare",
+            cartocss: "#homebaseddaycare {\
+              marker-fill-opacity: 0.9;\
+              marker-line-color: #FFF;\
+              marker-line-width: 1.5;\
+              marker-line-opacity: 1;\
+              marker-width: 13;\
+              marker-fill: #FF6600;\
+              marker-allow-overlap: true;\
+              [zoom = 11] {marker-width: 14}\
+              [zoom = 12] {marker-width: 15}\
+              [zoom = 13] {marker-width: 16}\
+              [zoom = 14] {marker-width: 17}\
+              [zoom = 15] {marker-width: 18}\
+              [zoom = 16] {marker-width: 19}\
+              [zoom > 16] {marker-width: 20}\
+            }",
           }]
         })
-        .addTo(map) // add the layer to our map which already contains 1 sublayer
+        .addTo(map,0) 
         .done(function(layer) {
             var infowindow = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['center_name','mean_cat','mean_violations_per_visit','number_of_visits','number_of_violations']);
-            //infowindow.model.set('template', function(data) {
-                //return _.template($('#infowindow_template').html())(data);
-              //});
+            infowindow.model.set('template', function(data) {
+                return _.template($('#infowindow_template').html())(data);
+              })
+            var infowindow2 = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(1), ['facility_name','phone_number','facility_status','facility_id','license_expiration_date','capacity_description']);
+            infowindow2.model.set('template', function(data) {
+                return _.template($('#infowindow_template2').html())(data);
+              })
+        })
+        .on('error', function() {
+          console.log("some error occurred");
         });
-        //.on('done', function(layer) {
-         // // get sublayer 0 and set the infowindow template
-         // var sublayer = layer.getSubLayer(0);
-          //sublayer.setInteraction(true);
-          
-         // sublayer.infowindow.set('template', $('#infowindow_template').html()); //this doesn't work for some reason
-
-          //sublayer.on('featureClick', function(e, pos, latlng, data) {
-           // alert("You clicked entry " + data.cartodb_id + " at " + data.address);
-          //});
-        //}).on('error', function() {
-        //  console.log("some error occurred");
-        //});
       }
-
       window.onload = main;
     </script>
   </body>
