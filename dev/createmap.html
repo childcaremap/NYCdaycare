@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Easy example | CartoDB.js</title>
+    <title>Create Visualization | CartoDB.js</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
@@ -67,24 +67,44 @@
           user_name: 'nycdaycaremap',
           type: 'cartodb',
           sublayers: [{
-            sql: "SELECT * FROM basicinfo_combined",
-            cartocss: "#basicinfo_combined {\
-              marker-fill-opacity: 0.9;\
-              marker-line-color: #FFF;\
-              marker-line-width: 1.5;\
+            sql: "SELECT * FROM basicinfosum_2014_06_12_cartodb",
+            cartocss: "#basicinfosum_2014_06_12_cartodb {\
+              marker-fill-opacity: 1;\
+              marker-line-color: #707070;\
+              marker-line-width: 0.5;\
               marker-line-opacity: 1;\
-              marker-placement: point;\
-              marker-type: ellipse;\
               marker-width: 10;\
-              marker-fill: #FF6600;\
+              marker-fill: #1a9850;\
               marker-allow-overlap: true;\
-            }",
+            }\
+            #basicinfosum_2014_06_12_cartodb [ average_mean_violations_per_visit <= 14.5] {\
+               marker-fill: #d73027;\
+            }\
+            #basicinfosum_2014_06_12_cartodb [ average_mean_violations_per_visit <= 4.2] {\
+               marker-fill: #f79272;\
+            }\
+            #basicinfosum_2014_06_12_cartodb [ average_mean_violations_per_visit <= 3.071425] {\
+               marker-fill: #fed6b0;\
+            }\
+            #basicinfosum_2014_06_12_cartodb [ average_mean_violations_per_visit <= 2.28571] {\
+               marker-fill: #fff2cc;\
+            }\
+            #basicinfosum_2014_06_12_cartodb [ average_mean_violations_per_visit <= 1.65] {\
+               marker-fill: #d2ecb4;\
+            }\
+            #basicinfosum_2014_06_12_cartodb [ average_mean_violations_per_visit <= 1.166665] {\
+               marker-fill: #8cce8a;\
+            }\
+            #basicinfosum_2014_06_12_cartodb [ average_mean_violations_per_visit <= 0.6142855] {\
+               marker-fill: #1a9850;\
+            }\
+            ",
             interactivity: 'cartodb_id, address', // optional
           }]
         })
         .addTo(map) // add the layer to our map which already contains 1 sublayer
         .done(function(layer) {
-            var infowindow = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['center_name','phone','age_range']);
+            var infowindow = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['center_name','mean_cat','mean_violations_per_visit','number_of_visits','number_of_violations']);
             //infowindow.model.set('template', function(data) {
                 //return _.template($('#infowindow_template').html())(data);
               //});
