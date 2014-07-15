@@ -200,11 +200,10 @@
 
 .pull_left { @include pull(left); }
 
-/* confilicts with google map controls */
-/*img, object, embed {
+img, object, embed {
 	max-width: 100%;
 	height: auto;
-}*/
+}
 
 img {
 	-ms-interpolation-mode: bicubic;
