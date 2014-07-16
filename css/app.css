@@ -1,11 +1,13 @@
 /* Cartdb.css selectors */
 html, body, #map, .container { height: 100%; padding: 0; }
 
-#age_selector { position: absolute; top: 140px; padding: 0; width: 230px; }
+.infobox { /* debug display: none;*/ width: 230px; position: absolute; top: 75px; margin-left: 4.5rem; }
 
-#type_selector { position: absolute; top: 250px; padding: 0; width: 230px; }
+#age_selector { width: 230px; position: relative; top: 0px; padding: 0; }
 
-#medicine_selector { position: absolute; top: 460px; padding: 0; width: 230px; }
+#type_selector { width: 230px; position: relative; top: 10px; padding: 0; }
+
+#medicine_selector { width: 230px; position: relative; top: 20px; padding: 0; }
 
 #age_selector ul { padding: 0; margin: 0; list-style-type: none; }
 
@@ -13,10 +15,6 @@ html, body, #map, .container { height: 100%; padding: 0; }
 
 #medicine_selector ul { padding: 0; margin: 0; list-style-type: none; }
 
-
-/* debug
-.infobox { display: none;  
-} */
 .cartodb-infobox ul li { border-bottom: 1px solid #999; padding: 3px 20px; font-family: "Helvetica", Arial; font-size: 12px; font-weight: 600; color: #444; cursor: auto; }
 
 /* This has been made DRY deprecated */

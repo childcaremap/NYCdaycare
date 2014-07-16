@@ -1196,7 +1196,7 @@ abbr { text-transform: none; }
 .sixteen.colgrid .row .fourteen.centered { margin-left: 6.29883%; }
 .sixteen.colgrid .row .fifteen.centered { margin-left: 3.14941%; }
 
-/* confilicts with google map controls */
+/* confilicts with google map zoom controls */
 /*img, object, embed {
 	max-width: 100%;
 	height: auto;
@@ -1693,9 +1693,10 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
   .location { /*position: relative;*/ }
   h1, h2, h3, h4, h5, h6 { word-wrap: break-word; }
   h1.header a { margin-left: 0.3rem !important; }
-  #footer { font-size: 10px; font-size: 0.625rem; line-height: 1rem; } }
-@media only screen and (max-width: 767px) { div.cartodb-searchbox { width: 300px; height: 30px; top: 5px !important; margin: 0px; } }
-@media only screen and (max-width: 320px) { div.cartodb-searchbox { float: left !important; left: 0.5rem !important; right: 0rem !important; } }
+  #footer { font-size: 10px; font-size: 0.625rem; line-height: 1rem; }
+  .infobox { top: 150px; margin-left: .5rem; } }
+@media only screen and (max-width: 767px) { div.cartodb-searchbox { width: 275px; height: 30px; top: 5px !important; margin: 0px; } }
+@media only screen and (max-width: 320px) { div.cartodb-searchbox { left: 0rem !important; right: 0.5rem !important; } }
 @media only screen and (min-width: 321px) and (max-width: 767px) { div.cartodb-searchbox { right: 1rem !important; } }
 @media only screen and (max-width: 320px) { div.cartodb-searchbox.mobile { float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
 @media only screen and (min-width: 321px) and (max-width: 767px) { div.cartodb-searchbox.mobile { float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
@@ -1730,8 +1731,6 @@ html { background-color: #FFF; }
 h1, h2 { font-size: 2rem; font-weight: 700; }
 
 h1.header a { font-size: 1.5rem; margin-left: 0px; color: white; }
-
-.infobox { margin-left: 1rem; }
 
 h1.txt, p.txt, p.link a, p .link a { color: white; -webkit-transition: all 3s; -moz-transition: all 3s; -o-transition: all 3s; transition: all 3s; }
 
