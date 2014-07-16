@@ -1694,12 +1694,15 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
   h1, h2, h3, h4, h5, h6 { word-wrap: break-word; }
   h1.header a { margin-left: 0.3rem !important; }
   #footer { font-size: 10px; font-size: 0.625rem; line-height: 1rem; }
-  .infobox { top: 150px; margin-left: .5rem; } }
+  .infobox { top: 150px; margin-left: .5rem; }
+  .about-box p { font-size: .9rem; line-height: 1rem; }
+  .about-box h1 { font-size: 1.5rem; line-height: 1.6rem; margin-bottom: .5rem; } }
 @media only screen and (max-width: 767px) { div.cartodb-searchbox { width: 275px; height: 30px; top: 5px !important; margin: 0px; } }
 @media only screen and (max-width: 320px) { div.cartodb-searchbox { left: 0rem !important; right: 0.5rem !important; } }
 @media only screen and (min-width: 321px) and (max-width: 767px) { div.cartodb-searchbox { right: 1rem !important; } }
 @media only screen and (max-width: 320px) { div.cartodb-searchbox.mobile { float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
 @media only screen and (min-width: 321px) and (max-width: 767px) { div.cartodb-searchbox.mobile { float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
+@media only screen and (min-width: 2880px) { .row { max-width: 2640px !important; } }
 @media only screen and (max-width: 767px) { .infobox { display: none !important; } }
 
 @media only screen and (min-width: 768px) { .filterbar, .searchbar { display: none !important; } }
@@ -1722,10 +1725,8 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 .btn a:hover { color: white; }
 
 /* page layout styles */
-/* line 3, ../_sass/app.scss */
 * { margin: 0; padding: 0; }
 
-/* line 14, ../_sass/app.scss */
 html { background-color: #FFF; }
 
 h1, h2 { font-size: 2rem; font-weight: 700; }
@@ -1740,7 +1741,7 @@ p.link.onscreen a { color: #d04526 !important; }
 
 p link.onscreen a { color: #d04526 !important; }
 
-.about-box { height: 390px; padding: 1rem; margin: 1rem 2em; border: 1px solid gray; }
+.about-box { height: 390px; padding: .5rem 1rem 1rem; margin: 1rem 2em; border: 1px solid gray; }
 
 .icon-github { color: white; font-size: 16px; }
 
