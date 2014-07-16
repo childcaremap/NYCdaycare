@@ -134,78 +134,78 @@
         var query2;
         if(agerange != 'all' && sitetype != 'all' && medicinetype != 'all') {
           if(sitetype != 'Home-Based'){
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'AND certified_to_administer_medication like '%"+medicinetype+"%'";
-            query2 = "select * from homebaseddaycare WHERE facility_status is null";
+            query = "SELECT * FROM basicinfo_test WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'AND certified_to_administer_medication like '%"+medicinetype+"%'";
+            query2 = "select * from home_basic_test WHERE facility_status is null";
           }  else {
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'AND certified_to_administer_medication like '%"+medicinetype+"%'";
+            query = "SELECT * FROM basicinfo_test WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'AND certified_to_administer_medication like '%"+medicinetype+"%'";
             if(medicinetype == 'No'){
-              query2 = "select * from homebaseddaycare";
+              query2 = "select * from home_basic_test";
             } else {
-              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+              query2 = "select * from home_basic_test WHERE facility_status is null";
             }
           }
         }
           //
         if(agerange == 'all' && sitetype != 'all' && medicinetype != 'all') {
           if(sitetype != 'Home-Based'){
-            query = "SELECT * FROM basicinfo_combined WHERE site_type like '%"+sitetype+"%' AND certified_to_administer_medication like '%"+medicinetype+"%'";
-              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+            query = "SELECT * FROM basicinfo_test WHERE site_type like '%"+sitetype+"%' AND certified_to_administer_medication like '%"+medicinetype+"%'";
+              query2 = "select * from home_basic_test WHERE facility_status is null";
           } else{
-            query = "SELECT * FROM basicinfo_combined WHERE site_type like '%"+sitetype+"%' AND certified_to_administer_medication like '%"+medicinetype+"%'";
+            query = "SELECT * FROM basicinfo_test WHERE site_type like '%"+sitetype+"%' AND certified_to_administer_medication like '%"+medicinetype+"%'";
             if(medicinetype == 'No'){
-              query2 = "select * from homebaseddaycare";
+              query2 = "select * from home_basic_test";
             } else {
-              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+              query2 = "select * from home_basic_test WHERE facility_status is null";
             } 
           }    
         }            
           //
         if(agerange != 'all' && sitetype == 'all' && medicinetype != 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND certified_to_administer_medication like '%"+medicinetype+"%'";
+            query = "SELECT * FROM basicinfo_test WHERE age_range LIKE '%"+agerange+"%' AND certified_to_administer_medication like '%"+medicinetype+"%'";
             if(medicinetype == 'No'){
-              query2 = "select * from homebaseddaycare";
+              query2 = "select * from home_basic_test";
             } else {
-              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+              query2 = "select * from home_basic_test WHERE facility_status is null";
             }
           }
           //
         if(agerange != 'all' && sitetype != 'all' && medicinetype == 'all') {
           if(sitetype != 'Home-Based'){
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'";
-            query2 = "select * from homebaseddaycare WHERE facility_status is null";
+            query = "SELECT * FROM basicinfo_test WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'";
+            query2 = "select * from home_basic_test WHERE facility_status is null";
           } else {
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'";
-            query2 = "select * from homebaseddaycare";
+            query = "SELECT * FROM basicinfo_test WHERE age_range LIKE '%"+agerange+"%' AND site_type like '%"+sitetype+"%'";
+            query2 = "select * from home_basic_test";
           }   
         }
           //
         if(agerange == 'all' && sitetype == 'all' && medicinetype != 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE certified_to_administer_medication like '%"+medicinetype+"%'";
+            query = "SELECT * FROM basicinfo_test WHERE certified_to_administer_medication like '%"+medicinetype+"%'";
             if(medicinetype == 'No'){
-              query2 = "select * from homebaseddaycare";
+              query2 = "select * from home_basic_test";
             } else {
-              query2 = "select * from homebaseddaycare WHERE facility_status is null";
+              query2 = "select * from home_basic_test WHERE facility_status is null";
             }
           }
           //
         if(agerange == 'all' && sitetype != 'all' && medicinetype == 'all') {
           if(sitetype != 'Home-Based'){
-            query = "SELECT * FROM basicinfo_combined WHERE site_type like '%"+sitetype+"%'";
-            query2 = "select * from homebaseddaycare WHERE facility_status is null";
+            query = "SELECT * FROM basicinfo_test WHERE site_type like '%"+sitetype+"%'";
+            query2 = "select * from home_basic_test WHERE facility_status is null";
           } else {
-            query = "SELECT * FROM basicinfo_combined WHERE site_type like '%"+sitetype+"%'";
-            query2 = "select * from homebaseddaycare";
+            query = "SELECT * FROM basicinfo_test WHERE site_type like '%"+sitetype+"%'";
+            query2 = "select * from home_basic_test";
           }   
         }
           //
         if(agerange != 'all' && sitetype == 'all' && medicinetype == 'all') {
-            query = "SELECT * FROM basicinfo_combined WHERE age_range LIKE '%"+agerange+"%'";
-            query2 = "select * from homebaseddaycare";
+            query = "SELECT * FROM basicinfo_test WHERE age_range LIKE '%"+agerange+"%'";
+            query2 = "select * from home_basic_test";
           }
           //
         if(agerange == 'all' && sitetype == 'all' &&  medicinetype == 'all') {
-            query = "select * from basicinfo_combined";
-            query2 = "select * from homebaseddaycare";
+            query = "select * from basicinfo_test";
+            query2 = "select * from home_basic_test";
           }
 
           // change the query in the layer to update the map
@@ -234,7 +234,7 @@
           $li.addClass('selected');
 
           // create query based on data from the layer
-          //var query = "select * from basicinfo_combined";
+          //var query = "select * from basicinfo_test";
 
           filterData(medicinetype,sitetype,agerange,layer);
         });
@@ -252,7 +252,7 @@
           $li.addClass('selected');
 
           // create query based on data from the layer
-          //var query = "select * from basicinfo_combined";
+          //var query = "select * from basicinfo_test";
 
           filterData(medicinetype,sitetype,agerange,layer);
         });
@@ -269,7 +269,7 @@
           $li.addClass('selected');
 
           // create query based on data from the layer
-          //var query = "select * from basicinfo_combined";
+          //var query = "select * from basicinfo_test";
 
           filterData(medicinetype,sitetype,agerange,layer);
         });
@@ -322,8 +322,8 @@
           user_name: 'nycdaycaremap',
           type: 'cartodb',
           sublayers: [{
-            sql: "SELECT * FROM basicinfo_combined",
-            cartocss: "#basicinfo_combined {\
+            sql: "SELECT * FROM basicinfo_test",
+            cartocss: "#basicinfo_test {\
               marker-fill-opacity: 0.9;\
               marker-line-color: #FFF;\
               marker-line-width: 1.5;\
@@ -340,8 +340,8 @@
               [zoom > 16] {marker-width: 30}\
             }",
           },{
-            sql: "SELECT * FROM homebaseddaycare",
-            cartocss: "#homebaseddaycare {\
+            sql: "SELECT * FROM home_basic_test",
+            cartocss: "#home_basic_test {\
               marker-fill-opacity: 0.9;\
               marker-line-color: #FFF;\
               marker-line-width: 1.5;\
