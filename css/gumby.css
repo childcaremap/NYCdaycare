@@ -1696,7 +1696,7 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
   #footer { font-size: 10px; font-size: 0.625rem; line-height: 1rem; }
   .infobox { top: 150px; margin-left: .5rem; } }
 @media only screen and (max-width: 767px) { div.cartodb-searchbox { width: 275px; height: 30px; top: 5px !important; margin: 0px; } }
-@media only screen and (max-width: 320px) { div.cartodb-searchbox { float: left !important; left: 0.5rem !important; right: 0rem !important; } }
+@media only screen and (max-width: 320px) { div.cartodb-searchbox { float: left !important; left: 1.5rem !important; right: 0rem !important; } }
 @media only screen and (min-width: 321px) and (max-width: 767px) { div.cartodb-searchbox { right: 1rem !important; } }
 @media only screen and (max-width: 320px) { div.cartodb-searchbox.mobile { float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
 @media only screen and (min-width: 321px) and (max-width: 767px) { div.cartodb-searchbox.mobile { float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
