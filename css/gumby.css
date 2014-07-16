@@ -1733,7 +1733,7 @@ h1, h2 { font-size: 2rem; font-weight: 700; }
 
 h1.header a { font-size: 1.5rem; margin-left: 0px; color: white; }
 
-h1.txt, p.txt, p.link a, p .link a { color: white; -webkit-transition: all 3s; -moz-transition: all 3s; -o-transition: all 3s; transition: all 3s; }
+h1.txt, p.txt, p.link a { color: white; -webkit-transition: all 3s; -moz-transition: all 3s; -o-transition: all 3s; transition: all 3s; }
 
 h1.txt.onscreen, p.txt.onscreen { color: black; }
 
