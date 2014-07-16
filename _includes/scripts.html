@@ -369,7 +369,7 @@
             infowindow.model.set('template', function(data) {
                 return _.template($('#infowindow_template').html())(data);
               })
-            var infowindow2 = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(1), ['facility_name','phone_number','facility_status','facility_id','license_expiration_date','capacity_description']);
+            var infowindow2 = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(1), ['facility_name','phone_number','facility_status','facility_id','license_expiration_date','capacity_description','additional_information']);
             infowindow2.model.set('template', function(data) {
                 return _.template($('#infowindow_template2').html())(data);
               })
