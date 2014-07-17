@@ -15,7 +15,7 @@ cur.execute('DROP TABLE IF EXISTS InspectionSum')
 
 # read in basic data and put into mysql table
 # get size of table
-info = csv.reader(file('../python_scraper/BasicInfo_2014_06_12.csv'))
+info = csv.reader(file('../python_scraper/BasicInfo_2014_07_14.csv'))
 header = info.next()
 nrows = 0
 for row in info:
@@ -24,7 +24,7 @@ ncols = len(row)
 L = np.zeros((nrows,ncols))
 
 # get maximum width of columns in table
-info = csv.reader(file('../python_scraper/BasicInfo_2014_06_12.csv'))
+info = csv.reader(file('../python_scraper/BasicInfo_2014_07_14.csv'))
 header = info.next()
 for i,row in enumerate(info):
     for j,cell in enumerate(row):
@@ -33,7 +33,7 @@ for i,row in enumerate(info):
 maxwidth = L.max(0)
 
 # read in data and put into table
-info = csv.reader(file('../python_scraper/BasicInfo_2014_06_12.csv'))
+info = csv.reader(file('../python_scraper/BasicInfo_2014_07_14.csv'))
 header = info.next()
 headersql = [s.replace(' ', '_') for s in header]
 
@@ -61,7 +61,7 @@ mydb.commit()
 
 # read in inspection details and put into mysql table
 # get size of table
-info = csv.reader(file('../python_scraper/InspectionInfo_2014_06_12.csv'))
+info = csv.reader(file('../python_scraper/InspectionInfo_2014_07_14.csv'))
 header = info.next()
 nrows = 0
 for row in info:
@@ -70,7 +70,7 @@ ncols = len(row)
 L = np.zeros((nrows,ncols))
 
 # get maximum width of columns in table
-info = csv.reader(file('../python_scraper/InspectionInfo_2014_06_12.csv'))
+info = csv.reader(file('../python_scraper/InspectionInfo_2014_07_14.csv'))
 header = info.next()
 for i,row in enumerate(info):
     for j,cell in enumerate(row):
@@ -78,7 +78,7 @@ for i,row in enumerate(info):
 maxwidth = L.max(0)
 
 # read in data and put into table
-info = csv.reader(file('../python_scraper/InspectionInfo_2014_06_12.csv'))
+info = csv.reader(file('../python_scraper/InspectionInfo_2014_07_14.csv'))
 header = info.next()
 headersql = [s.replace(' ', '_').replace('-','_') for s in header]
 
@@ -104,7 +104,7 @@ mydb.commit()
 
 # read in inspection summery and put into mysql table
 # get size of table
-info = csv.reader(file('../python_scraper/InspectionSummaries_2014_06_12.csv'))
+info = csv.reader(file('../python_scraper/InspectionSummaries_2014_07_14.csv'))
 header = info.next()
 nrows = 0
 for row in info:
@@ -113,7 +113,7 @@ ncols = len(row)
 L = np.zeros((nrows,ncols))
 
 # get maximum width of columns in table
-info = csv.reader(file('../python_scraper/InspectionSummaries_2014_06_12.csv'))
+info = csv.reader(file('../python_scraper/InspectionSummaries_2014_07_14.csv'))
 header = info.next()
 for i,row in enumerate(info):
     for j,cell in enumerate(row):
@@ -121,7 +121,7 @@ for i,row in enumerate(info):
 maxwidth = L.max(0)
 
 # read in data and put into table
-info = csv.reader(file('../python_scraper/InspectionSummaries_2014_06_12.csv'))
+info = csv.reader(file('../python_scraper/InspectionSummaries_2014_07_14.csv'))
 header = info.next()
 headersql = [s.replace(' ', '_').replace('-','_') for s in header]
 

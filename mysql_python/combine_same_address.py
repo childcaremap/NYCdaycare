@@ -6,22 +6,22 @@ def combine_same(filename):
 	
 	info = csv.reader(file(filename))
 	header = info.next()
-	imedvio = header.index('Median_Violations_Per_Visit')
+	#imedvio = header.index('Median_Violations_Per_Visit')
 	imeavio = header.index('Mean_Violations_Per_Visit')
 	nrows = 0
 	for row in info:
-	    if row[imedvio] != '':
+	    if row[imeavio] != '':
 	    	nrows += 1
 	    
 	info = csv.reader(file(filename))
 	header = info.next()
-	A_med = np.zeros((nrows,1))
+	#A_med = np.zeros((nrows,1))
 	A_mea = np.zeros((nrows,1))
 	nrows = 0
 	i = 0
 	for row in info:
-	    if row[imedvio] != '':
-	    	A_med[i] = float(row[imedvio])
+	    if row[imeavio] != '':
+	    	#A_med[i] = float(row[imedvio])
 	    	A_mea[i] = float(row[imeavio])
 	    	i += 1
 
@@ -48,9 +48,9 @@ def combine_same(filename):
 	 	invis = header.index('Number_Of_Visits')
 	 	#imedvio = header.index('Median_Violations_Per_Visit')
 	 	#imeavio = header.index('Mean_Violations_Per_Visit')
-	 	imedran = header.index('Median_Rank')
+	 	#imedran = header.index('Median_Rank')
 	 	imearan = header.index('Mean_Rank')
-	 	imedcat = header.index('Median_Cat')
+	 	#imedcat = header.index('Median_Cat')
 	 	imeacat = header.index('Mean_Cat')
 	 	#iviopervis = len(header)
 	 	#ihazpervis = len(header)+1
@@ -119,16 +119,16 @@ def combine_same(filename):
 		    	newrows[i_comb][ingen] = combngen
 		    	combnvis = row[invis] + ' / ' + newrows[i_comb][invis]
 		    	newrows[i_comb][invis] = combnvis
-		    	combmedvio = row[imedvio] + ' / ' + newrows[i_comb][imedvio]
-		    	newrows[i_comb][imedvio] = combmedvio
+		    	#combmedvio = row[imedvio] + ' / ' + newrows[i_comb][imedvio]
+		    	#newrows[i_comb][imedvio] = combmedvio
 		    	combmeavio = row[imeavio] + ' / ' + newrows[i_comb][imeavio]
 		    	newrows[i_comb][imeavio] = combmeavio
-		    	combmedran = row[imedran] + ' / ' + newrows[i_comb][imedran]
-		    	newrows[i_comb][imedran] = combmedran
+		    	#combmedran = row[imedran] + ' / ' + newrows[i_comb][imedran]
+		    	#newrows[i_comb][imedran] = combmedran
 		    	combmearan = row[imearan] + ' / ' + newrows[i_comb][imearan]
 		    	newrows[i_comb][imearan] = combmearan
-		    	combmedcat = row[imedcat] + ' / ' + newrows[i_comb][imedcat]
-		    	newrows[i_comb][imedcat] = combmedcat
+		    	#combmedcat = row[imedcat] + ' / ' + newrows[i_comb][imedcat]
+		    	#newrows[i_comb][imedcat] = combmedcat
 		    	combmeacat = row[imeacat] + ' / ' + newrows[i_comb][imeacat]
 		    	newrows[i_comb][imeacat] = combmeacat
 
