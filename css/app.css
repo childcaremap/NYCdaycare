@@ -44,11 +44,11 @@ div.cartodb-searchbox input.text { width: 90%; }
 
 div.cartodb-popup div.cartodb-popup-content-wrapper { width: 225px !important; max-width: 225px !important; padding: 5px 15px 10px; }
 
-div.cartodb-popup div.cartodb-popup-content h6, div.cartodb-popup div.cartodb-popup-content h5 { font-size: .8rem; font-weight: 700; }
+div.cartodb-popup div.cartodb-popup-content h6, div.cartodb-popup div.cartodb-popup-content h5 { font-size: .9rem; font-weight: 700; }
 
-div.cartodb-popup div.cartodb-popup-content h4 { font-size: .7rem; }
+div.cartodb-popup div.cartodb-popup-content h4 { font-size: .8rem; }
 
-div.cartodb-popup div.cartodb-popup-content h4 + p { font-size: .7rem; }
+div.cartodb-popup div.cartodb-popup-content h4 + p { font-size: .8rem; }
 
 /* line 31, ../_sass/app.scss */
 a { color: #7aa76d; text-decoration: none; -webkit-transition: 0.15s color ease; -moz-transition: 0.15s color ease; -ms-transition: 0.15s color ease; -o-transition: 0.15s color ease; transition: 0.15s color ease; }
