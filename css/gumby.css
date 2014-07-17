@@ -1695,6 +1695,7 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
   h1.header a { margin-left: 0.3rem !important; }
   #footer { font-size: 10px; font-size: 0.625rem; line-height: 1rem; }
   .infobox { top: 150px; margin-left: .5rem; }
+  .about-bgcolor { padding: 2rem 0 0.2rem !important; }
   .about-box { /*margin: 2rem 2em!important;*/ }
   .about-box p { font-size: .9rem; line-height: 1rem; }
   .about-box h1 { font-size: 1.5rem; line-height: 1.6rem; margin-bottom: .5rem; } }
@@ -1744,6 +1745,8 @@ p.link.onscreen a { color: #d04526 !important; }
 p link.onscreen a { color: #d04526 !important; }
 
 .about-box { height: 380px; background-color: #ffffff; padding: .5rem 1rem 1rem; margin: 0rem 2em 1rem; border: 1px solid #808080; -webkit-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); -moz-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); }
+
+.about-bgcolor { background-color: #84e89b; padding: 0rem 0rem 0.2rem; }
 
 .icon-github { color: white; font-size: 16px; }
 
