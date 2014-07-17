@@ -16,19 +16,26 @@
     <link rel="image_src" href="https://raw.githubusercontent.com/childcaremap/NYCdaycare/gh-pages/NYCDayCareMap.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
 
     <!-- Facebook Metadata /-->
-    <!--<meta property="fb:page_id" content=""> -->
-    <meta property="og:image" content="https://raw.githubusercontent.com/childcaremap/NYCdaycare/gh-pages/NYCDayCareMap.png">
-    <meta property="og:description" content="Map of regulated day care centers in New York City. Center-based Group Child Care regulated by NYC DoHMH, Home-based Child Care care regulated by NYS OCFS. Information such as center name, site type, permit number provided in infowindows.">
-    <meta property="og:title" content="NYC Day Care Map">
-    <meta property="og:url" content="http://childcaremap.github.io/NYCdaycare/">
+    <!-- <meta property="fb:page_id" content=""/> -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/childcaremap/NYCdaycare/gh-pages/NYCDayCareMap.png"/>
+    <meta property="og:description" content="Map of regulated day care centers in New York City, Center-based Group Child Care regulated by NYC DoHMH, Home-based Child Care care regulated by NYS OCFS."/>
+    <meta property="og:title" content="NYC Day Care Map"/>
+    <meta property="og:url" content="http://childcaremap.github.io/NYCdaycare/"/>
 
     <!-- Google+ Metadata /-->
-    <meta itemprop="name" content="NYC Day Care Map">
-    <meta itemprop="description" content="Map of regulated day care centers in New York City. Center-based Group Child Care regulated by NYC DoHMH, Home-based Child Care care regulated by NYS OCFS. Information such as center name, site type, permit number provided in infowindows.">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/childcaremap/NYCdaycare/gh-pages/NYCDayCareMap.png">
+    <meta itemprop="name" content="NYC Day Care Map"/>
+    <meta itemprop="description" content="Map of regulated day care centers in New York City. Center-based Group Child Care regulated by NYC DoHMH, Home-based Child Care care regulated by NYS OCFS."/>
+    <meta itemprop="image" content="https://raw.githubusercontent.com/childcaremap/NYCdaycare/gh-pages/NYCDayCareMap.png"/>
+
+    <!-- Twitter Summary Card -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="NYC Day Care Map" />
+    <meta property="twitter:description" content="Map of regulated day care centers in New York City." />
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/childcaremap/NYCdaycare/gh-pages/NYCDayCareMap.png" />
+    <meta property="twitter:url" content="http://childcaremap.github.io/NYCdaycare/" />
 
 
     <title>{{ site.title_tag_text }}</title>
@@ -40,7 +47,7 @@
     </head>
 <body>
 
-<div class="container"> <!--container-->
+<div class="container" data-target="top"> <!--container-->
 
 <div gumby-fixed="1" gumby-pinoffset="0" class="pretty navbar row nav1" id="nav1">
   <!-- Toggle for mobile navigation, targeting the <ul> -->
@@ -57,37 +64,37 @@
       <a href="#">About</a>
       <div class="dropdown">
         <ul>
-          <li class="skiplink"><a href="#the-story" gumby-update gumby-duration="600" gumby-goto="[data-target='the-story']">How it started</a></li>
-          <li class="skiplink"><a href="#the-map" gumby-update gumby-duration="600" gumby-goto="[data-target='the-map']">The map</a></li>
-          <li class="skiplink"><a href="#the-team" gumby-update gumby-duration="600" gumby-goto="[data-target='the-team']">The team</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-story']">How it started</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-map']">The map</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-team']">The team</a></li>
         </ul>
       </div>
     </li>
   </ul>
 </div>
 
-<!--mobile searchbar -->
-<div class="row searchbar">
+<!--mobile searchbar --><!--data-tooltip="” -->
+<!--div class="row searchbar">
     <ul>
         <li>
         <div class="twelve columns cartodb-searchbox mobile">
         <form>
             <span class="loader"></span>
-            <input type="text" class="text" value="" placeholder="Enter street address"><!--data-tooltip="” -->
+            <input type="text" class="text" value="" placeholder="Enter street address">
             <input type="submit" class="submit" value=" ">
         </form>
         </div>
         </li>
-        <!--li>
+        <li>
         <div class="two columns location"><a href="#" class=""><i class="icon-direction"></i></a>
         </div>
-        </li-->
+        </li>
     </ul>
-</div>
+</div-->
 
 <!--mobile filterbar -->
 <div class="row filterbar nav2" id="nav2">
-    <ul class="twelve columns">
+    <ul class="twelve columns" style="padding:3px 0 2px;">
         <li class="" style="font-size:.8rem;padding-left:10px;vertical-align:middle;"><strong>Showing:</strong> xxx</li>
         <li class="" style="font-size:2rem;vertical-align:middle;"><div><a href="#" class="ttip" data-tooltip="Show Listing" alt=" "><i class="icon-list"></i></a></div></li>
         <li class="" style="vertical-align:middle;padding-right:10px;"><div class="medium info pretty btn icon-left icon-gauge"><a href="#" class="toggle" gumby-trigger=".infobox">Filter</a></div></li>
@@ -126,33 +133,48 @@
 
     {{ content }}
 
-<div data-target="the-story" class="about-box inview txt">
-    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="50">The Story</h1>
-    <p class="inview link" gumby-classname="onscreen" gumby-offset="50">
-        For background on how the project was started please read the following HuffPostCode article:</p>
-        <p class="inview link" gumby-classname="onscreen"><a href="http://www.huffingtonpost.com/marc-shifflett/when-open-data-meets-app_b_5504232.html" target="_blank">Scraping Day Care Data in the Naked City</a></p>
+<div class="about-bgcolor story">
+<div data-target="about-story" class="space-large-screens"></div>
+<div class="about-box">
+    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="5">The Story</h1>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">For background on how the project was started please read the following HuffPostCode article:</p>
+    <p class="inview link" gumby-classname="onscreen"><a href="http://www.huffingtonpost.com/marc-shifflett/when-open-data-meets-app_b_5504232.html" target="_blank">Scraping Day Care Data in the Naked City</a></p>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">Please VOTE for us at the BigApps competion by following the link below, click on VOTE and choose "NYCDayCareMap". Thanks!</p>
+    <p class="inview link" gumby-classname="onscreen" gumby-offset="5"><a href="http://nycbigapps.com/projects" target="_blank">BigApps Project Hub</a></p>
 </div>
-<p style="text-align: center;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+<p style="text-align: center;"><a href="#" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+</div>
 
-<div data-target="the-map" class="about-box inview txt">
-    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="50">The Map</h1>
-    <p class="inview txt" gumby-classname="onscreen" gumby-offset="50">This is a map of regulated day care centers within the five boroughs of NYC made possible in large part to the generous assisstance of the:</p> <p class="inview link" gumby-classname="onscreen"><a href="http://betanyc.us/" target="_blank">BetaNYC civic hacker community</a></p>.
+<div class="about-bgcolor map">
+<div data-target="about-map" class="space-large-screens"></div>
+<div class="about-box">
+    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="5">The Map</h1>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">This is a map of regulated day care centers within the five boroughs of New York City created from data scraped off the NYCDoHMH and NYState Children's Services web sites. This would not have been possible without the generous assistance of the</p>
+    <p class="inview link" gumby-classname="onscreen" gumby-offset="5"><a href="http://betanyc.us/" target="_blank">BetaNYC civic hacker community</a>.</p>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">The data was last updated June 12th 2014.</p>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">Please VOTE for us at the BigApps competion by following the link below, click on VOTE and choose "NYCDayCareMap". Thanks!</p>
+    <p class="inview link" gumby-classname="onscreen"><a href="http://nycbigapps.com/projects" target="_blank">BigApps Project Hub</a></p>
 </div>
-<p style="text-align: center;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+<p style="text-align:center;"><a href="#" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+</div>
 
-<div data-target="the-team" class="about-box inview txt">
-    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="50">The Team</h1>
-    <p class="inview txt" gumby-classname="onscreen" gumby-offset="50">
-        For Details please visit our splash page at:</p> 
-        <p class="inview link" gumby-classname="onscreen"><a href="http://nycdaycaremap.splashthat.com/" target="_blank">BigAppsNYC</a></p>
+<div class="about-bgcolor team">
+<div data-target="about-team" class="space-large-screens"></div>
+<div class="about-box">
+    <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="5">The Team</h1>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">For Details please visit our splash page at:</p> 
+    <p class="inview link" gumby-classname="onscreen" gumby-offset="5"><a href="http://nycdaycaremap.splashthat.com/" target="_blank">BigAppsNYC</a></p>
+    <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">Please VOTE for us at the BigApps competion by following the link below, click on VOTE and choose "NYCDayCareMap". Thanks!</p>
+    <p class="inview link" gumby-classname="onscreen"><a href="http://nycbigapps.com/projects" target="_blank">BigApps Project Hub</a></p>
 </div>
-<p style="text-align:center;margin-bottom:3rem;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+<p style="text-align:center;margin-bottom:3rem;"><a href="#" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+</div>
 
 <div id="footer" class="row">
     <ul>
-        <li class="six columns" style="vertical-align:middle;"><a href="#top" gumby-update gumby-goto="[data-target='top']">&copy; NYC Day Care Map</a></li> 
-        <li class="six columns" style="text-align:right;vertical-align:top;">Check us out on <a href="https://github.com/childcaremap/NYCdaycare" target="new window"><i class="icon-github"></i></a></li>
-    </ul>
+    <li class="two columns" style="vertical-align:middle;"><a href="#top" gumby-update gumby-goto="[data-target='top']">&copy; NYC Day Care Map</a></li> 
+    <li class="ten columns" style="text-align:right;vertical-align:top;">Check us out on <a href="https://github.com/childcaremap/NYCdaycare" target="new window"><i class="icon-github"></i></a></li>
+    <ul>
 </div>
 
     <!-- /container -->
