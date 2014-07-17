@@ -49,7 +49,7 @@
 
 <body>
 
-<div class="container"> <!--container-->
+<div class="container" data-target="top"> <!--container-->
 
 <div gumby-fixed="1" gumby-pinoffset="0" class="pretty navbar row nav1" id="nav1">
   <!-- Toggle for mobile navigation, targeting the <ul> -->
@@ -66,9 +66,9 @@
       <a href="#">About</a>
       <div class="dropdown">
         <ul>
-          <li class="skiplink"><a href="#the-story" gumby-update gumby-duration="600" gumby-goto="[data-target='the-story']">How it started</a></li>
-          <li class="skiplink"><a href="#the-map" gumby-update gumby-duration="600" gumby-goto="[data-target='the-map']">The map</a></li>
-          <li class="skiplink"><a href="#the-team" gumby-update gumby-duration="600" gumby-goto="[data-target='the-team']">The team</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-goto="[data-target='about-story']">How it started</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-map']">The map</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-team']">The team</a></li>
         </ul>
       </div>
     </li>
@@ -80,7 +80,7 @@
     <ul class="twelve columns" style="padding:3px 0 2px;">
         <!--li class="" style="padding-left:10px;vertical-align:middle;"><a href="#" class="toggle" gumby-trigger=".cartodb-searchbox"><strong>Search</strong></a></li>
         <li class="" style="font-size:2rem;vertical-align:middle;"><div><a href="#" class="ttip" data-tooltip="Show Listing" alt=" "><i class="icon-list"></i></a></div></li-->
-        <li class="" style="vertical-align:middle;padding-left:.5rem;"><div class="medium info pretty btn icon-left icon-gauge" style=""><a style="" href="#" class="toggle" gumby-trigger=".infobox">Filter</a></div></li>
+        <li class="" style="vertical-align:middle;padding-left:.5rem;"><div class="medium info pretty btn icon-left icon-flow-parallel" style=""><a style="" href="#" class="toggle" gumby-trigger=".infobox">Filter</a></div></li>
     </ul>
 </div>
 
@@ -115,17 +115,21 @@
 </div>
 
     {{ content }}
-
-<div data-target="the-story" class="about-box">
+<div style="background-color:#84e89b;" class="about-bgcolor">
+<div data-target="about-story" class="space-large-screens"></div>
+<div class="about-box">
     <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="5">The Story</h1>
     <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">For background on how the project was started please read the following HuffPostCode article:</p>
     <p class="inview link" gumby-classname="onscreen"><a href="http://www.huffingtonpost.com/marc-shifflett/when-open-data-meets-app_b_5504232.html" target="_blank">Scraping Day Care Data in the Naked City</a></p>
     <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">Please VOTE for us at the BigApps competion by following the link below, click on VOTE and choose "NYCDayCareMap". Thanks!</p>
     <p class="inview link" gumby-classname="onscreen"><a href="http://nycbigapps.com/projects" target="_blank">BigApps Project Hub</a></p>
 </div>
-<p style="text-align: center;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+<p style="text-align: center;"><a href="#" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+</div>
 
-<div data-target="the-map" class="about-box">
+<div style="background-color:#db9f30;" class="about-bgcolor">
+<div data-target="about-map" class="space-large-screens"></div>
+<div class="about-box">
     <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="5">The Map</h1>
     <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">This is a map of regulated day care centers within the five boroughs of NYC made possible in large part to the generous assistance of the:</p>
     <p class="inview link" gumby-classname="onscreen"><a href="http://betanyc.us/" target="_blank">BetaNYC civic hacker community</a>.</p>
@@ -133,17 +137,20 @@
     <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">Please VOTE for us at the BigApps competion by following the link below, click on VOTE and choose "NYCDayCareMap". Thanks!</p>
     <p class="inview link" gumby-classname="onscreen"><a href="http://nycbigapps.com/projects" target="_blank">BigApps Project Hub</a></p>
 </div>
-<p style="text-align: center;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+<p style="text-align:center;"><a href="#" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+</div>
 
-<div data-target="the-team" class="about-box">
+<div style="background-color:#58b1fa;" class="about-bgcolor">
+<div data-target="about-team" class="space-large-screens"></div>
+<div class="about-box">
     <h1 class="inview txt" gumby-classname="onscreen" gumby-offset="5">The Team</h1>
     <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">For Details please visit our splash page at:</p> 
     <p class="inview link" gumby-classname="onscreen"><a href="http://nycdaycaremap.splashthat.com/" target="_blank">BigAppsNYC</a></p>
     <p class="inview txt" gumby-classname="onscreen" gumby-offset="5">Please VOTE for us at the BigApps competion by following the link below, click on VOTE and choose "NYCDayCareMap". Thanks!</p>
     <p class="inview link" gumby-classname="onscreen"><a href="http://nycbigapps.com/projects" target="_blank">BigApps Project Hub</a></p>
 </div>
-<p style="text-align:center;margin-bottom:3rem;"><a href="#top" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
-
+<p style="text-align:center;margin-bottom:3rem;"><a href="#" gumby-update gumby-goto="[data-target='top']"><i class="icon-home"></i></a></p>
+</div>
 
 <div id="footer" class="row">
     <ul>
