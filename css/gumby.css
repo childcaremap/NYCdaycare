@@ -1708,10 +1708,15 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 @media only screen and (min-width: 768px) { .space-large-screens { width: 100%; height: 125px; } }
 @media only screen and (max-width: 767px) { .infobox { display: none !important; } }
 
+.info-menu { font-size: 10px; font-weight: 700; text-transform: uppercase; padding-left: 10px; }
+
+.meds, .dctype, .dcyears { display: none; }
+
 @media only screen and (min-width: 768px) { .filterbar, .searchbar { display: none !important; } }
 @media only screen and (min-width: 768px) and (max-width: 1279px) { .filterbar, .searchbar { display: none !important; } }
 
 @media only screen and (max-width: 767px) { .active, .searchbar { display: inherit !important; } }
+@media only screen and (min-width: 768px) { .active, .searchbar { display: inherit !important; } }
 
 /*#nav1 .btn { @include visible(desktop); @include visible(tablets);
 }*/
@@ -1759,5 +1764,7 @@ p link.onscreen a { color: #d04526 !important; }
 .icon-github { color: white; font-size: 16px; }
 
 .icon-home { font-size: 26px; }
+
+.icon-plus-squared { font-size: 16px; }
 
 #loader { position: relative; top: 35%%; left: 50%; text-align: center; }

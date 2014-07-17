@@ -97,36 +97,54 @@
     <ul class="twelve columns" style="padding:3px 0 2px;">
         <li class="" style="font-size:.8rem;padding-left:10px;vertical-align:middle;"><strong>Showing:</strong> xxx</li>
         <li class="" style="font-size:2rem;vertical-align:middle;"><div><a href="#" class="ttip" data-tooltip="Show Listing" alt=" "><i class="icon-list"></i></a></div></li>
-        <li class="" style="vertical-align:middle;padding-right:10px;"><div class="medium info pretty btn icon-left icon-gauge"><a href="#" class="toggle" gumby-trigger=".infobox">Filter</a></div></li>
+        <li class="" style="vertical-align:middle;padding-right:10px;"><div class="medium info pretty btn icon-left icon-flow-parallel"><a href="#" class="toggle" gumby-trigger=".infobox">Filter</a></div></li>
+
     </ul>
 </div>
 
 <div id="map"><img src="{{ site.baseurl }}/img/ajax-loader.gif" id="loader"></div>
 
-    <div class="infobox">
+<div class="infobox">
+    <div id="filter_selector" class="cartodb-infobox">
+        <ul>
+            <div class="info-menu"><i class="icon-flow-parallel"> Filter</i></div>
+        </ul>
+    </div>
     <div id="age_selector" class="cartodb-infobox">
-       <ul>
-        <li data="all" class="selected">All Years</li>
-        <li data="0 YEARS - 2 YEARS">0 - 2 Years</li>
-        <li data="2 YEARS - 5 YEARS">2 - 5 Years</li>
+        <ul>
+            <div class="info-menu"><a class="toggle" gumby-trigger=".dcyears" href="#"><i class="icon-plus-squared"></i> Age Range?</a></div>
+            <ul class="dcyears">
+                <li data="all" class="selected">All Ages</li>
+                <li data="0 YEARS - 2 YEARS">0 - 2 Years</li>
+                <li data="2 YEARS - 5 YEARS">2 - 5 Years</li>
+            </ul>
         </ul>
     </div>
     <div id="type_selector" class="cartodb-infobox">
         <ul>
-        <li data="all" class="selected">All Types</li>
-        <li data="Private">Private</li>
-        <li data="ACS Head Start">ACS Head Start</li>
-        <li data="ACS Contracted Preschools">ACS Contracted Preschools</li>
-        <li data="Head Start (Direct Fed. Funding)">Head Start Direct Fed Funding</li>
-        <!-- <li data="Corporate">Corporate</li> -->
-        <li data="Home-Based">Home-Based (Family Day Care)</li>
-      </ul>
+            <div class="info-menu"><a class="toggle" gumby-trigger=".dctype" href="#"><i class="icon-plus-squared"></i> Day Care Type?</a></div>
+            <ul class="dctype">
+                <li data="all" class="selected">All</li>
+                <li data="Private">Private</li>
+                <li data="ACS Head Start">ACS Head Start</li>
+                <li data="ACS Contracted Preschools">ACS Contracted Preschools</li>
+                <li data="Head Start (Direct Fed. Funding)">Head Start Direct Fed Funding</li>
+                <!-- <li data="Corporate">Corporate</li> -->
+                <li data="Home-Based">Home-Based (Family Day Care)</li>
+            </ul>
+        </ul>
     </div>
     <div id="medicine_selector" class="cartodb-infobox">
         <ul>
-        <li data="all" class="selected">All</li>
-        <li data="Yes">Certified to give medicine</li>
-        <li data="No">Not certified to give medicine</li>
+            <div class="info-menu"><a class="toggle" gumby-trigger=".meds" href="#"><i class="icon-plus-squared"></i> Certified to give medicine?</a></div>
+            <ul class="meds">
+                <li data="all" class="selected">All</li>
+                <li data="Yes">Yes</li>
+                <li data="No">No</li>
+            </ul>
+            <!--li data="all" class="selected">All</li>
+            <li data="Yes">Certified to give medicine</li>
+            <li data="No">Not certified to give medicine</li-->
         </ul>
     </div>
 </div>
@@ -179,7 +197,7 @@
 
     <!-- /container -->
     </div>
-    
+
     {% include scripts.html %} 
 
     </body>

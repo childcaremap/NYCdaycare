@@ -3,11 +3,13 @@ html, body, #map, .container { height: 100%; padding: 0; }
 
 .infobox { /* debug display: none;*/ width: 230px; position: absolute; top: 75px; margin-left: 4.5rem; }
 
-#age_selector { width: 230px; position: relative; top: 0px; padding: 0; }
+#filter_selector { width: 230px; position: relative; top: 0px; padding: 0; }
+
+#age_selector { width: 230px; position: relative; top: 5px; padding: 0; }
 
 #type_selector { width: 230px; position: relative; top: 10px; padding: 0; }
 
-#medicine_selector { width: 230px; position: relative; top: 20px; padding: 0; }
+#medicine_selector { width: 230px; position: relative; top: 15px; padding: 0; }
 
 #age_selector ul { padding: 0; margin: 0; list-style-type: none; }
 
