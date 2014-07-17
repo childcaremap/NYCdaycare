@@ -411,6 +411,14 @@
   }
   </script>
 
+<!-- Ajax-loader GIF -->
+<script>
+    $(window).load(function() {
+        $("#map").show();
+        $("#loader").hide(500);
+    });
+</script>
+
 <!--
   Include gumby.js followed by UI modules followed by gumby.init.js
   Or concatenate and minify into a single file -->
@@ -424,6 +432,6 @@
   <script src="{{ site.baseurl }}/bower_components/gumby/js/libs/ui/gumby.tabs.js"></script>
   <script src="{{ site.baseurl }}/bower_components/gumby/js/libs/ui/gumby.navbar.js"></script>
   <script src="{{ site.baseurl }}/bower_components/gumby/js/libs/ui/jquery.validation.js"></script>
-  <script src="{{ site.baseurl }}/bower_components/gumby/js/libs/gumby.init.js"></script>
   <script src="{{ site.baseurl }}/bower_components/gumby-inview/gumby.inview.js"></script>
+  <script src="{{ site.baseurl }}/bower_components/gumby/js/libs/gumby.init.js"></script>
 

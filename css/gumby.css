@@ -1759,3 +1759,5 @@ p link.onscreen a { color: #d04526 !important; }
 .icon-github { color: white; font-size: 16px; }
 
 .icon-home { font-size: 26px; }
+
+#loader { position: relative; top: 35%%; left: 50%; text-align: center; }
