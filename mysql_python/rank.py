@@ -69,11 +69,11 @@ with mydb:
                 cur.execute("UPDATE BasicSum SET Mean_Cat = %s WHERE Site_ID = %s" , ('Top 15%',site))
             elif means[i] > quantile_means[1] and means[i] <= quantile_means[2]:
                 cur.execute("UPDATE BasicSum SET Mean_Cat = %s WHERE Site_ID = %s" , ('Top 30%',site))
-            elif means[i] >= quantile_means[3] and means[i] < quantile_means[4]:
+            elif means[i] > quantile_means[3] and means[i] <= quantile_means[4]:
                 cur.execute("UPDATE BasicSum SET Mean_Cat = %s WHERE Site_ID = %s" , ('Bottom 30%',site))
-            elif means[i] >= quantile_means[4] and means[i] < quantile_means[5]:
+            elif means[i] > quantile_means[4] and means[i] <= quantile_means[5]:
                 cur.execute("UPDATE BasicSum SET Mean_Cat = %s WHERE Site_ID = %s" , ('Bottom 15%',site))
-            elif means[i] >= quantile_means[5]:
+            elif means[i] > quantile_means[5]:
                 cur.execute("UPDATE BasicSum SET Mean_Cat = %s WHERE Site_ID = %s" , ('Bottom 5%',site))
             else:
                 cur.execute("UPDATE BasicSum SET Mean_Cat = %s WHERE Site_ID = %s" , ('Average',site))
@@ -89,11 +89,11 @@ with mydb:
                 cur.execute("UPDATE BasicSum SET Score_Cat = %s WHERE Site_ID = %s" , ('Top 15%',site))
             elif scores[i] > quantile_scores[1] and scores[i] <= quantile_scores[2]:
                 cur.execute("UPDATE BasicSum SET Score_Cat = %s WHERE Site_ID = %s" , ('Top 30%',site))
-            elif scores[i] >= quantile_scores[3] and scores[i] < quantile_scores[4]:
+            elif scores[i] > quantile_scores[3] and scores[i] <= quantile_scores[4]:
                 cur.execute("UPDATE BasicSum SET Score_Cat = %s WHERE Site_ID = %s" , ('Bottom 30%',site))
-            elif scores[i] >= quantile_scores[4] and scores[i] < quantile_scores[5]:
+            elif scores[i] > quantile_scores[4] and scores[i] <= quantile_scores[5]:
                 cur.execute("UPDATE BasicSum SET Score_Cat = %s WHERE Site_ID = %s" , ('Bottom 15%',site))
-            elif scores[i] >= quantile_scores[5]:
+            elif scores[i] > quantile_scores[5]:
                 cur.execute("UPDATE BasicSum SET Score_Cat = %s WHERE Site_ID = %s" , ('Bottom 5%',site))
             else:
                 cur.execute("UPDATE BasicSum SET Score_Cat = %s WHERE Site_ID = %s" , ('Average',site))
