@@ -11,7 +11,7 @@ def combine_samegeo(filename):
         newrows = []  # Initialize clean rows
         # add entry only if geolocation hasn't been added yet
         for row in info:
-            if row[istatus] != 'Suspended':
+            if row[istatus] not in ('Suspended','Pending Denial','Pending Revocation','Pending Revocation and Denial'):
                 newrows.append(row)
             else:
                 print 'removed ' + str(row)

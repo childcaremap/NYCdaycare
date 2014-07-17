@@ -51,13 +51,14 @@ def combine_samegeo(filename):
             row[icap] = re.sub('Ages ','',row[icap])
             row[iinfo] = re.sub(re.escape('viewprofile.aspx?&facility_id='),'Profile/Index/',row[iinfo])
             if (row[ilat], row[ilon]) not in coord:
-                coord.append((row[ilat], row[ilon]))
-                newrows.append(row)
-            else:
-                if row[ilat] == '':
+                if row[ilat] != '':
                     coord.append((row[ilat], row[ilon]))
                     newrows.append(row)
-                else:
+            else:
+                if row[ilat] != '':
+                    #coord.append((row[ilat], row[ilon]))
+                    #newrows.append(row)
+                #else:
                     i_comb = coord.index((row[ilat], row[ilon]))
                     combname = row[iname] + ' / ' + newrows[i_comb][iname]
                     newrows[i_comb][iname] = combname
