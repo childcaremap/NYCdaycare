@@ -23,14 +23,15 @@ def combine_samegeo(filename):
         incri = header.index('Critical_Violations')
         ingen = header.index('General_Violations')
         invis = header.index('Number_Of_Visits')
-        #imedvio = header.index('Median_Violations_Per_Visit')
         imeavio = header.index('Mean_Violations_Per_Visit')
-        #imedran = header.index('Median_Rank')
+        iscore = header.index('Score')
         imearan = header.index('Mean_Rank')
-        #imedcat = header.index('Median_Cat')
+        iscoran = header.index('Score_Rank')
         imeacat = header.index('Mean_Cat')
+        iscocat = header.index('Score_Cat')
         inpermits = header.index('Number_Of_Permits')
         iavmeavio = header.index('Average_Mean_Violations_Per_Visit')
+        iavscore = header.index('Average_Score')
         ilat = header.index('Lat')
         ilon = header.index('Lon')
 
@@ -75,18 +76,18 @@ def combine_samegeo(filename):
                 newrows[i_comb][ingen] = combngen
                 combnvis = row[invis] + ' / ' + newrows[i_comb][invis]
                 newrows[i_comb][invis] = combnvis
-                #combmedvio = row[imedvio] + ' / ' + newrows[i_comb][imedvio]
-                #newrows[i_comb][imedvio] = combmedvio
                 combmeavio = row[imeavio] + ' / ' + newrows[i_comb][imeavio]
                 newrows[i_comb][imeavio] = combmeavio
-                #combmedran = row[imedran] + ' / ' + newrows[i_comb][imedran]
-                #newrows[i_comb][imedran] = combmedran
+                combscore = row[iscore] + ' / ' + newrows[i_comb][iscore]
+                newrows[i_comb][iscore] = combscore
                 combmearan = row[imearan] + ' / ' + newrows[i_comb][imearan]
                 newrows[i_comb][imearan] = combmearan
-                #combmedcat = row[imedcat] + ' / ' + newrows[i_comb][imedcat]
-                #newrows[i_comb][imedcat] = combmedcat
+                combscoran = row[iscoran] + ' / ' + newrows[i_comb][iscoran]
+                newrows[i_comb][iscoran] = combscoran
                 combmeacat = row[imeacat] + ' / ' + newrows[i_comb][imeacat]
                 newrows[i_comb][imeacat] = combmeacat
+                combscocat = row[iscocat] + ' / ' + newrows[i_comb][iscocat]
+                newrows[i_comb][iscocat] = combscocat
 
                 if row[imeavio] != '':
                     if newrows[i_comb][iavmeavio] != '':
@@ -94,6 +95,13 @@ def combine_samegeo(filename):
                         newrows[i_comb][inpermits] = int(row[inpermits]) + int(newrows[i_comb][inpermits])
                     else:
                         newrows[i_comb][iavmeavio] = float(row[imeavio])
+                        newrows[i_comb][inpermits] = int(newrows[i_comb][inpermits]) + 1
+                if row[iscore] != '':
+                    if newrows[i_comb][iavscore] != '':
+                        newrows[i_comb][iavscore] = (int(row[inpermits])*float(row[iavscore]) + int(newrows[i_comb][inpermits])*float(newrows[i_comb][iavscore]))/(int(row[inpermits]) + int(newrows[i_comb][inpermits]))
+                        newrows[i_comb][inpermits] = int(row[inpermits]) + int(newrows[i_comb][inpermits])
+                    else:
+                        newrows[i_comb][iavscore] = float(row[iscore])
                         newrows[i_comb][inpermits] = int(newrows[i_comb][inpermits]) + 1
 
     nname = filename[:-4] + "_combinedgeo.csv" # The filename of the output file

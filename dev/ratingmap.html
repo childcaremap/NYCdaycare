@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Create Visualization | CartoDB.js</title>
+    <title>Rating Map</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
@@ -111,16 +111,16 @@
               [zoom = 16] {marker-width: 28}\
               [zoom > 16] {marker-width: 30}\
             }\
-            #basicinfosum_2014_07_14 [ average_mean_violations_per_visit <= 14.5] {\
+            #basicinfosum_2014_07_14 [ average_mean_violations_per_visit > 4.0] {\
                marker-fill: #d73027;\
             }\
-            #basicinfosum_2014_07_14 [ average_mean_violations_per_visit <= 4.2857099999999999] {\
+            #basicinfosum_2014_07_14 [ average_mean_violations_per_visit <= 4.0] {\
                marker-fill: #f79272;\
             }\
             #basicinfosum_2014_07_14 [ average_mean_violations_per_visit <= 3.0] {\
                marker-fill: #fed6b0;\
             }\
-            #basicinfosum_2014_07_14 [ average_mean_violations_per_visit <= 1.75] {\
+            #basicinfosum_2014_07_14 [ average_mean_violations_per_visit <= 1.66667] {\
                marker-fill: #fff2cc;\
             }\
             #basicinfosum_2014_07_14 [ average_mean_violations_per_visit <= 0.75] {\
