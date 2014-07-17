@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rating Map Based on Score</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
+    <style>
+      html, body, #map {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <!-- include google maps library *before* load cartodb.js -->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <!-- include cartodb.js library -->
+    <!--<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script> -->
+    <!-- use custom cartodb.js library -->
+    <script src="../js/cartodb_custom.js"></script>
+
+    <script type="infowindow/html" id="infowindow_template">
+      <div class="cartodb-popup">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+         <div class="cartodb-popup-content-wrapper">
+           <div class="cartodb-popup-content">
+            <h5><%=content.data.center_name%></h5>
+            <p></p>
+            <h4>Rating:</h4>
+            <p><%=content.data.score_cat%></p>
+            <h4>Violation Score:</h4>
+            <p><%=content.data.score%></p>
+            <h4>phone:</h4>
+            <p><%=content.data.phone%></p>
+            <h4>site_type:</h4>
+            <p><%=content.data.site_type%></p>
+            <h4>permit_status:</h4>
+            <p><%=content.data.permit_status%></p>
+            <h4>permit_expiration_date:</h4>
+            <p><%=content.data.permit_expiration_date%></p>
+            <h4>permit_number:</h4>
+            <p><%=content.data.permit_number%></p>
+            <h4>maximum_capacity:</h4>
+            <p><%=content.data.maximum_capacity%></p>
+            <h4>certified_to_administer_medication:</h4>
+            <p><%=content.data.certified_to_administer_medication%></p>
+           </div>
+         </div>
+         <div class="cartodb-popup-tip-container"></div>
+      </div>
+    </script>
+
+
+    <script>
+    
+      function main() {
+        var map;
+       // create google maps map
+        var mapOptions = {
+          zoom: 10,
+          center: new google.maps.LatLng(40.61538583964019, -74.06192779541016),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map'),  mapOptions);
+        var styles = [
+          {
+            stylers: [
+              { hue: "#cca300" },
+              { saturation: -60 }
+            ]
+          },{
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+              { lightness: 10 },
+              { visibility: "simplified" }
+            ]
+          },{
+            featureType: "road",
+            elementType: "labels",
+            stylers: [
+              { visibility: "on" }
+            ]
+          }
+        ];
+        map.setOptions({styles: styles});
+        // create a layer with 1 sublayer
+        cartodb.createLayer(map, {
+          user_name: 'nycdaycaremap',
+          type: 'cartodb',
+          sublayers: [{
+            sql: "SELECT * FROM basicinfosum_2014_07_14",
+            cartocss: "#basicinfosum_2014_07_14 {\
+              marker-fill-opacity: 1;\
+              marker-line-color: #808080;\
+              marker-line-width: 0.5;\
+              marker-line-opacity: 1;\
+              marker-width: 16;\
+              marker-fill: #1a9850;\
+              marker-allow-overlap: true;\
+              [zoom = 11] {marker-width: 18}\
+              [zoom = 12] {marker-width: 20}\
+              [zoom = 13] {marker-width: 22}\
+              [zoom = 14] {marker-width: 24}\
+              [zoom = 15] {marker-width: 26}\
+              [zoom = 16] {marker-width: 28}\
+              [zoom > 16] {marker-width: 30}\
+            }\
+            #basicinfosum_2014_07_14 [ average_score > 7.5674625000000004] {\
+               marker-fill: #d73027;\
+            }\
+            #basicinfosum_2014_07_14 [ average_score <= 7.5674625000000004] {\
+               marker-fill: #f79272;\
+            }\
+            #basicinfosum_2014_07_14 [ average_score <= 5.4444400000000002] {\
+               marker-fill: #fed6b0;\
+            }\
+            #basicinfosum_2014_07_14 [ average_score <= 3.0] {\
+               marker-fill: #fff2cc;\
+            }\
+            #basicinfosum_2014_07_14 [ average_score <= 1.3333299999999999] {\
+               marker-fill: #d2ecb4;\
+            }\
+            #basicinfosum_2014_07_14 [ average_score <= 0.40000000000000002] {\
+               marker-fill: #8cce8a;\
+            }\
+            #basicinfosum_2014_07_14 [ average_score <= 0.0] {\
+               marker-fill: #1a9850;\
+            }"
+          }]
+        })
+        .addTo(map,0) 
+        .done(function(layer) {
+            var infowindow = cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['center_name','score_cat','score','age_range','phone','site_type','permit_status','permit_expiration_date','permit_number','maximum_capacity','certified_to_administer_medication']);
+            infowindow.model.set('template', function(data) {
+                return _.template($('#infowindow_template').html())(data);
+              })
+        })
+        .on('done', function(layer) {
+          //hack from https://gist.github.com/javisantana/4e50d53e4eeb7fbdab0e
+          var v = cdb.vis.Overlay.create('search', map.viz, {})
+          $('#map').append(v.render().el);
+        })
+        .on('error', function() {
+          console.log("some error occurred");
+        });
+      }
+      window.onload = main;
+    </script>
+  </body>
+</html>
