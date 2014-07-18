@@ -3,11 +3,13 @@ html, body, #map, .container { height: 100%; padding: 0; }
 
 .infobox { /* debug display: none;*/ width: 230px; position: absolute; top: 75px; margin-left: 4.5rem; }
 
-#age_selector { width: 230px; position: relative; top: 0px; padding: 0; }
+#filter_selector { width: 230px; position: relative; top: 0px; padding: 0; }
+
+#age_selector { width: 230px; position: relative; top: 5px; padding: 0; }
 
 #type_selector { width: 230px; position: relative; top: 10px; padding: 0; }
 
-#medicine_selector { width: 230px; position: relative; top: 20px; padding: 0; }
+#medicine_selector { width: 230px; position: relative; top: 15px; padding: 0; }
 
 #age_selector ul { padding: 0; margin: 0; list-style-type: none; }
 
@@ -42,7 +44,13 @@ div.cartodb-searchbox { width: 300px; height: 30px; top: 5px; right: 8rem; margi
 
 div.cartodb-searchbox input.text { width: 90%; }
 
-div.cartodb-popup div.cartodb-popup-content-wrapper { width: 225px !important; max-width: 225px !important; }
+div.cartodb-popup div.cartodb-popup-content-wrapper { width: 225px !important; max-width: 225px !important; padding: 5px 15px 10px; }
+
+div.cartodb-popup div.cartodb-popup-content h6, div.cartodb-popup div.cartodb-popup-content h5 { font-size: .9rem; font-weight: 700; }
+
+div.cartodb-popup div.cartodb-popup-content h4 { font-size: .8rem; }
+
+div.cartodb-popup div.cartodb-popup-content h4 + p { font-size: .8rem; }
 
 /* line 31, ../_sass/app.scss */
 a { color: #7aa76d; text-decoration: none; -webkit-transition: 0.15s color ease; -moz-transition: 0.15s color ease; -ms-transition: 0.15s color ease; -o-transition: 0.15s color ease; transition: 0.15s color ease; }
