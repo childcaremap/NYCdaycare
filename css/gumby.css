@@ -1749,7 +1749,7 @@ p.link.onscreen a { color: #d04526 !important; }
 
 p link.onscreen a { color: #d04526 !important; }
 
-.about-box { height: 390px; background-color: #ffffff; padding: .5rem 1rem 1rem; margin: 0rem 2em 1rem; border: 1px solid #808080; -webkit-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); -moz-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); }
+.about-box { height: 390px; background-color: #ffffff; padding: .5rem 1rem 1rem; margin: 0rem 2em 1rem; border: 1px solid #808080; -webkit-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); -moz-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); overflow: auto; }
 
 .about-box h1 { text-align: center; }
 
