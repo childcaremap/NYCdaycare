@@ -65,9 +65,9 @@
       <a href="#">About</a>
       <div class="dropdown">
         <ul>
-            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-story']">How it started</a></li>
-            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-map']">The map</a></li>
-            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-team']">The team</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="10" gumby-goto="[data-target='about-story']">How it started</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="10" gumby-goto="[data-target='about-map']">The map</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="10" gumby-goto="[data-target='about-team']">The team</a></li>
         </ul>
       </div>
     </li>
@@ -88,14 +88,14 @@
 <div class="infobox">
     <div id="age_selector" class="cartodb-infobox">
        <ul>
-        <li data="all" class="selected">All Years</li>
+        <li data="all" class="selected">Show All Ages</li>
         <li data="0 YEARS - 2 YEARS">0 - 2 Years</li>
         <li data="2 YEARS - 5 YEARS">2 - 5 Years</li>
         </ul>
     </div>
     <div id="type_selector" class="cartodb-infobox">
         <ul>
-        <li data="all" class="selected">All Types</li>
+        <li data="all" class="selected">Show All Types</li>
         <li data="Private">Private</li>
         <li data="ACS Head Start">ACS Head Start</li>
         <li data="ACS Contracted Preschools">ACS Contracted Preschools</li>
@@ -106,9 +106,12 @@
     </div>
     <div id="medicine_selector" class="cartodb-infobox">
         <ul>
-        <li data="all" class="selected">All</li>
-        <li data="Yes">Certified to give medicine</li>
-        <li data="No">Not certified to give medicine</li>
+        <li data="all" style="background-color:#eeeeee;">Certified To Give Medicine?</li>
+        <li data="Yes" style="display:inline;border:1px solid #808080;padding:4px 10px;margin:15px 15px;">Show</li>
+        <li data="all" style="display:inline;padding:4px 10px;border:1px solid #808080;color:red;margin:15px 0px;">Reset</li>
+        <!--li data="No" style="display:inline;padding:3px 10px;border:1px solid #808080;margin-left:5px;">No</li-->
+        <!--li data="Yes">Certified to give medicine</li>
+        <li data="No">Not certified to give medicine</li-->
         </ul>
     </div>
 </div>
