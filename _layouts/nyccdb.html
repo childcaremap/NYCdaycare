@@ -50,24 +50,24 @@
 
 <div class="container" data-target="top"> <!--container-->
 
-<div gumby-fixed="1" gumby-pinoffset="0" class="pretty navbar row nav1" id="nav1">
+<div gumby-fixed="1" gumby-pinoffset="0" class="navbar row nav1" id="nav1">
   <!-- Toggle for mobile navigation, targeting the <ul> -->
   <a class="toggle" gumby-trigger=".nav1 > ul" href="#"><i class="icon-menu"></i></a>
-  <h1 class="ten columns header">
+  <h1 class="nine columns header">
     <a href="#">
         <a href="{{ site.baseurl }}/">{{ site.h1_tag_text }}</a></h1>
     </a>
   </h1>
-  <ul class="two columns">
+  <ul class="three columns">
   
     <!--li><a href="#">Filter</a></li-->
-    <li>
-      <a href="#">About</a>
-      <div class="dropdown">
+    <li><a href="mailto:nycdaycaremap@gmail.com" data-rel="external"><!--i class="icon-export"></i-->Contact</a></li>
+    <li><a href="#">About</a>
+        <div class="dropdown">
         <ul>
-            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-story']">How it started</a></li>
-            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-map']">The map</a></li>
-            <li class="skiplink"><a href="#" gumby-update gumby-duration="600" gumby-goto="[data-target='about-team']">The team</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="10" gumby-goto="[data-target='about-story']">How it started</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="10" gumby-goto="[data-target='about-map']">The map</a></li>
+            <li class="skiplink"><a href="#" gumby-update gumby-duration="10" gumby-goto="[data-target='about-team']">The team</a></li>
         </ul>
       </div>
     </li>
@@ -88,14 +88,14 @@
 <div class="infobox">
     <div id="age_selector" class="cartodb-infobox">
        <ul>
-        <li data="all" class="selected">All Years</li>
+        <li data="all" class="selected">Show All Ages</li>
         <li data="0 YEARS - 2 YEARS">0 - 2 Years</li>
         <li data="2 YEARS - 5 YEARS">2 - 5 Years</li>
         </ul>
     </div>
     <div id="type_selector" class="cartodb-infobox">
         <ul>
-        <li data="all" class="selected">All Types</li>
+        <li data="all" class="selected">Show All Types</li>
         <li data="Private">Private</li>
         <li data="ACS Head Start">ACS Head Start</li>
         <li data="ACS Contracted Preschools">ACS Contracted Preschools</li>
@@ -106,6 +106,9 @@
     </div>
     <div id="medicine_selector" class="cartodb-infobox">
         <ul>
+        <!--li data="all" style="background-color:#eeeeee;">Certified To Give Medicine?</li>
+        <li data="Yes" style="display:inline;border:1px solid #808080;padding:4px 10px;margin:15px 15px;">Show</li>
+        <li data="all" style="display:inline;padding:4px 10px;border:1px solid #808080;color:red;margin:15px 0px;">Cancel</li-->
         <li data="all" class="selected">All</li>
         <li data="Yes">Certified to give medicine</li>
         <li data="No">Not certified to give medicine</li>

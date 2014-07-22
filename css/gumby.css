@@ -1687,7 +1687,7 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 @media only screen and (max-width: 767px) { .skiplink { background: none; }
   .searchbar { background-color: white; min-height: 40px; }
-  .filterbar { width: 100% !important; margin: 0px; padding: 0px; background-color: lightblue; border-bottom: 1px solid gray; }
+  .filterbar { width: 100% !important; margin: 0px; padding: 0px; background-color: white; border-bottom: 1px solid gray; }
   .filterbar ul { width: 100%; display: table; top: 0px; background-color: transparent; margin: 0px; padding: 0px; }
   .filterbar ul li { width: 55%; display: table-cell; margin: 0px; padding: 0px; }
   .location { /*position: relative;*/ }
@@ -1710,7 +1710,7 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 .info-menu { font-size: 10px; font-weight: 700; text-transform: uppercase; padding-left: 10px; }
 
-.meds, .dctype, .dcyears { display: none; }
+.meds, .dctype, .dcyears, .medoff { display: none; }
 
 @media only screen and (min-width: 768px) { .filterbar, .searchbar { display: none !important; } }
 @media only screen and (min-width: 768px) and (max-width: 1279px) { .filterbar, .searchbar { display: none !important; } }
@@ -1762,6 +1762,8 @@ p link.onscreen a { color: #d04526 !important; }
 .team { background-color: #58b1fa; }
 
 .icon-github { color: white; font-size: 16px; }
+
+.icon-export { color: white; font-size: 18px; }
 
 .icon-home { font-size: 26px; }
 

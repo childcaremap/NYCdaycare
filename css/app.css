@@ -7,9 +7,9 @@ html, body, #map, .container { height: 100%; padding: 0; }
 
 #age_selector { width: 230px; position: relative; top: 5px; padding: 0; }
 
-#type_selector { width: 230px; position: relative; top: 10px; padding: 0; }
+#type_selector { width: 230px; position: relative; top: 15px; padding: 0; }
 
-#medicine_selector { width: 230px; position: relative; top: 15px; padding: 0; }
+#medicine_selector { width: 230px; position: relative; top: 25px; padding: 0; }
 
 #age_selector ul { padding: 0; margin: 0; list-style-type: none; }
 
@@ -17,7 +17,7 @@ html, body, #map, .container { height: 100%; padding: 0; }
 
 #medicine_selector ul { padding: 0; margin: 0; list-style-type: none; }
 
-.cartodb-infobox ul li { border-bottom: 1px solid #999; padding: 3px 20px; font-family: "Helvetica", Arial; font-size: 12px; font-weight: 600; color: #444; cursor: auto; }
+.cartodb-infobox ul li { border-bottom: 1px solid #999; padding: 3px 10px 3px 15px; font-family: "Helvetica", Arial; font-size: 12px; font-weight: 600; color: #444; cursor: auto; }
 
 /* This has been made DRY deprecated */
 /*#age_selector li { border-bottom: 1px solid #999; padding: 10px 20px; font-family: "Helvetica", Arial; font-size: 13px; color: #444; cursor: auto;
