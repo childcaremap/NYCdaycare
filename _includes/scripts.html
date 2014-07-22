@@ -411,12 +411,27 @@
   }
   </script>
 
-<!-- Ajax-loader GIF -->
 <script>
-    $(window).load(function() {
-        $("#map").show();
-        $("#loader").hide(500);
-    });
+$( document ).ready(function() {
+
+  // Ajax mao-loader GIF
+  $(window).load(function() {
+    $("#map").show();
+    $("#loader").hide(500);
+  });
+
+  // Ths swaps label names in a list
+  $("li.data-swap").on("click", function() {
+    var el = $(this);
+    el.text() == el.data("label-on") 
+      ? el.text(el.data("label-off")) 
+      : el.text(el.data("label-on"));
+    
+    // Ths swaps the data attribute
+    $("li.data-swap").attr("data", $("li.data-swap").attr("data") == "all" ? "Yes" : "all");
+  });
+
+});
 </script>
 
 <!--
