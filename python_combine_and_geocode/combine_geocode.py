@@ -15,11 +15,11 @@ def combine_geocode(filename):
         newrows = []  # Initialize clean rows
         # retrieve geolocation from Google API
         for i, row in enumerate(info):
+            print i
             if row[iborough] == 'MANHATTAN':
                 address =  row[iaddress] +', NEW YORK, NY ' + row[izip]
             else:
                 address = row[iaddress] +', ' + row[iborough] + ', NY ' + row[izip]
-                print i
             try:
                 result = Geocoder.geocode(address)
                 time.sleep(.5)

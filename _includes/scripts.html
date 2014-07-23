@@ -420,17 +420,19 @@ $( document ).ready(function() {
     $("#loader").hide(500);
   });
 
-  // Ths swaps label names in a list
-  $("li.data-swap").on("click", function() {
-    var el = $(this);
-    el.text() == el.data("label-on") 
-      ? el.text(el.data("label-off")) 
-      : el.text(el.data("label-on"));
+  // Ths sample swaps label names in a list
+  //$("li.data-swap").on("click", function() {
+    //var el = $(this);
+    //el.text() == el.data("label-on") 
+      //? el.text(el.data("label-off")) 
+      //: el.text(el.data("label-on"));
+  //});
     
-    // Ths swaps the data attribute
-    $("li.data-swap").attr("data", $("li.data-swap").attr("data") == "all" ? "Yes" : "all");
+  // Ths swaps the data attribute on an input
+  $("input.data-swap").on("click", function() {
+    $("input.data-swap").attr("data", $("input.data-swap").attr("data") == "all" ? "Yes" : "all");
+    //$("input.data-swap").attr("checked", false).uniform(); 
   });
-
 });
 </script>
 
