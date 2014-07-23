@@ -49,7 +49,8 @@ def combine_samegeo(filename):
 
             row[icap] = re.sub(' Children','',row[icap])
             row[icap] = re.sub('Ages ','',row[icap])
-            row[iinfo] = re.sub(re.escape('viewprofile.aspx?&facility_id='),'Profile/Index/',row[iinfo])
+            link = re.sub(re.escape('viewprofile.aspx?&facility_id='),'Profile/Index/',row[iinfo])
+            row[iinfo] = '<a href="' + link + '">' + link + '</a>'
             if (row[ilat], row[ilon]) not in coord:
                 if row[ilat] != '':
                     coord.append((row[ilat], row[ilon]))
