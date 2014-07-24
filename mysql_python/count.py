@@ -11,7 +11,7 @@ with mydb:
     cur = mydb.cursor()
 
     # 2 years prior to scrape date
-    mindate =  '2012-7-14'
+    mindate =  '2012-7-23'
     #Make new table
     cur.execute('DROP TABLE IF EXISTS BasicSum')
     cur.execute("CREATE TABLE BasicSum LIKE Basic")

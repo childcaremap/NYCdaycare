@@ -11,7 +11,7 @@ with mydb:
     cur = mydb.cursor()
 
     # 2 years prior to scrape date
-    mindate =  '2012-7-14'
+    mindate =  '2012-7-23'
 
     #Add 2 more columns if necessary
     #if cur.execute("SHOW COLUMNS FROM BasicSum WHERE Field = 'Median_Violations_Per_Visit'") == 0:
