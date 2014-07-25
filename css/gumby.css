@@ -1700,7 +1700,7 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
   .about-box p { font-size: .9rem; line-height: 1.3rem; }
   .about-box h1 { font-size: 1.5rem; line-height: 1.6rem; margin-bottom: .5rem; } }
 @media only screen and (max-width: 767px) { div.cartodb-searchbox { width: 265px; height: 30px; top: 5px !important; margin: 0px; }
-  .infobox.mobile { top: 140px; width: 300px; height: auto; background-color: white; margin: 10px; border: 1px solid #808080; -webkit-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); -moz-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); overflow: auto; } }
+  .infobox.mobile { top: 140px; width: 280px; height: auto; background-color: white; margin: 10px; border: 1px solid #808080; -webkit-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); -moz-box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); box-shadow: 7px 7px 0px 0px rgba(50, 50, 50, 0.75); overflow: auto; } }
 @media only screen and (max-width: 320px) { div.cartodb-searchbox { right: 0.5rem !important; } }
 @media only screen and (min-width: 321px) and (max-width: 767px) { div.cartodb-searchbox { right: 0.5rem !important; } }
 @media only screen and (max-width: 320px) { div.cartodb-searchbox.mobile { float: none !important; height: 30px; top: 5px !important; left: 0.5rem !important; right: 0rem !important; margin: 0px; } }
