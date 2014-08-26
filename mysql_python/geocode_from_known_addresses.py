@@ -7,7 +7,7 @@ def geocode(filename1,filename2):
         ref = csv.reader(ref_file)
         header = ref.next()
         iaddress = header.index('Address')
-        izip= header.index('Zip_Code')
+        izip = header.index('Zip Code')
 
         ilat = header.index('Lat')
         ilon = header.index('Lon')
@@ -21,6 +21,8 @@ def geocode(filename1,filename2):
 
         info = csv.reader(input_file)
         header = info.next()
+        iaddress = header.index('Address')
+        izip = header.index('Zip_Code')
 
         newrows = []  # Initialize clean rows
         for i, row in enumerate(info):
@@ -44,6 +46,7 @@ def geocode(filename1,filename2):
     return nname
 
 def main():
+    #First file geocode based on second file as reference
     fname1 = sys.argv[1]
     fname2 = sys.argv[2]
     nname = geocode(fname1,fname2)
