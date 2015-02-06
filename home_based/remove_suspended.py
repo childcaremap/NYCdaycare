@@ -1,8 +1,8 @@
 import sys
 import csv
 
-def combine_samegeo(filename):
-    with open(filename, 'rb') as input_file:
+def remove_suspended(filename):
+    with open(filename, 'rU') as input_file:
         info = csv.reader(input_file)
         header = info.next()
 
@@ -26,7 +26,7 @@ def combine_samegeo(filename):
 
 def main():
     fname = sys.argv[1]
-    nname = combine_samegeo(fname)
+    nname = remove_suspended(fname)
     return nname
     
 if __name__ == '__main__':
