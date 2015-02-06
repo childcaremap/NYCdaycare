@@ -1,6 +1,7 @@
 import sys
 import csv
 from pygeocoder import Geocoder
+import time
 
 def combine_samegeo(filename):
     with open(filename, 'rb') as input_file:
@@ -28,6 +29,8 @@ def combine_samegeo(filename):
                 else:
                     geoaddress = row[inumber] + ' ' + row[istreet] + ', ' + row[iborough] + ', NY ' + row[izip]
                 try:
+                    #print geoaddress
+                    time.sleep(.1)
                     result = Geocoder.geocode(geoaddress)
                     if len(result) == 1:
                         row[ilat] = result.coordinates[0]
